@@ -29,249 +29,543 @@ states = [
     "TO",
 ]
 
-uf_pattern = r"(ac|al|ap|am|ba|ce|df|es|go|ma|mt|ms|mg|pa|pb|pr|pe|pi|rj|rn|rs|ro|rr|sc|sp|se|to)"
-monthly_pattern = r"(9|0|1|2)\d(0|1)\d"  # 9701
-year_4digit_pattern = r"(19|20)\d{2}"    # 1997
-year_2digit_pattern = r"\d{2}"           # 97
-pattern1 = r"{uf}{monthly}\.dbc$".format(uf=uf_pattern, monthly=monthly_pattern)
-pattern2 = r"{yearly}\.dbc$".format(yearly=year_4digit_pattern)
-pattern3 = r"{yearly}\.dbc$".format(yearly=year_2digit_pattern)
-pattern4 = r"{uf}{yearly}\.dbc$".format(uf=uf_pattern, yearly=year_4digit_pattern)
-pattern5 = r"{uf}{yearly}\.dbc$".format(uf=uf_pattern, yearly=year_2digit_pattern)
+uf_pattern = "{}".format("|".join(states).lower())
+month_pattern = "|".join((f"{i:02}" for i in range(1, 12 + 1)))
+year_4digit_pattern = r"\d{4}"  # 1997
+year_2digit_pattern = r"\d{2}"  # 97
 
+# 9701, 9702, ... 9712, 9801, ...
+year_pattern = r"({yearly})".format(
+    yearly=year_4digit_pattern,
+)
+year2_pattern = r"({yearly})".format(
+    yearly=year_2digit_pattern,
+)
+uf_year_pattern = r"({uf})({yearly})".format(
+    uf=uf_pattern,
+    yearly=year_4digit_pattern,
+)
+uf_year2_pattern = r"({uf})({yearly})".format(
+    uf=uf_pattern,
+    yearly=year_2digit_pattern,
+)
+uf_year2_month_pattern = r"({uf})({year})({month})".format(
+    uf=uf_pattern,
+    year=year_2digit_pattern,
+    month=month_pattern,
+)
+
+BASE_PATH = "/dissemin/publicos"
 
 datasets = {
     "sih-rd": {
         "periods": [
             {
-                "path": "/SIHSUS/199201_200712/Dados/RD{uf}{year_:02}{month:02}.dbc",
-                "filename_pattern": r"^rd" + pattern1,
-                "date_range": ((1992, 1), (2007, 12)),
+                "dir": BASE_PATH + "/SIHSUS/199201_200712/Dados",
+                "filename_prefix": "RD",
+                "filename_pattern": uf_year2_month_pattern,
             },
             {
-                "path": "/SIHSUS/200801_/Dados/RD{uf}{year_:02}{month:02}.dbc",
-                "filename_pattern": r"^rd" + pattern1,
-                "date_range": ((2008, 1), (None, None)),
+                "dir": BASE_PATH + "/SIHSUS/200801_/Dados",
+                "filename_prefix": "RD",
+                "filename_pattern": uf_year2_month_pattern,
             },
         ],
-        "frequency": "monthly",
-        "uf": True,
+        "partition": "uf-yearmonth",
     },
     "sih-rj": {
         "periods": [
             {
-                "path": "/SIHSUS/200801_/Dados/RJ{uf}{year_:02}{month:02}.dbc",
-                "filename_pattern": r"^rj" + pattern1,
-                "date_range": ((2008, 1), (None, None)),
+                "dir": BASE_PATH + "/SIHSUS/200801_/Dados",
+                "filename_prefix": "RJ",
+                "filename_pattern": uf_year2_month_pattern,
             },
         ],
-        "frequency": "monthly",
-        "uf": True,
+        "partition": "uf-yearmonth",
     },
     "sih-sp": {
         "periods": [
             {
-                "path": "/SIHSUS/199201_200712/Dados/SP{uf}{year_:02}{month:02}.dbc",
-                "filename_pattern": r"^sp" + pattern1,
-                "date_range": ((1997, 1), (2007, 12)),
+                "dir": BASE_PATH + "/SIHSUS/199201_200712/Dados",
+                "filename_prefix": "SP",
+                "filename_pattern": uf_year2_month_pattern,
             },
             {
-                "path": "/SIHSUS/200801_/Dados/SP{uf}{year_:02}{month:02}.dbc",
-                "filename_pattern": r"^sp" + pattern1,
-                "date_range": ((2008, 1), (None, None)),
+                "dir": BASE_PATH + "/SIHSUS/200801_/Dados",
+                "filename_prefix": "SP",
+                "filename_pattern": uf_year2_month_pattern,
             },
         ],
-        "frequency": "monthly",
-        "uf": True,
+        "partition": "uf-yearmonth",
     },
     "sih-er": {
         "periods": [
             {
-                "path": "/SIHSUS/200801_/Dados/ER{uf}{year_:02}{month:02}.dbc",
-                "filename_pattern": r"^er" + pattern1,
-                "date_range": ((2011, 1), (None, None)),
+                "dir": BASE_PATH + "/SIHSUS/200801_/Dados",
+                "filename_prefix": "ER",
+                "filename_pattern": uf_year2_month_pattern,
             },
         ],
-        "frequency": "monthly",
-        "uf": True,
+        "partition": "uf-yearmonth",
     },
     "sinasc": {
         "periods": [
             {
-                "path": "/SINASC/1994_1995/Dados/DNRES/DNR{uf}{year}.dbc",
-                "filename_pattern": r"^dnr" + pattern4,
-                "date_range": (1994, 1995),
+                "dir": BASE_PATH + "/SINASC/1994_1995/Dados/DNRES",
+                "filename_prefix": "DNR",
+                "filename_pattern": uf_year_pattern,
             },
             {
-                "path": "/SINASC/1996_/Dados/DNRES/DN{uf}{year}.dbc",
-                "filename_pattern": r"^dn" + pattern4,
-                "date_range": (1996, None),
-            }
+                "dir": BASE_PATH + "/SINASC/1996_/Dados/DNRES",
+                "filename_prefix": "DN",
+                "filename_pattern": uf_year_pattern,
+            },
         ],
-        "frequency": "yearly",
-        "uf": True,
+        "partition": "uf-year",
     },
-    "sim-do": {
+    "sinasc-preliminar": {
         "periods": [
             {
-                "path": "/SIM/CID9/DORES/DOR{uf}{year_:02}.dbc",
-                "filename_pattern": r"^dor" + pattern5,
-                "date_range": (1979, 1995),
+                "dir": BASE_PATH + "/SINASC/PRELIM/DNRES",
+                "filename_prefix": "DN",
+                "filename_pattern": uf_year_pattern,
             },
-            {
-                "path": "/SIM/CID10/DORES/DO{uf}{year}.dbc",
-                "filename_pattern": r"^do" + pattern4,
-                "date_range": (1996, None),
-            }
         ],
-        "frequency": "yearly",
-        "uf": True,
+        "partition": "uf-year",
     },
-    "sim-doext": {
+    "sim-do-cid09": {
         "periods": [
             {
-                "path": "/SIM/CID9/DOFET/DOEXT{year_:02}.dbc",
-                "filename_pattern": r"^doext" + pattern3,
-                "date_range": (1979, 1995),
+                "dir": BASE_PATH + "/SIM/CID9/DORES",
+                "filename_prefix": "DOR",
+                "filename_pattern": uf_year2_pattern,
             },
-            {
-                "path": "/SIM/CID10/DOFET/DOEXT{year_:02}.dbc",
-                "filename_pattern": r"^doext" + pattern3,
-                "date_range": (1996, None),
-            }
         ],
-        "frequency": "yearly",
-        "uf": False,
+        "partition": "uf-year",
     },
-    "sim-dofet": {
+    "sim-do-cid10": {
         "periods": [
             {
-                "path": "/SIM/CID9/DOFET/DOFET{year_:02}.dbc",
-                "filename_pattern": r"^dofet" + pattern3,
-                "date_range": (1979, 1995),
+                "dir": BASE_PATH + "/SIM/CID10/DORES",
+                "filename_prefix": "DO",
+                "filename_pattern": uf_year_pattern,
             },
-            {
-                "path": "/SIM/CID10/DOFET/DOFET{year}.dbc",
-                "filename_pattern": r"^dofet" + pattern2,
-                "date_range": (1996, None),
-            }
         ],
-        "frequency": "yearly",
-        "uf": False,
+        "partition": "uf-year",
     },
-    "sim-doinf": {
+    "sim-do-cid10-preliminar": {
         "periods": [
             {
-                "path": "/SIM/CID9/DOFET/DOINF{year_:02}.dbc",
-                "filename_pattern": r"^doinf" + pattern3,
-                "date_range": (1979, 1995),
-            },
-            {
-                "path": "/SIM/CID10/DOFET/DOINF{year_:02}.dbc",
-                "filename_pattern": r"^doinf" + pattern3,
-                "date_range": (1996, None),
+                "dir": BASE_PATH + "/SIM/PRELIM/DORES",
+                "filename_prefix": "DO",
+                "filename_pattern": uf_year_pattern,
             },
         ],
-        "frequency": "yearly",
-        "uf": False,
+        "partition": "uf-year",
     },
-    "sim-domat": {
+    "sim-doext-cid09": {
         "periods": [
             {
-                "path": "/SIM/CID10/DOFET/DOMAT{year_:02}.dbc",
-                "filename_pattern": r"^domat" + pattern3,
-                "date_range": (1996, None),
+                "dir": BASE_PATH + "/SIM/CID9/DOFET",
+                "filename_prefix": "DOEXT",
+                "filename_pattern": year2_pattern,
             },
         ],
-        "frequency": "yearly",
-        "uf": False,
+        "partition": "year",
+    },
+    "sim-doext-cid10": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SIM/CID10/DOFET",
+                "filename_prefix": "DOEXT",
+                "filename_pattern": year2_pattern,
+            },
+        ],
+        "partition": "year",
+    },
+    "sim-doext-cid10-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SIM/PRELIM/DOFET",
+                "filename_prefix": "DOEXT",
+                "filename_pattern": year2_pattern,
+            },
+        ],
+        "partition": "year",
+    },
+    "sim-dofet-cid09": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SIM/CID9/DOFET",
+                "filename_prefix": "DOFET",
+                "filename_pattern": year2_pattern,
+            },
+        ],
+        "partition": "year",
+    },
+    "sim-dofet-cid10": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SIM/CID10/DOFET",
+                "filename_prefix": "DOFET",
+                "filename_pattern": year2_pattern,
+            },
+        ],
+        "partition": "year",
+    },
+    "sim-dofet-cid10-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SIM/PRELIM/DOFET",
+                "filename_prefix": "DOFET",
+                "filename_pattern": year2_pattern,
+            },
+        ],
+        "partition": "year",
+    },
+    "sim-doinf-cid09": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SIM/CID9/DOFET",
+                "filename_prefix": "DOINF",
+                "filename_pattern": year2_pattern,
+            },
+        ],
+        "partition": "year",
+    },
+    "sim-doinf-cid10": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SIM/CID10/DOFET",
+                "filename_prefix": "DOINF",
+                "filename_pattern": year2_pattern,
+            },
+        ],
+        "partition": "year",
+    },
+    "sim-doinf-cid10-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SIM/PRELIM/DOFET",
+                "filename_prefix": "DOINF",
+                "filename_pattern": year2_pattern,
+            },
+        ],
+        "partition": "year",
+    },
+    "sim-domat-cid10": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SIM/CID10/DOFET",
+                "filename_prefix": "DOMAT",
+                "filename_pattern": year2_pattern,
+            },
+        ],
+        "partition": "year",
+    },
+    "sim-domat-cid10-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SIM/PRELIM/DOFET",
+                "filename_prefix": "DOMAT",
+                "filename_pattern": year2_pattern,
+            },
+        ],
+        "partition": "year",
     },
     "cnes-dc": {
         "periods": [
             {
-                "path": "/200508_/Dados/DC/DC{uf}{year_:02}{month:02}.dbc",
-                "filename_pattern": r"^dc" + pattern1,
-                "date_range": ((2005, 8), (None, None)),
+                "dir": BASE_PATH + "/CNES/200508_/Dados/DC",
+                "filename_prefix": "DC",
+                "filename_pattern": uf_year2_month_pattern,
             },
         ],
-        "frequency": "monthly",
-        "uf": True,
+        "partition": "uf-yearmonth",
     },
     "cnes-ee": {
         "periods": [
             {
-                "path": "/200508_/Dados/EE/EE{uf}{year_:02}{month:02}.dbc",
-                "filename_pattern": r"^ee" + pattern1,
-                "date_range": ((2007, 3), (None, None)),
+                "dir": BASE_PATH + "/CNES/200508_/Dados/EE",
+                "filename_prefix": "EE",
+                "filename_pattern": uf_year2_month_pattern,
             },
         ],
-        "frequency": "monthly",
-        "uf": True,
+        "partition": "uf-yearmonth",
     },
     "cnes-ef": {
         "periods": [
             {
-                "path": "/200508_/Dados/EF/EF{uf}{year_:02}{month:02}.dbc",
-                "filename_pattern": r"^ef" + pattern1,
-                "date_range": ((2007, 3), (None, None)),
+                "dir": BASE_PATH + "/CNES/200508_/Dados/EF",
+                "filename_prefix": "EF",
+                "filename_pattern": uf_year2_month_pattern,
             },
         ],
-        "frequency": "monthly",
-        "uf": True,
+        "partition": "uf-yearmonth",
     },
     "cnes-ep": {
         "periods": [
             {
-                "path": "/200508_/Dados/EP/EP{uf}{year_:02}{month:02}.dbc",
-                "filename_pattern": r"^ep" + pattern1,
-                "date_range": ((2007, 4), (None, None)),
+                "dir": BASE_PATH + "/CNES/200508_/Dados/EP",
+                "filename_prefix": "EP",
+                "filename_pattern": uf_year2_month_pattern,
             },
         ],
-        "frequency": "monthly",
-        "uf": True,
+        "partition": "uf-yearmonth",
     },
     "cnes-eq": {
         "periods": [
             {
-                "path": "/200508_/Dados/EQ/EQ{uf}{year_:02}{month:02}.dbc",
-                "filename_pattern": r"^eq" + pattern1,
-                "date_range": ((2005, 8), (None, None)),
+                "dir": BASE_PATH + "/CNES/200508_/Dados/EQ",
+                "filename_prefix": "EQ",
+                "filename_pattern": uf_year2_month_pattern,
             },
         ],
-        "frequency": "monthly",
-        "uf": True,
+        "partition": "uf-yearmonth",
     },
     "cnes-gm": {
         "periods": [
             {
-                "path": "/200508_/Dados/GM/GM{uf}{year_:02}{month:02}.dbc",
-                "filename_pattern": r"^gm" + pattern1,
-                "date_range": ((2007, 7), (None, None)),
+                "dir": BASE_PATH + "/CNES/200508_/Dados/GM",
+                "filename_prefix": "GM",
+                "filename_pattern": uf_year2_month_pattern,
             },
         ],
-        "frequency": "monthly",
-        "uf": True,
+        "partition": "uf-yearmonth",
     },
     "cnes-hb": {
         "periods": [
             {
-                "path": "/200508_/Dados/HB/HB{uf}{year_:02}{month:02}.dbc",
-                "filename_pattern": r"^hb" + pattern1,
-                "date_range": ((2007, 3), (None, None)),
+                "dir": BASE_PATH + "/CNES/200508_/Dados/HB",
+                "filename_prefix": "HB",
+                "filename_pattern": uf_year2_month_pattern,
             },
         ],
-        "frequency": "monthly",
-        "uf": True,
+        "partition": "uf-yearmonth",
     },
     "cnes-in": {
         "periods": [
             {
-                "path": "/200508_/Dados/IN/IN{uf}{year_:02}{month:02}.dbc",
-                "filename_pattern": r"^in" + pattern1,
-                "date_range": ((2007, 11), (None, None)),
+                "dir": BASE_PATH + "/CNES/200508_/Dados/IN",
+                "filename_prefix": "IN",
+                "filename_pattern": uf_year2_month_pattern,
             },
         ],
-        "frequency": "monthly",
-        "uf": True,
+        "partition": "uf-yearmonth",
+    },
+    "cnes-lt": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/CNES/200508_/Dados/LT",
+                "filename_prefix": "LT",
+                "filename_pattern": uf_year2_month_pattern,
+            },
+        ],
+        "partition": "uf-yearmonth",
+    },
+    "cnes-pf": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/CNES/200508_/Dados/PF",
+                "filename_prefix": "PF",
+                "filename_pattern": uf_year2_month_pattern,
+            },
+        ],
+        "partition": "uf-yearmonth",
+    },
+    "cnes-rc": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/CNES/200508_/Dados/RC",
+                "filename_prefix": "RC",
+                "filename_pattern": uf_year2_month_pattern,
+            },
+        ],
+        "partition": "uf-yearmonth",
+    },
+    "cnes-sr": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/CNES/200508_/Dados/SR",
+                "filename_prefix": "SR",
+                "filename_pattern": uf_year2_month_pattern,
+            },
+        ],
+        "partition": "uf-yearmonth",
+    },
+    "cnes-st": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/CNES/200508_/Dados/ST",
+                "filename_prefix": "ST",
+                "filename_pattern": uf_year2_month_pattern,
+            },
+        ],
+        "partition": "uf-yearmonth",
+    },
+    "sia-ab": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SIASUS/200801_/Dados",
+                "filename_prefix": "AB",
+                "filename_pattern": uf_year2_month_pattern,
+            },
+        ],
+        "partition": "uf-yearmonth",
+    },
+    "sia-abo": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SIASUS/200801_/Dados",
+                "filename_prefix": "ABO",
+                "filename_pattern": uf_year2_month_pattern,
+            },
+        ],
+        "partition": "uf-yearmonth",
+    },
+    "sia-acf": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SIASUS/200801_/Dados",
+                "filename_prefix": "ACF",
+                "filename_pattern": uf_year2_month_pattern,
+            },
+        ],
+        "partition": "uf-yearmonth",
+    },
+    "sia-ad": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SIASUS/200801_/Dados",
+                "filename_prefix": "AD",
+                "filename_pattern": uf_year2_month_pattern,
+            },
+        ],
+        "partition": "uf-yearmonth",
+    },
+    "sia-am": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SIASUS/200801_/Dados",
+                "filename_prefix": "AM",
+                "filename_pattern": uf_year2_month_pattern,
+            },
+        ],
+        "partition": "uf-yearmonth",
+    },
+    "sia-an": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SIASUS/200801_/Dados",
+                "filename_prefix": "AN",
+                "filename_pattern": uf_year2_month_pattern,
+            },
+        ],
+        "partition": "uf-yearmonth",
+    },
+    "sia-aq": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SIASUS/200801_/Dados",
+                "filename_prefix": "AQ",
+                "filename_pattern": uf_year2_month_pattern,
+            },
+        ],
+        "partition": "uf-yearmonth",
+    },
+    "sia-ar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SIASUS/200801_/Dados",
+                "filename_prefix": "AR",
+                "filename_pattern": uf_year2_month_pattern,
+            },
+        ],
+        "partition": "uf-yearmonth",
+    },
+    "sia-atd": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SIASUS/200801_/Dados",
+                "filename_prefix": "ATD",
+                "filename_pattern": uf_year2_month_pattern,
+            },
+        ],
+        "partition": "uf-yearmonth",
+    },
+    "sia-pa": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SIASUS/199407_200712/Dados",
+                "filename_prefix": "PA",
+                "filename_pattern": uf_year2_month_pattern,
+            },
+            {
+                "dir": BASE_PATH + "/SIASUS/200801_/Dados",
+                "filename_prefix": "PA",
+                "filename_pattern": uf_year2_month_pattern,
+            },
+        ],
+        "partition": "uf-yearmonth",
+    },
+    "sia-ps": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SIASUS/200801_/Dados",
+                "filename_prefix": "PS",
+                "filename_pattern": uf_year2_month_pattern,
+            },
+        ],
+        "partition": "uf-yearmonth",
+    },
+    "sia-sad": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SIASUS/200801_/Dados",
+                "filename_prefix": "SAD",
+                "filename_pattern": uf_year2_month_pattern,
+            },
+        ],
+        "partition": "uf-yearmonth",
+    },
+    "cih-cr": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/CIH/200801_201012/Dados",
+                "filename_prefix": "CR",
+                "filename_pattern": uf_year2_month_pattern,
+            },
+        ],
+        "partition": "uf-yearmonth",
+    },
+    "ciha": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/CIHA/201101_/Dados",
+                "filename_prefix": "CIHA",
+                "filename_pattern": uf_year2_month_pattern,
+            },
+        ],
+        "partition": "uf-yearmonth",
+    },
+    "resp": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/RESP/DADOS",
+                "filename_prefix": "RESP",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sisprenatal-pn": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SISPRENATAL/201201_/Dados",
+                "filename_prefix": "PN",
+                "filename_pattern": uf_year2_month_pattern,
+            },
+        ],
+        "partition": "uf-year-month",
     },
 }

@@ -5,60 +5,99 @@ FTP server. It does not have reading functions.
 
 https://datasus.saude.gov.br/transferencia-de-arquivos/
 
-## SIM: Sistema de Informação de Mortalidade
-
-### SIM-DO
-
-### SIM-DO-PRELIMINAR
-
-### SIM-DOFET
-
-### SIM-DOFET-PRELIMINAR
-
-### SIM-DOEXT
-
-### SIM-DOINF
-
-### SIM-DOMAT
-
-## SIH: Sistema de Informação Hospitalar (Descentralizado)
-
-### SIH-RD: AIH Reduzida
-
-### SIH-RJ: AIH Rejeitadas
-
-### SIH-SP: Serviços Profissionais
-
-### SIH-ER: AIH Rejeitadas com código de erro
-
-## SINASC: Sistema de Informação de Nascidos Vivos
-
-### SINASC: Sistema de Informação de Nascidos Vivos
-
-## CNES: Cadastro Nacional de Estabelecimentos de Saúde
-
-### CNES-LT: Leitos
-
-### CNES-ST: Estabelecimentos
-
-### CNES-DC: Dados Complementares
-
-### CNES-EQ: Equipamentos
-
-### CNES-SR: Serviço Especializado
-
-### CNES-HB: Habilitação
-
-### CNES-PF: Profissional
-
-### CNES-EP: Equipes
-
-### CNES-RC: Regra Contratual
-
-### CNES-IN: Incentivos
-
-### CNES-EE: Estabelecimento de Ensino
-
-### CNES-EF: Estabelecimento Filantrópico
-
-### CNES-GM: Gestão e Metas
+- SIM: Sistema de Informação de Mortalidade
+  - SIM-DO
+  - SIM-DO-PRELIMINAR
+  - SIM-DOFET
+  - SIM-DOFET-PRELIMINAR
+  - SIM-DOEXT
+  - SIM-DOEXT-PRELIMINAR
+  - SIM-DOINF
+  - SIM-DOINF-PRELIMINAR
+  - SIM-DOMAT
+  - SIM-DOMAT-PRELIMINAR
+- SIH: Sistema de Informação Hospitalar (Descentralizado)
+  - SIH-RD: AIH Reduzida
+  - SIH-RJ: AIH Rejeitadas
+  - SIH-SP: Serviços Profissionais
+  - SIH-ER: AIH Rejeitadas com código de erro
+- SINASC: Sistema de Informação de Nascidos Vivos
+  - SINASC: Sistema de Informação de Nascidos Vivos
+- CNES: Cadastro Nacional de Estabelecimentos de Saúde
+  - CNES-LT: Leitos
+  - CNES-ST: Estabelecimentos
+  - CNES-DC: Dados Complementares
+  - CNES-EQ: Equipamentos
+  - CNES-SR: Serviço Especializado
+  - CNES-HB: Habilitação
+  - CNES-PF: Profissional
+  - CNES-EP: Equipes
+  - CNES-RC: Regra Contratual
+  - CNES-IN: Incentivos
+  - CNES-EE: Estabelecimento de Ensino
+  - CNES-EF: Estabelecimento Filantrópico
+  - CNES-GM: Gestão e Metas
+- SIA: Sistema de Informações Ambulatoriais
+  - SIA-AB: APAC de Acompanhamento a Cirurgia Bariátrica
+  - SIA-ABO: APAC Acompanhamento Pós Cirurgia Bariátrica
+  - SIA-ACF: APAC Confeção de Fístula Arteriovenosa
+  - SIA-AD: APAC de Laudos Diversos
+  - SIA-AM: APAC de Medicamentos
+  - SIA-AN: APAC de Nefrologia
+  - SIA-AQ: APAC de Quimioterapia
+  - SIA-AR: APAC de Radioterapia
+  - SIA-ATD: APAC de Tratamento Dialítico
+  - SIA-PA: Produção Ambulatorial
+  - SIA-PS: Psicossocial
+  - SIA-SAD: Atenção Domiciliar
+- CIH: Sistema de Comunicação de Informação Hospitalar
+  - CIH-CR: Comunicação de Internação Hospitalar
+- CIHA: Sistema de Comunicação de Informação Hospitalar e Ambulatorial
+  - CIHA-CIHA: Sistema de Comunicação de Informação Hospitalar e Ambulatorial
+- RESP: Notificações de casos suspeitos de SCZ
+  - RESP: Notificações de casos suspeitos de SCZ
+- SINAN: Sistma de agravos de notificação compulsória
+  - SINAN-ACBI: Acidente de trabalho com material biológico
+  - SINAN-ACGR: Acidente de trabalho
+  - SINAN-ANIM: Acidente por Animais Peçonhentos
+  - SINAN-ANTR: Atendimento Antirrabico
+  - SINAN-BOTU: Botulismo
+  - SINAN-CANC: Cancêr relacionado ao trabalho
+  - SINAN-CHAG: Doença de Chagas Aguda
+  - SINAN-CHIK: Febre de Chikungunya
+  - SINAN-COLE: Cólera
+  - SINAN-COQU: Coqueluche
+  - SINAN-DENG: Dengue
+  - SINAN-DERM: Dermatoses ocupacionais
+  - SINAN-DIFT: Difteria
+  - SINAN-ESQU: Esquistossomose
+  - SINAN-FAMA: Febre Amarela
+  - SINAN-FMAC: Febre Maculosa
+  - SINAN-FTIF: Febre Tifóide
+  - SINAN-HANS: Hanseníase
+  - SINAN-HANT: Hantavirose
+  - SINAN-HEPA: Hepatites Virais
+  - SINAN-IEXO: Intoxicação Exógena
+  - SINAN-INFL: Influenza Pandêmica
+  - SINAN-LEIV: Leishmaniose Visceral
+  - SINAN-LEPT: Leptospirose
+  - SINAN-LERD: LER/Dort
+  - SINAN-LTAN: Leishmaniose Tegumentar Americana
+  - SINAN-MALA: Malária
+  - SINAN-MENI: Meningite
+  - SINAN-MENT: Transtornos mentais relacionados ao trabalho
+  - SINAN-PAIR: Perda auditiva por ruído relacionado ao trabalho
+  - SINAN-PEST: Peste
+  - SINAN-PFAN: Paralisia Flácida Aguda
+  - SINAN-PNEU: Pneumoconioses relacionadas ao trabalho
+  - SINAN-RAIV: Raiva
+  - SINAN-SIFA: Sífilis Adquirida
+  - SINAN-SIFC: Sífilis Congênita
+  - SINAN-SIFG: Sífilis em Gestante
+  - SINAN-TETA: Tétano Acidental
+  - SINAN-TETN: Tétano Neonatal
+  - SINAN-TUBE: Tuberculose
+  - SINAN-VIOL: Violência doméstica, sexual e/ou outras violências
+  - SINAN-ZIKA: Zika Vírus
+- SISPRENATAL: Sistema de Monitoramento e Avaliação do Pré-Natal, Parto, Puepério e Criança
+  - SISPRENATAL-PN: Pré-Natal
