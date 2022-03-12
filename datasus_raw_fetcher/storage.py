@@ -1,6 +1,8 @@
 import hashlib
 import pathlib
 
+from . import meta
+
 
 def get_sha1_hash(filepath: pathlib.Path | str) -> str:
     """Returns the SHA1 hash of a file."""

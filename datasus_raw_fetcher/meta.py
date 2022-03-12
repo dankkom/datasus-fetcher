@@ -566,6 +566,6 @@ datasets = {
                 "filename_pattern": uf_year2_month_pattern,
             },
         ],
-        "partition": "uf-year-month",
+        "partition": "uf-yearmonth",
     },
 }

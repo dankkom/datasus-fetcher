@@ -5,7 +5,7 @@ import re
 import time
 
 from . import meta
-from .storage import get_sha1_hash
+from .storage import get_filename, get_sha1_hash
 
 FTP_HOST = "ftp.datasus.gov.br"
 
@@ -149,9 +149,10 @@ def list_dataset_files(ftp: ftplib.FTP, dataset: str) -> dict:
 
 
 def download_dataset(ftp: ftplib.FTP, dataset: str, destdir: pathlib.Path):
+    partition = meta.datasets[dataset]["partition"]
     i = 0
     for file in list_dataset_files(ftp, dataset):
-        filepath = destdir / dataset / file["name"]
+        filepath = destdir / dataset / get_filename(file, partition)
         if filepath.exists():
             continue
         elif not filepath.parent.exists():
@@ -162,8 +163,8 @@ def download_dataset(ftp: ftplib.FTP, dataset: str, destdir: pathlib.Path):
         tt = time.time() - t0
         print(
             sha1,
-            f"{tt:.2f}s",
-            f"{file['size'] / 1024:.2f}kB",
-            f"{file['size'] / tt / 1024:.2f}kB/s",
+            f"{tt:.2f} s",
+            f"{file['size'] / 1024:.2f} kB",
+            f"{file['size'] / tt / 1024:.2f} kB/s",
         )
         i += 1
