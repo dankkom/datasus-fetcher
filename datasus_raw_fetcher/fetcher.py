@@ -154,6 +154,8 @@ def download_dataset(ftp: ftplib.FTP, dataset: str, destdir: pathlib.Path):
     for file in list_dataset_files(ftp, dataset):
         filepath = destdir / dataset / get_filename(file, partition)
         if filepath.exists():
+            if filepath.stat().st_size == file["size"]:
+                continue
             continue
         elif not filepath.parent.exists():
             filepath.parent.mkdir(parents=True)
