@@ -27,6 +27,7 @@ states = [
     "SP",
     "SE",
     "TO",
+    "BR",
 ]
 
 uf_pattern = "{}".format("|".join(states).lower())
