@@ -568,4 +568,864 @@ datasets = {
         ],
         "partition": "uf-yearmonth",
     },
+    "sinan-acbi": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
+                "filename_prefix": "ACBI",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-acbi-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
+                "filename_prefix": "ACBI",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-acgr": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
+                "filename_prefix": "ACGR",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-acgr-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
+                "filename_prefix": "ACGR",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-anim": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
+                "filename_prefix": "ANIM",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-anim-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
+                "filename_prefix": "ANIM",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-antr": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
+                "filename_prefix": "ANTR",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-antr-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
+                "filename_prefix": "ANTR",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-botu": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
+                "filename_prefix": "BOTU",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-botu-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
+                "filename_prefix": "BOTU",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-canc": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
+                "filename_prefix": "CANC",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-canc-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
+                "filename_prefix": "CANC",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-chag": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
+                "filename_prefix": "CHAG",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-chag-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
+                "filename_prefix": "CHAG",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-chik": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
+                "filename_prefix": "CHIK",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-chik-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
+                "filename_prefix": "CHIK",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-cole": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
+                "filename_prefix": "COLE",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-cole-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
+                "filename_prefix": "COLE",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-coqu": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
+                "filename_prefix": "COQU",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-coqu-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
+                "filename_prefix": "COQU",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-deng": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
+                "filename_prefix": "DENG",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-deng-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
+                "filename_prefix": "DENG",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-derm": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
+                "filename_prefix": "DERM",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-derm-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
+                "filename_prefix": "DERM",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-dift": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
+                "filename_prefix": "DIFT",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-dift-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
+                "filename_prefix": "DIFT",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-esqu": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
+                "filename_prefix": "ESQU",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-esqu-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
+                "filename_prefix": "ESQU",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-fama": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
+                "filename_prefix": "FAMA",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-fama-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
+                "filename_prefix": "FAMA",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-fmac": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
+                "filename_prefix": "FMAC",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-fmac-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
+                "filename_prefix": "FMAC",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-ftif": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
+                "filename_prefix": "FTIF",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-ftif-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
+                "filename_prefix": "FTIF",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-hans": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
+                "filename_prefix": "HANS",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-hans-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
+                "filename_prefix": "HANS",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-hant": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
+                "filename_prefix": "HANT",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-hant-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
+                "filename_prefix": "HANT",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-hepa": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
+                "filename_prefix": "HEPA",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-hepa-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
+                "filename_prefix": "HEPA",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-iexo": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
+                "filename_prefix": "IEXO",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-iexo-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
+                "filename_prefix": "IEXO",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-iexo": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
+                "filename_prefix": "IEXO",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-iexo-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
+                "filename_prefix": "IEXO",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-infl": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
+                "filename_prefix": "INFL",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-infl-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
+                "filename_prefix": "INFL",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-leiv": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
+                "filename_prefix": "LEIV",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-leiv-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
+                "filename_prefix": "LEIV",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-lept": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
+                "filename_prefix": "LEPT",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-lept-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
+                "filename_prefix": "LEPT",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-lerd": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
+                "filename_prefix": "LERD",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-lerd-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
+                "filename_prefix": "LERD",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-ltan": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
+                "filename_prefix": "LTAN",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-ltan-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
+                "filename_prefix": "LTAN",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-mala": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
+                "filename_prefix": "MALA",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-mala-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
+                "filename_prefix": "MALA",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-meni": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
+                "filename_prefix": "MENI",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-meni-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
+                "filename_prefix": "MENI",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-ment": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
+                "filename_prefix": "MENT",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-ment-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
+                "filename_prefix": "MENT",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-pair": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
+                "filename_prefix": "PAIR",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-pair-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
+                "filename_prefix": "PAIR",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-pest": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
+                "filename_prefix": "PEST",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-pest-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
+                "filename_prefix": "PEST",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-pfan": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
+                "filename_prefix": "PFAN",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-pfan-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
+                "filename_prefix": "PFAN",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-pneu": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
+                "filename_prefix": "PNEU",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-pneu-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
+                "filename_prefix": "PNEU",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-raiv": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
+                "filename_prefix": "RAIV",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-raiv-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
+                "filename_prefix": "RAIV",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-sifa": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
+                "filename_prefix": "SIFA",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-sifa-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
+                "filename_prefix": "SIFA",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-sifc": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
+                "filename_prefix": "SIFC",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-sifc-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
+                "filename_prefix": "SIFC",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-sifg": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
+                "filename_prefix": "SIFG",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-sifg-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
+                "filename_prefix": "SIFG",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-teta": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
+                "filename_prefix": "TETA",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-teta-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
+                "filename_prefix": "TETA",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-tetn": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
+                "filename_prefix": "TETN",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-tetn-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
+                "filename_prefix": "TETN",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-tube": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
+                "filename_prefix": "TUBE",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-tube-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
+                "filename_prefix": "TUBE",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-viol": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
+                "filename_prefix": "VIOL",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-viol-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
+                "filename_prefix": "VIOL",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-zika": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
+                "filename_prefix": "ZIKA",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "sinan-zika-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
+                "filename_prefix": "ZIKA",
+                "filename_pattern": uf_year2_pattern,
+            },
+        ],
+        "partition": "uf-year",
+    },
 }
