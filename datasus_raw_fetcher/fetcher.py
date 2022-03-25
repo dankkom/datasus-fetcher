@@ -141,7 +141,7 @@ def list_dataset_files(ftp: ftplib.FTP, dataset: str) -> dict:
             m = pattern.match(file["name"].lower())
             if m:
                 try:
-                    file |= parse_filename(m, fn_pattern)
+                    file |= parse_filename(m, fn_pattern) | {"dataset": dataset}
                 except:
                     print("Parsing error:", file, fn_pattern)
                     raise
