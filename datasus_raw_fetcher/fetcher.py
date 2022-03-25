@@ -27,7 +27,7 @@ def list_files(ftp: ftplib.FTP) -> list:
         {
             "datetime": dt.datetime.strptime(date + " " + time, "%m-%d-%y %I:%M%p"),
             "size": int(size),
-            "name": name,
+            "filename": name,
             "full_path": pwd + "/" + name,
         }
         for date, time, size, name in map(str.split, files)
@@ -138,7 +138,7 @@ def list_dataset_files(ftp: ftplib.FTP, dataset: str) -> dict:
         fn_pattern = period["filename_pattern"]
         pattern = re.compile(f"^{fn_prefix}{fn_pattern}\\.dbc$".lower())
         for file in files:
-            m = pattern.match(file["name"].lower())
+            m = pattern.match(file["filename"].lower())
             if m:
                 try:
                     file |= parse_filename(m, fn_pattern) | {"dataset": dataset}
