@@ -1,4 +1,3 @@
-import argparse
 from datasus_raw_fetcher import fetcher, meta
 
 

@@ -4,27 +4,38 @@ import pathlib
 from datasus_raw_fetcher import fetcher, meta
 
 
-def download(destdir):
+def download(datasets, destdir):
     ftp = fetcher.connect()
-
-    for dataset in meta.datasets:
+    datasets_ = set(datasets) & set(meta.datasets.keys())
+    for dataset in datasets_:
         fetcher.download_dataset(ftp, dataset, destdir)
-
     ftp.close()
 
 
 def get_parser():
     parser = argparse.ArgumentParser(
-        description="Download all raw files from datasus"
+        description="Download all raw files from datasus",
     )
     parser.add_argument(
-        "destdir", type=pathlib.Path, help="Directory to download to"
+        "datasets",
+        nargs="*",
+        help="Datasets to download",
+    )
+    parser.add_argument(
+        "destdir",
+        type=pathlib.Path,
+        help="Directory to download to",
     )
     return parser
 
 
-if __name__ == "__main__":
+def main():
     parser = get_parser()
     args = parser.parse_args()
+    datasets = args.datasets
     destdir = args.destdir
-    download(destdir)
+    download(datasets, destdir)
+
+
+if __name__ == "__main__":
+    main()
