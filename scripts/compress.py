@@ -5,30 +5,33 @@ import subprocess
 from datasus_raw_fetcher import meta
 
 
-def compress_files_by_year(dirpath: pathlib.Path, destdirpath: pathlib.Path):
-    years = {int(f.name[:4]) for f in dirpath.iterdir()}
-    for year in years:
-        dest_filepath = destdirpath / f"{year}.7z"
+def compress_files_by_period(dataset_dirpath: pathlib.Path, destdirpath: pathlib.Path):
+    dataset = dataset_dirpath.name
+    periods = set(
+        [
+            partition.split("-")[0]
+            for _, partition, _ in (
+                f.stem.split("_")
+                for f in dataset_dirpath.iterdir()
+            )
+        ]
+    )
+    for period in sorted(periods):
+        dest_filepath = destdirpath / f"{dataset}_{period}.7z"
         if dest_filepath.exists():
             continue
         if not dest_filepath.parent.exists():
             dest_filepath.parent.mkdir(parents=True)
-        subprocess.run(
-            [
-                "7z",
-                "a",
-                "-t7z",
-                "-m0=lzma2",
-                "-mx=9",
-                "-aoa",
-                "-mfb=64",
-                "-md=32m",
-                "-ms=on",
-                "-mhe",
-                str(dest_filepath),
-                f"{dirpath}/{year}*.dbc",
-            ],
-        )
+        cmd = [
+            "7z",
+            "a",
+            "-t7z",
+            "-m0=lzma2",
+            str(dest_filepath),
+            f"{dataset_dirpath}/{dataset}_{period}*.dbc",
+        ]
+        print(cmd)
+        subprocess.run(cmd)
 
 
 def get_parser():
@@ -54,6 +57,6 @@ if __name__ == "__main__":
     dirpath = args.dirpath
     destdirpath = args.destdirpath
     for dataset in meta.datasets:
-        dirpath = dirpath / dataset
-        destdirpath = destdirpath / dataset
-        compress_files_by_year(dirpath, destdirpath)
+        if not (dirpath / dataset).exists():
+            continue
+        compress_files_by_period(dirpath / dataset, destdirpath / dataset)
