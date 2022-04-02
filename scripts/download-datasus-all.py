@@ -6,7 +6,10 @@ from datasus_raw_fetcher import fetcher, meta
 
 def download(datasets, destdir):
     ftp = fetcher.connect()
-    datasets_ = set(datasets) & set(meta.datasets.keys())
+    if datasets:
+        datasets_ = set(datasets) & set(meta.datasets.keys())
+    else:
+        datasets_ = meta.datasets.keys()
     for dataset in datasets_:
         fetcher.download_dataset(ftp, dataset, destdir)
     ftp.close()
