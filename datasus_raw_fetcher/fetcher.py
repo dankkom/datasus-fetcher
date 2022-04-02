@@ -132,7 +132,11 @@ def parse_filename(match: re.Match, pattern: str) -> dict:
 
 def list_dataset_files(ftp: ftplib.FTP, dataset: str) -> dict:
     for period in meta.datasets[dataset]["periods"]:
-        ftp.cwd(period["dir"])
+        try:
+            ftp.cwd(period["dir"])
+        except ftplib.error_perm:
+            print(f"Directory not found. {period['dir']}")
+            continue
         files = list_files(ftp)
         fn_prefix = period["filename_prefix"]
         fn_pattern = period["filename_pattern"]
