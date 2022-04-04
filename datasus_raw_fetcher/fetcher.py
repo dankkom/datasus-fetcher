@@ -140,12 +140,13 @@ def list_dataset_files(ftp: ftplib.FTP, dataset: str) -> dict:
         files = list_files(ftp)
         fn_prefix = period["filename_prefix"]
         fn_pattern = period["filename_pattern"]
-        pattern = re.compile(f"^{fn_prefix}{fn_pattern}\\.dbc$".lower())
+        fn_ext = period["extension"]
+        pattern = re.compile(f"^{fn_prefix}{fn_pattern}\\.{fn_ext}$".lower())
         for file in files:
             m = pattern.match(file["filename"].lower())
             if m:
                 try:
-                    file |= parse_filename(m, fn_pattern) | {"dataset": dataset}
+                    file |= parse_filename(m, fn_pattern) | {"dataset": dataset, "extension": fn_ext}
                 except:
                     print("Parsing error:", file, fn_pattern)
                     raise
@@ -156,7 +157,8 @@ def download_dataset(ftp: ftplib.FTP, dataset: str, destdir: pathlib.Path):
     partition = meta.datasets[dataset]["partition"]
     i = 0
     for file in list_dataset_files(ftp, dataset):
-        filepath = destdir / dataset / get_filename(file, partition)
+        extension = file["extension"]
+        filepath = destdir / dataset / get_filename(file, partition, extension)
         if filepath.exists():
             if filepath.stat().st_size == file["size"]:
                 continue
