@@ -1563,6 +1563,29 @@ datasets = {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "ZIKA",
                 "filename_pattern": uf_year2_pattern,
+                "extension": "dbc",
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "base-populacional-ibge-pop": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/IBGE/POP",
+                "filename_prefix": "POP",
+                "filename_pattern": uf_year2_pattern,
+                "extension": "zip",
+            },
+        ],
+        "partition": "uf-year",
+    },
+    "base-populacional-ibge-popt": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/IBGE/POPTCU",
+                "filename_prefix": "POPT",
+                "filename_pattern": uf_year2_pattern,
+                "extension": "zip",
             },
         ],
         "partition": "uf-year",
