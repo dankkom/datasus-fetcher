@@ -23,15 +23,20 @@ def list_files(ftp: ftplib.FTP) -> list:
     pwd = ftp.pwd()
     ftp.retrlines("LIST", files.append)
     # parse files' date, size and name
-    files = [
-        {
-            "datetime": dt.datetime.strptime(date + " " + time, "%m-%d-%y %I:%M%p"),
-            "size": int(size),
+    def parse_line(line):
+        date, time, size, name = line.split()
+        datetime = dt.datetime.strptime(date + " " + time, "%m-%d-%y %I:%M%p")
+        try:
+            size = int(size)
+        except ValueError:
+            size = None
+        return {
+            "datetime": datetime,
+            "size": size,
             "filename": name,
             "full_path": pwd + "/" + name,
         }
-        for date, time, size, name in map(str.split, files)
-    ]
+    files = [parse_line(line) for line in files]
     return files
 
 
