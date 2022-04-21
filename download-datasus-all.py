@@ -25,7 +25,10 @@ def get_parser():
         help="Datasets to download",
     )
     parser.add_argument(
-        "destdir",
+        "-o",
+        "--output",
+        "--destdir",
+        dest="destdir",
         type=pathlib.Path,
         help="Directory to download to",
     )
