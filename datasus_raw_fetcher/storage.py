@@ -21,13 +21,14 @@ def get_filename(file_info: dict, partition: str, extension: str) -> str:
     match partition:
         case "year":
             year = file_info["year"]
-            return f"{dataset}_{year}_{file_datetime}.{extension}"
+            partition = f"{year}"
         case "uf-year":
-            uf = file_info["uf"]
+            uf = file_info["uf"].lower()
             year = file_info["year"]
-            return f"{dataset}_{year}-{uf}_{file_datetime}.{extension}"
+            partition = f"{year}-{uf}"
         case "uf-yearmonth":
-            uf = file_info["uf"]
+            uf = file_info["uf"].lower()
             year = file_info["year"]
             month = file_info["month"]
-            return f"{dataset}_{year}{month:02}-{uf.lower()}_{file_datetime}.{extension}"
+            partition = f"{year}{month:02}-{uf}"
+    return f"{dataset}_{partition}_{file_datetime}.{extension}"

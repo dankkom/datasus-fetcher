@@ -22,6 +22,7 @@ def list_files(ftp: ftplib.FTP) -> list:
     files = []
     pwd = ftp.pwd()
     ftp.retrlines("LIST", files.append)
+
     # parse files' date, size and name
     def parse_line(line):
         date, time, size, name = line.split()
@@ -36,7 +37,9 @@ def list_files(ftp: ftplib.FTP) -> list:
             "filename": name,
             "full_path": pwd + "/" + name,
         }
+
     files = [parse_line(line) for line in files]
+
     return files
 
 
@@ -135,7 +138,8 @@ def parse_filename(match: re.Match, pattern: str) -> dict:
             return parse_year2_filename(match)
 
 
-def list_dataset_files(ftp: ftplib.FTP, dataset: str) -> dict:
+def list_dataset_files(ftp: ftplib.FTP, dataset: str) -> list[dict]:
+    dataset_files = []
     for period in meta.datasets[dataset]["periods"]:
         try:
             ftp.cwd(period["dir"])
@@ -150,20 +154,20 @@ def list_dataset_files(ftp: ftplib.FTP, dataset: str) -> dict:
         for file in files:
             m = pattern.match(file["filename"].lower())
             if m:
-                try:
-                    file |= parse_filename(m, fn_pattern) | {"dataset": dataset, "extension": fn_ext}
-                except:
-                    print("Parsing error:", file, fn_pattern)
-                    raise
-                yield file
+                file |= {"dataset": dataset, "extension": fn_ext}
+                file |= parse_filename(m, fn_pattern)
+                dataset_files.append(file)
+    return dataset_files
 
 
 def download_dataset(ftp: ftplib.FTP, dataset: str, destdir: pathlib.Path):
     partition = meta.datasets[dataset]["partition"]
     i = 0
-    for file in list_dataset_files(ftp, dataset):
+    dataset_files = list_dataset_files(ftp, dataset)
+    for file in dataset_files:
         extension = file["extension"]
-        filepath = destdir / dataset / get_filename(file, partition, extension)
+        filename = get_filename(file, partition, extension)
+        filepath = destdir / dataset / filename
         if filepath.exists():
             if filepath.stat().st_size == file["size"]:
                 continue
@@ -174,10 +178,7 @@ def download_dataset(ftp: ftplib.FTP, dataset: str, destdir: pathlib.Path):
         t0 = time.time()
         sha1 = fetch_file(ftp, file["full_path"], filepath)
         tt = time.time() - t0
-        print(
-            sha1,
-            f"{tt:.2f} s",
-            f"{file['size'] / 1024:.2f} kB",
-            f"{file['size'] / tt / 1024:.2f} kB/s",
-        )
+        filesize_kb = f"{file['size'] / 1024:.2f} kB"
+        download_speed_kbps = f"{file['size'] / tt / 1024:.2f} kB/s"
+        print(f"      {sha1} {tt:.2f} s {filesize_kb} {download_speed_kbps}")
         i += 1
