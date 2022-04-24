@@ -1,4 +1,4 @@
-from datasus_raw_fetcher import fetcher, meta
+from datasus_fetcher import fetcher, meta
 
 
 def main():

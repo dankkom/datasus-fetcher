@@ -1,9 +1,11 @@
-# datasus-raw-fetcher
+# datasus-fetcher
 
 This package only function is to download datasus raw data files (DBC) from its
 FTP server. It does not have reading functions.
 
-https://datasus.saude.gov.br/transferencia-de-arquivos/
+Online queries: https://datasus.saude.gov.br/informacoes-de-saude-tabnet/
+
+Microdata: https://datasus.saude.gov.br/transferencia-de-arquivos/
 
 - SIM: Sistema de Informação de Mortalidade
   - SIM-DO

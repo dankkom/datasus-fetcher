@@ -1,3 +1,6 @@
 __pycache__/
 build/
 dist/
+
+# Sublime Text configuration files
+*.sublime-*

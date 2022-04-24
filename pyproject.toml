@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "datasus-raw-fetcher"
+name = "datasus-fetcher"
 version = "0.1.1"
 description = ""
 authors = ["Daniel Komesu <danielkomesu@gmail.com>"]

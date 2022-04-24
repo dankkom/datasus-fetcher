@@ -182,3 +182,11 @@ def download_dataset(ftp: ftplib.FTP, dataset: str, destdir: pathlib.Path):
         download_speed_kbps = f"{file['size'] / tt / 1024:.2f} kB/s"
         print(f"      {sha1} {tt:.2f} s {filesize_kb} {download_speed_kbps}")
         i += 1
+
+
+def download_documentation(
+    ftp: ftplib.FTP,
+    dataset: str,
+    destdir: pathlib.Path,
+):
+    ...

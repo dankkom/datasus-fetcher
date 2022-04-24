@@ -2,7 +2,7 @@ import argparse
 import pathlib
 import subprocess
 
-from datasus_raw_fetcher import meta
+from datasus_fetcher import meta
 
 
 def compress_files_by_period(dataset_dirpath: pathlib.Path, destdirpath: pathlib.Path):
