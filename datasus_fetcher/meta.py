@@ -74,7 +74,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-yearmonth",
+        "partition": ["uf", "yearmonth"],
     },
     "sih-rj": {
         "periods": [
@@ -85,7 +85,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-yearmonth",
+        "partition": ["uf", "yearmonth"],
     },
     "sih-sp": {
         "periods": [
@@ -102,7 +102,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-yearmonth",
+        "partition": ["uf", "yearmonth"],
     },
     "sih-er": {
         "periods": [
@@ -113,7 +113,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-yearmonth",
+        "partition": ["uf", "yearmonth"],
     },
     "sinasc": {
         "periods": [
@@ -130,7 +130,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinasc-preliminar": {
         "periods": [
@@ -141,7 +141,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sim-do-cid09": {
         "periods": [
@@ -152,7 +152,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sim-do-cid10": {
         "periods": [
@@ -163,7 +163,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sim-do-cid10-preliminar": {
         "periods": [
@@ -174,7 +174,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sim-doext-cid09": {
         "periods": [
@@ -185,7 +185,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "year",
+        "partition": ["year"],
     },
     "sim-doext-cid10": {
         "periods": [
@@ -196,7 +196,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "year",
+        "partition": ["year"],
     },
     "sim-doext-cid10-preliminar": {
         "periods": [
@@ -207,7 +207,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "year",
+        "partition": ["year"],
     },
     "sim-dofet-cid09": {
         "periods": [
@@ -218,7 +218,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "year",
+        "partition": ["year"],
     },
     "sim-dofet-cid10": {
         "periods": [
@@ -229,7 +229,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "year",
+        "partition": ["year"],
     },
     "sim-dofet-cid10-preliminar": {
         "periods": [
@@ -240,7 +240,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "year",
+        "partition": ["year"],
     },
     "sim-doinf-cid09": {
         "periods": [
@@ -251,7 +251,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "year",
+        "partition": ["year"],
     },
     "sim-doinf-cid10": {
         "periods": [
@@ -262,7 +262,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "year",
+        "partition": ["year"],
     },
     "sim-doinf-cid10-preliminar": {
         "periods": [
@@ -273,7 +273,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "year",
+        "partition": ["year"],
     },
     "sim-domat-cid10": {
         "periods": [
@@ -284,7 +284,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "year",
+        "partition": ["year"],
     },
     "sim-domat-cid10-preliminar": {
         "periods": [
@@ -295,7 +295,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "year",
+        "partition": ["year"],
     },
     "cnes-dc": {
         "periods": [
@@ -306,7 +306,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-yearmonth",
+        "partition": ["uf", "yearmonth"],
     },
     "cnes-ee": {
         "periods": [
@@ -317,7 +317,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-yearmonth",
+        "partition": ["uf", "yearmonth"],
     },
     "cnes-ef": {
         "periods": [
@@ -328,7 +328,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-yearmonth",
+        "partition": ["uf", "yearmonth"],
     },
     "cnes-ep": {
         "periods": [
@@ -339,7 +339,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-yearmonth",
+        "partition": ["uf", "yearmonth"],
     },
     "cnes-eq": {
         "periods": [
@@ -350,7 +350,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-yearmonth",
+        "partition": ["uf", "yearmonth"],
     },
     "cnes-gm": {
         "periods": [
@@ -361,7 +361,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-yearmonth",
+        "partition": ["uf", "yearmonth"],
     },
     "cnes-hb": {
         "periods": [
@@ -372,7 +372,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-yearmonth",
+        "partition": ["uf", "yearmonth"],
     },
     "cnes-in": {
         "periods": [
@@ -383,7 +383,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-yearmonth",
+        "partition": ["uf", "yearmonth"],
     },
     "cnes-lt": {
         "periods": [
@@ -394,7 +394,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-yearmonth",
+        "partition": ["uf", "yearmonth"],
     },
     "cnes-pf": {
         "periods": [
@@ -405,7 +405,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-yearmonth",
+        "partition": ["uf", "yearmonth"],
     },
     "cnes-rc": {
         "periods": [
@@ -416,7 +416,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-yearmonth",
+        "partition": ["uf", "yearmonth"],
     },
     "cnes-sr": {
         "periods": [
@@ -427,7 +427,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-yearmonth",
+        "partition": ["uf", "yearmonth"],
     },
     "cnes-st": {
         "periods": [
@@ -438,7 +438,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-yearmonth",
+        "partition": ["uf", "yearmonth"],
     },
     "sia-ab": {
         "periods": [
@@ -449,7 +449,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-yearmonth",
+        "partition": ["uf", "yearmonth"],
     },
     "sia-abo": {
         "periods": [
@@ -460,7 +460,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-yearmonth",
+        "partition": ["uf", "yearmonth"],
     },
     "sia-acf": {
         "periods": [
@@ -471,7 +471,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-yearmonth",
+        "partition": ["uf", "yearmonth"],
     },
     "sia-ad": {
         "periods": [
@@ -482,7 +482,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-yearmonth",
+        "partition": ["uf", "yearmonth"],
     },
     "sia-am": {
         "periods": [
@@ -493,7 +493,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-yearmonth",
+        "partition": ["uf", "yearmonth"],
     },
     "sia-an": {
         "periods": [
@@ -504,7 +504,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-yearmonth",
+        "partition": ["uf", "yearmonth"],
     },
     "sia-aq": {
         "periods": [
@@ -515,7 +515,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-yearmonth",
+        "partition": ["uf", "yearmonth"],
     },
     "sia-ar": {
         "periods": [
@@ -526,7 +526,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-yearmonth",
+        "partition": ["uf", "yearmonth"],
     },
     "sia-atd": {
         "periods": [
@@ -537,7 +537,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-yearmonth",
+        "partition": ["uf", "yearmonth"],
     },
     "sia-pa": {
         "periods": [
@@ -554,7 +554,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-yearmonth",
+        "partition": ["uf", "yearmonth"],
     },
     "sia-ps": {
         "periods": [
@@ -565,7 +565,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-yearmonth",
+        "partition": ["uf", "yearmonth"],
     },
     "sia-sad": {
         "periods": [
@@ -576,7 +576,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-yearmonth",
+        "partition": ["uf", "yearmonth"],
     },
     "cih-cr": {
         "periods": [
@@ -587,7 +587,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-yearmonth",
+        "partition": ["uf", "yearmonth"],
     },
     "ciha": {
         "periods": [
@@ -598,7 +598,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-yearmonth",
+        "partition": ["uf", "yearmonth"],
     },
     "resp": {
         "periods": [
@@ -609,7 +609,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sisprenatal-pn": {
         "periods": [
@@ -620,7 +620,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-yearmonth",
+        "partition": ["uf", "yearmonth"],
     },
     "sinan-acbi": {
         "periods": [
@@ -631,7 +631,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-acbi-preliminar": {
         "periods": [
@@ -642,7 +642,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-acgr": {
         "periods": [
@@ -653,7 +653,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-acgr-preliminar": {
         "periods": [
@@ -664,7 +664,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-anim": {
         "periods": [
@@ -675,7 +675,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-anim-preliminar": {
         "periods": [
@@ -686,7 +686,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-antr": {
         "periods": [
@@ -697,7 +697,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-antr-preliminar": {
         "periods": [
@@ -708,7 +708,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-botu": {
         "periods": [
@@ -719,7 +719,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-botu-preliminar": {
         "periods": [
@@ -730,7 +730,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-canc": {
         "periods": [
@@ -741,7 +741,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-canc-preliminar": {
         "periods": [
@@ -752,7 +752,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-chag": {
         "periods": [
@@ -763,7 +763,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-chag-preliminar": {
         "periods": [
@@ -774,7 +774,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-chik": {
         "periods": [
@@ -785,7 +785,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-chik-preliminar": {
         "periods": [
@@ -796,7 +796,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-cole": {
         "periods": [
@@ -807,7 +807,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-cole-preliminar": {
         "periods": [
@@ -818,7 +818,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-coqu": {
         "periods": [
@@ -829,7 +829,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-coqu-preliminar": {
         "periods": [
@@ -840,7 +840,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-deng": {
         "periods": [
@@ -851,7 +851,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-deng-preliminar": {
         "periods": [
@@ -862,7 +862,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-derm": {
         "periods": [
@@ -873,7 +873,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-derm-preliminar": {
         "periods": [
@@ -884,7 +884,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-dift": {
         "periods": [
@@ -895,7 +895,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-dift-preliminar": {
         "periods": [
@@ -906,7 +906,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-esqu": {
         "periods": [
@@ -917,7 +917,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-esqu-preliminar": {
         "periods": [
@@ -928,7 +928,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-fama": {
         "periods": [
@@ -939,7 +939,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-fama-preliminar": {
         "periods": [
@@ -950,7 +950,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-fmac": {
         "periods": [
@@ -961,7 +961,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-fmac-preliminar": {
         "periods": [
@@ -972,7 +972,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-ftif": {
         "periods": [
@@ -983,7 +983,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-ftif-preliminar": {
         "periods": [
@@ -994,7 +994,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-hans": {
         "periods": [
@@ -1005,7 +1005,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-hans-preliminar": {
         "periods": [
@@ -1016,7 +1016,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-hant": {
         "periods": [
@@ -1027,7 +1027,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-hant-preliminar": {
         "periods": [
@@ -1038,7 +1038,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-hepa": {
         "periods": [
@@ -1049,7 +1049,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-hepa-preliminar": {
         "periods": [
@@ -1060,7 +1060,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-iexo": {
         "periods": [
@@ -1071,7 +1071,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-iexo-preliminar": {
         "periods": [
@@ -1082,7 +1082,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-iexo": {
         "periods": [
@@ -1093,7 +1093,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-iexo-preliminar": {
         "periods": [
@@ -1104,7 +1104,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-infl": {
         "periods": [
@@ -1115,7 +1115,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-infl-preliminar": {
         "periods": [
@@ -1126,7 +1126,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-leiv": {
         "periods": [
@@ -1137,7 +1137,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-leiv-preliminar": {
         "periods": [
@@ -1148,7 +1148,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-lept": {
         "periods": [
@@ -1159,7 +1159,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-lept-preliminar": {
         "periods": [
@@ -1170,7 +1170,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-lerd": {
         "periods": [
@@ -1181,7 +1181,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-lerd-preliminar": {
         "periods": [
@@ -1192,7 +1192,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-ltan": {
         "periods": [
@@ -1203,7 +1203,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-ltan-preliminar": {
         "periods": [
@@ -1214,7 +1214,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-mala": {
         "periods": [
@@ -1225,7 +1225,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-mala-preliminar": {
         "periods": [
@@ -1236,7 +1236,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-meni": {
         "periods": [
@@ -1247,7 +1247,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-meni-preliminar": {
         "periods": [
@@ -1258,7 +1258,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-ment": {
         "periods": [
@@ -1269,7 +1269,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-ment-preliminar": {
         "periods": [
@@ -1280,7 +1280,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-pair": {
         "periods": [
@@ -1291,7 +1291,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-pair-preliminar": {
         "periods": [
@@ -1302,7 +1302,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-pest": {
         "periods": [
@@ -1313,7 +1313,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-pest-preliminar": {
         "periods": [
@@ -1324,7 +1324,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-pfan": {
         "periods": [
@@ -1335,7 +1335,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-pfan-preliminar": {
         "periods": [
@@ -1346,7 +1346,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-pneu": {
         "periods": [
@@ -1357,7 +1357,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-pneu-preliminar": {
         "periods": [
@@ -1368,7 +1368,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-raiv": {
         "periods": [
@@ -1379,7 +1379,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-raiv-preliminar": {
         "periods": [
@@ -1390,7 +1390,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-sifa": {
         "periods": [
@@ -1401,7 +1401,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-sifa-preliminar": {
         "periods": [
@@ -1412,7 +1412,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-sifc": {
         "periods": [
@@ -1423,7 +1423,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-sifc-preliminar": {
         "periods": [
@@ -1434,7 +1434,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-sifg": {
         "periods": [
@@ -1445,7 +1445,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-sifg-preliminar": {
         "periods": [
@@ -1456,7 +1456,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-teta": {
         "periods": [
@@ -1467,7 +1467,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-teta-preliminar": {
         "periods": [
@@ -1478,7 +1478,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-tetn": {
         "periods": [
@@ -1489,7 +1489,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-tetn-preliminar": {
         "periods": [
@@ -1500,7 +1500,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-tube": {
         "periods": [
@@ -1511,7 +1511,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-tube-preliminar": {
         "periods": [
@@ -1522,7 +1522,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-viol": {
         "periods": [
@@ -1533,7 +1533,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-viol-preliminar": {
         "periods": [
@@ -1544,7 +1544,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-zika": {
         "periods": [
@@ -1555,7 +1555,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "sinan-zika-preliminar": {
         "periods": [
@@ -1566,7 +1566,7 @@ datasets = {
                 "extension": "dbc",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "base-populacional-ibge-pop": {
         "periods": [
@@ -1577,7 +1577,7 @@ datasets = {
                 "extension": "zip",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
     "base-populacional-ibge-popt": {
         "periods": [
@@ -1588,6 +1588,6 @@ datasets = {
                 "extension": "zip",
             },
         ],
-        "partition": "uf-year",
+        "partition": ["uf", "year"],
     },
 }
