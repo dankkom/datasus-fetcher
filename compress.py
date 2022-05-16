@@ -11,8 +11,7 @@ def compress_files_by_period(dataset_dirpath: pathlib.Path, destdirpath: pathlib
         [
             partition.split("-")[0]
             for _, partition, _ in (
-                f.stem.split("_")
-                for f in dataset_dirpath.iterdir()
+                f.stem.split("_") for f in dataset_dirpath.iterdir()
             )
         ]
     )
@@ -34,12 +33,32 @@ def compress_files_by_period(dataset_dirpath: pathlib.Path, destdirpath: pathlib
         subprocess.run(cmd)
 
 
+def compress_files_by_dataset(datadirpath: pathlib.Path, destdirpath: pathlib.Path):
+
+    for datasetdir in sorted(datadirpath.iterdir()):
+        dest_filepath = destdirpath / f"{datasetdir.name}.7z"
+        if dest_filepath.exists():
+            continue
+        if not dest_filepath.parent.exists():
+            dest_filepath.parent.mkdir(parents=True)
+        cmd = [
+            "7z",
+            "a",
+            "-t7z",
+            "-m0=lzma2",
+            str(dest_filepath),
+            f"{datasetdir / '*.*'}",
+        ]
+        print(cmd)
+        subprocess.run(cmd)
+
+
 def get_parser():
     parser = argparse.ArgumentParser(
         description="Compress all raw files in the given directory"
     )
     parser.add_argument(
-        "dirpath",
+        "datadirpath",
         type=pathlib.Path,
         help="Directory to compress",
     )
@@ -48,15 +67,21 @@ def get_parser():
         type=pathlib.Path,
         help="Directory to store compressed files",
     )
+    parser.add_argument("-by", choices=["dataset", "period"], default="period")
     return parser
 
 
 if __name__ == "__main__":
     parser = get_parser()
     args = parser.parse_args()
-    dirpath = args.dirpath
+    datadirpath = args.datadirpath
     destdirpath = args.destdirpath
-    for dataset in meta.datasets:
-        if not (dirpath / dataset).exists():
-            continue
-        compress_files_by_period(dirpath / dataset, destdirpath / dataset)
+    if args.by == "dataset":
+        compress_files_by_dataset(datadirpath, destdirpath)
+    elif args.by == "period":
+        for dataset in meta.datasets:
+            if not (datadirpath / dataset).exists():
+                continue
+            compress_files_by_period(datadirpath / dataset, destdirpath / dataset)
+    else:
+        raise ValueError(f"Unknown value for -by: {args.by}")
