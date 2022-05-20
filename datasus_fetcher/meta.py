@@ -115,7 +115,7 @@ datasets = {
         ],
         "partition": ["uf", "yearmonth"],
     },
-    "sinasc": {
+    "sinasc-dn": {
         "periods": [
             {
                 "dir": BASE_PATH + "/SINASC/1994_1995/Dados/DNRES",
@@ -132,10 +132,27 @@ datasets = {
         ],
         "partition": ["uf", "year"],
     },
-    "sinasc-preliminar": {
+    "sinasc-dnex": {
         "periods": [
             {
-                "dir": BASE_PATH + "/SINASC/PRELIM/DNRES",
+                "dir": BASE_PATH + "/SINASC/1996_/Dados/DNRES",
+                "filename_prefix": "DNEX",
+                "filename_pattern": year_pattern,
+                "extension": "dbc",
+            },
+        ],
+        "partition": ["year"],
+    },
+    "sinasc-dn-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINASC/PRELIM19/DNRES",
+                "filename_prefix": "DNP",
+                "filename_pattern": uf_year_pattern,
+                "extension": "dbc",
+            },
+            {
+                "dir": BASE_PATH + "/SINASC/PRELIM20/DNRES",
                 "filename_prefix": "DN",
                 "filename_pattern": uf_year_pattern,
                 "extension": "dbc",

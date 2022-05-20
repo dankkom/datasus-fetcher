@@ -24,7 +24,8 @@ Microdata: https://datasus.saude.gov.br/transferencia-de-arquivos/
   - SIH-SP: Serviços Profissionais
   - SIH-ER: AIH Rejeitadas com código de erro
 - SINASC: Sistema de Informação de Nascidos Vivos
-  - SINASC: Sistema de Informação de Nascidos Vivos
+  - SINASC-DN: Declarações de nascidos vivos 1994 a 2020
+  - SINASC-DNEX: Declarações de nascidos vivos no exterior 2014 a 2020
 - CNES: Cadastro Nacional de Estabelecimentos de Saúde
   - CNES-LT: Leitos
   - CNES-ST: Estabelecimentos
