@@ -124,6 +124,13 @@ def parse_uf_year2_filename(match: re.Match) -> dict:
     }
 
 
+def parse_uf_filename(match: re.Match) -> dict:
+    uf = match.group(1)
+    return {
+        "uf": uf,
+    }
+
+
 def parse_filename(match: re.Match, pattern: str) -> dict:
     match pattern:
         case meta.uf_year_pattern:
@@ -136,6 +143,14 @@ def parse_filename(match: re.Match, pattern: str) -> dict:
             return parse_year_filename(match)
         case meta.year2_pattern:
             return parse_year2_filename(match)
+        case meta.uf_mapas_year_pattern:
+            return parse_uf_year_filename(match)
+        case meta.uf_cnv_pattern:
+            return parse_uf_filename(match)
+        case "base_territorial":
+            return {}
+        case _:
+            raise ValueError(f"Pattern not found: {pattern}")
 
 
 def list_dataset_files(ftp: ftplib.FTP, dataset: str) -> list[dict]:
