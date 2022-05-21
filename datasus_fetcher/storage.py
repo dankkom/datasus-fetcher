@@ -1,5 +1,19 @@
+import datetime as dt
 import hashlib
 import pathlib
+from dataclasses import dataclass
+
+
+@dataclass
+class File:
+    filepath: pathlib.Path
+    # size: int = 0
+    dataset: str
+    partition: str
+    date: dt.date
+    extension: str
+    # checksum: str = None
+    is_most_recent: bool = False
 
 
 def get_sha1_hash(filepath: pathlib.Path | str) -> str:
@@ -31,4 +45,58 @@ def get_filename(file_info: dict, partition: str, extension: str) -> str:
             year = file_info["year"]
             month = file_info["month"]
             partition = f"{year}{month:02}-{uf}"
-    return f"{dataset}_{partition}_{file_datetime}.{extension}"
+        case _:
+            partition = ""
+    filename = "_".join([s for s in (dataset, partition, file_datetime) if s])
+    return f"{filename}.{extension}"
+
+
+def get_file_metadata(file: pathlib.Path) -> File:
+    """Returns a dict with the parsed filename."""
+    dataset, partition, file_date = file.stem.split("_")
+    extension = file.suffix
+    file_date = dt.datetime.strptime(file_date, "%Y%m%d").date()
+    return File(
+        filepath=file,
+        # size=file.stat().st_size,
+        dataset=dataset,
+        partition=partition,
+        date=file_date,
+        # checksum=get_sha1_hash(file),
+        extension=extension,
+    )
+
+
+def get_most_recent(dirpath: pathlib.Path):
+    files = {}
+    for f in dirpath.iterdir():
+        parsed = get_file_metadata(f)
+        if parsed["partition"] not in files:
+            files[parsed["partition"]] = []
+        files[parsed["partition"]].append(f)
+    for partition in files:
+        most_recent = sorted(
+            files[partition],
+            key=lambda f: f.name,
+            reverse=True,
+        )
+        files[partition] = most_recent[0]
+    return files
+
+
+def get_files_metadata(dirpath: pathlib.Path) -> File:
+    files = {}
+    for f in dirpath.iterdir():
+        file = get_file_metadata(f)
+        if file.partition not in files:
+            files[file.partition] = []
+        files[file.partition].append(file)
+    for partition in files:
+        partition_files_sorted = sorted(
+            files[partition],
+            key=lambda f: f.filepath.name,
+        )
+        n_files_partition_sorted = len(partition_files_sorted)
+        for i, file in enumerate(partition_files_sorted, 1):
+            file.is_most_recent = i == n_files_partition_sorted
+            yield file
