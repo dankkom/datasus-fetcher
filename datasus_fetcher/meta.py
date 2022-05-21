@@ -187,17 +187,6 @@ datasets = {
         ],
         "partition": ["uf", "year"],
     },
-    "sim-do-cid10-preliminar": {
-        "periods": [
-            {
-                "dir": BASE_PATH + "/SIM/PRELIM/DORES",
-                "filename_prefix": "DO",
-                "filename_pattern": uf_year_pattern,
-                "extension": "dbc",
-            },
-        ],
-        "partition": ["uf", "year"],
-    },
     "sim-doext-cid09": {
         "periods": [
             {
@@ -213,17 +202,6 @@ datasets = {
         "periods": [
             {
                 "dir": BASE_PATH + "/SIM/CID10/DOFET",
-                "filename_prefix": "DOEXT",
-                "filename_pattern": year2_pattern,
-                "extension": "dbc",
-            },
-        ],
-        "partition": ["year"],
-    },
-    "sim-doext-cid10-preliminar": {
-        "periods": [
-            {
-                "dir": BASE_PATH + "/SIM/PRELIM/DOFET",
                 "filename_prefix": "DOEXT",
                 "filename_pattern": year2_pattern,
                 "extension": "dbc",
@@ -253,17 +231,6 @@ datasets = {
         ],
         "partition": ["year"],
     },
-    "sim-dofet-cid10-preliminar": {
-        "periods": [
-            {
-                "dir": BASE_PATH + "/SIM/PRELIM/DOFET",
-                "filename_prefix": "DOFET",
-                "filename_pattern": year2_pattern,
-                "extension": "dbc",
-            },
-        ],
-        "partition": ["year"],
-    },
     "sim-doinf-cid09": {
         "periods": [
             {
@@ -286,32 +253,10 @@ datasets = {
         ],
         "partition": ["year"],
     },
-    "sim-doinf-cid10-preliminar": {
-        "periods": [
-            {
-                "dir": BASE_PATH + "/SIM/PRELIM/DOFET",
-                "filename_prefix": "DOINF",
-                "filename_pattern": year2_pattern,
-                "extension": "dbc",
-            },
-        ],
-        "partition": ["year"],
-    },
     "sim-domat-cid10": {
         "periods": [
             {
                 "dir": BASE_PATH + "/SIM/CID10/DOFET",
-                "filename_prefix": "DOMAT",
-                "filename_pattern": year2_pattern,
-                "extension": "dbc",
-            },
-        ],
-        "partition": ["year"],
-    },
-    "sim-domat-cid10-preliminar": {
-        "periods": [
-            {
-                "dir": BASE_PATH + "/SIM/PRELIM/DOFET",
                 "filename_prefix": "DOMAT",
                 "filename_pattern": year2_pattern,
                 "extension": "dbc",
