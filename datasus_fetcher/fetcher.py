@@ -65,9 +65,15 @@ def fetch_file(
             ftp.retrbinary("RETR " + path, f.write)
         sha1 = get_sha1_hash(dest_filepath)
         return sha1
+    # File not found exception
     except ftplib.error_perm:
         print(f"File {path} not found.")
         dest_filepath.unlink()
+    # Timeout exception
+    except ftplib.error_temp:
+        print(f"Timeout exception for {path}.")
+        dest_filepath.unlink()
+        time.sleep(5)
 
 
 def get_year2(year_: str) -> int:
