@@ -2,6 +2,7 @@ import datetime as dt
 import hashlib
 import pathlib
 from dataclasses import dataclass
+from typing import Iterable
 
 
 @dataclass
@@ -67,26 +68,9 @@ def get_file_metadata(file: pathlib.Path) -> File:
     )
 
 
-def get_most_recent(dirpath: pathlib.Path):
-    files = {}
-    for f in dirpath.iterdir():
-        parsed = get_file_metadata(f)
-        if parsed["partition"] not in files:
-            files[parsed["partition"]] = []
-        files[parsed["partition"]].append(f)
-    for partition in files:
-        most_recent = sorted(
-            files[partition],
-            key=lambda f: f.name,
-            reverse=True,
-        )
-        files[partition] = most_recent[0]
-    return files
-
-
 def get_files_metadata(dirpath: pathlib.Path) -> File:
     files = {}
-    for f in dirpath.iterdir():
+    for f in dirpath.glob("*.dbc"):
         file = get_file_metadata(f)
         if file.partition not in files:
             files[file.partition] = []
@@ -100,3 +84,8 @@ def get_files_metadata(dirpath: pathlib.Path) -> File:
         for i, file in enumerate(partition_files_sorted, 1):
             file.is_most_recent = i == n_files_partition_sorted
             yield file
+
+
+def get_most_recent(files: Iterable[File]) -> dict[str, File]:
+    most_recent_files = [file for file in files if file.is_most_recent]
+    return most_recent_files
