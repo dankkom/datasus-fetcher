@@ -1,6 +1,7 @@
 [tool.poetry]
 name = "datasus-fetcher"
 version = "0.1.1"
+description = "Downloader of DATASUS raw data files"
 license = "MIT"
 authors = ["Daniel Komesu <danielkomesu@gmail.com>"]
 
