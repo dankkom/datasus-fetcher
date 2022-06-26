@@ -188,7 +188,14 @@ def download_dataset(ftp: ftplib.FTP, dataset: str, destdir: pathlib.Path):
     for file in dataset_files:
         extension = file["extension"]
         filename = get_filename(file, partition, extension)
-        filepath = destdir / dataset / filename
+
+        partition_dir = ""
+        if "year" in file:
+            partition_dir = partition_dir + f"{file['year']}"
+        if "month" in file:
+            partition_dir = partition_dir + f"{file['month']:02d}"
+
+        filepath = destdir / dataset / partition_dir / filename
         if filepath.exists():
             if filepath.stat().st_size == file["size"]:
                 continue
