@@ -47,6 +47,7 @@ def fetch_file(
     ftp: ftplib.FTP,
     path: str,
     dest_filepath: pathlib.Path | str,
+    retries: int = 3,
 ) -> str:
     """Fetch a file from a remote FTP server.
 
@@ -60,20 +61,23 @@ def fetch_file(
     if not dest_filepath.parent.exists():
         dest_filepath.parent.mkdir(parents=True)
 
-    try:
-        with open(dest_filepath, "wb") as f:
-            ftp.retrbinary("RETR " + path, f.write)
-        sha1 = get_sha1_hash(dest_filepath)
-        return sha1
-    # File not found exception
-    except ftplib.error_perm:
-        print(f"File {path} not found.")
-        dest_filepath.unlink()
-    # Timeout exception
-    except ftplib.error_temp:
-        print(f"Timeout exception for {path}.")
-        dest_filepath.unlink()
-        time.sleep(5)
+    while retries > 0:
+        try:
+            with open(dest_filepath, "wb") as f:
+                ftp.retrbinary("RETR " + path, f.write)
+            sha1 = get_sha1_hash(dest_filepath)
+            return sha1
+        # File not found exception
+        except ftplib.error_perm:
+            print(f"File {path} not found.")
+            dest_filepath.unlink()
+            return
+        # Timeout exception
+        except (ftplib.error_temp, TimeoutError):
+            print(f"Timeout exception for {path}.")
+            dest_filepath.unlink()
+            retries -= 1
+            time.sleep(5)
 
 
 def get_year2(year_: str) -> int:
