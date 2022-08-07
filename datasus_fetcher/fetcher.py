@@ -221,4 +221,22 @@ def download_documentation(
     dataset: str,
     destdir: pathlib.Path,
 ):
-    ...
+
+    destdir = destdir / f"{dataset}[doc]"
+
+    ftp_dir = meta.docs[dataset]["dir"]
+    ftp.cwd(ftp_dir)
+
+    files = list_files(ftp)
+
+    for i, file in enumerate(files):
+        filename, extension = file["filename"].rsplit(".", 1)
+        filename = f"{filename}@{file['datetime']:%Y%m%d}.{extension}"
+        filepath = destdir / filename
+        print(f"{i: >5}", file["full_path"], "->", filepath)
+        t0 = time.time()
+        sha1 = fetch_file(ftp, file["full_path"], filepath)
+        tt = time.time() - t0
+        filesize_kb = f"{file['size'] / 1024:.2f} kB"
+        download_speed_kbps = f"{file['size'] / tt / 1024:.2f} kB/s"
+        print(f"      {sha1} {tt:.2f} s {filesize_kb} {download_speed_kbps}")

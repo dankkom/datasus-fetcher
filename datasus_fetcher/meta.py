@@ -1595,78 +1595,42 @@ datasets = {
 
 docs = {
     "cnes": {
-        "meta": [
-            BASE_PATH + "/CNES/200508_/doc/IT_CNES_1706.pdf",
-        ],
+        "dir": BASE_PATH + "/CNES/200508_/doc",
     },
-    "base-populacional-ibge-popt": {
-        "meta": [
-            BASE_PATH + "/IBGE/DOC/populacaoTCU.pdf",
-        ],
-    },
-    "base-populacional-ibge-pop": {
-        "meta": [
-            BASE_PATH + "/IBGE/DOC/populacao.pdf",
-        ],
-    },
-    "ciha": {
-        "meta": [
-            BASE_PATH + "/CIHA/201101_/Doc/Layout_Arquivos_CIHA.pdf",
-        ],
-    },
-    "cnes": {
-        "meta": [
-            BASE_PATH + "/CNES/200508_/doc/IT_CNES_1706.pdf",
-        ],
-    },
-    "resp": {
-        "meta": [
-            BASE_PATH + "/RESP/DOCS/DIC_DADOS_RESP.pdf",
-        ],
-    },
-    "sia": {
-        "meta": [
-            BASE_PATH + "/SIASUS/200801_/Doc/Informe_Tecnico_SIASUS_2019_07.pdf",
-        ],
-    },
-    "sih": {
-        "meta": [
-            BASE_PATH + "/SIHSUS/200801_/Doc/IT_SIHSUS_1603.pdf",
-        ],
-    },
-    "sim": {
-        "meta": [
-            BASE_PATH + "/SIM/CID9/DOCS/Docs-Tabs-CID9.zip",
-            BASE_PATH + "/SIM/CID10/DOCS/Docs_Tabs_CID10.zip",
-            BASE_PATH + "/SIM/CID10/DOCS/Estrutura_SIM_Anterior.pdf",
-            BASE_PATH + "/SIM/CID10/DOCS/Estrutura_SIM_para_CD.pdf",
-            BASE_PATH + "/SIM/CID9/DOCS/INTRO.pdf",
-            BASE_PATH + "/SIM/CID10/DOCS/Legislacao_PDF.pdf",
-            BASE_PATH + "/SIM/CID9/DOCS/MORT98.HLP",
-            BASE_PATH + "/SIM/CID9/DOCS/MTAB16M.pdf",
-            BASE_PATH + "/SIM/CID10/DOCS/Portaria.pdf",
-        ],
-    },
-    "sinan": {
-        "meta": [
-            BASE_PATH + "/SINAN/DOCS/Docs_TAB_SINAN.zip",
-            BASE_PATH + "/SINAN/DOCS/POP-I-Acesso-a-Microdados-2-versao.pdf",
-            BASE_PATH + "/SINAN/DOCS/POP-II-Descompactacao-expansao-conversao.pdf",
-            BASE_PATH + "/SINAN/DOCS/POP-III-Instalacao-do-tabulador-TabWin.pdf",
-        ],
-    },
-    "sinasc": {
-        "meta": [
-            BASE_PATH + "/SINASC/NOV/DOCS/Estrutura_SINASC_para_CD.pdf",
-            BASE_PATH + "/SINASC/NOV/DOCS/Legislacao_PDF.pdf",
-            BASE_PATH + "/SINASC/ANT/DOCS/NASC98.HLP",
-            BASE_PATH + "/SINASC/NOV/DOCS/Portaria.pdf",
-        ],
+    "base-populacional-ibge": {
+        "dir": BASE_PATH + "/IBGE/DOC/",
     },
     "base-territorial": {
-        "meta": [
-            "/territorio/doc/bases_territoriais.pdf",
-            "/territorio/doc/registro_de_alteracoes.pdf",
-        ],
+        "dir": "/territorio/doc/",
+    },
+    "base-territorial-conversao": {
+        "dir": "/territorio/conversoes/",
+    },
+    "ciha": {
+        "dir": BASE_PATH + "/CIHA/201101_/Doc/",
+    },
+    "cnes": {
+        "dir": BASE_PATH + "/CNES/200508_/doc",
+    },
+    "resp": {
+        "dir": BASE_PATH + "/RESP/DOCS/",
+    },
+    "sia": {
+        "dir": BASE_PATH + "/SIASUS/200801_/Doc/",
+    },
+    "sih": {
+        "dir": BASE_PATH + "/SIHSUS/200801_/Doc/",
+    },
+    "sim-cid09": {
+        "dir": BASE_PATH + "/SIM/CID9/DOCS/",
+    },
+    "sim-cid10": {
+        "dir": BASE_PATH + "/SIM/CID10/DOCS/",
+    },
+    "sinan": {
+        "dir": BASE_PATH + "/SINAN/DOCS/",
+    },
+    "sinasc": {
+        "dir": BASE_PATH + "/SINASC/NOV/DOCS/",
     },
 }
