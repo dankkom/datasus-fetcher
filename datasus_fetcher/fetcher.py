@@ -88,11 +88,11 @@ def get_year2(year_: str) -> int:
     return year
 
 
-def parse_uf_year2_month_filename(match: re.Match) -> dict:
-    uf = match.group(1)
-    year_ = match.group(2)
+def parse_uf_year2_month_filename(m: re.Match) -> dict:
+    uf = m.group(1)
+    year_ = m.group(2)
     year = get_year2(year_)
-    month = int(match.group(3))
+    month = int(m.group(3))
     return {
         "uf": uf,
         "year": year,
@@ -100,33 +100,33 @@ def parse_uf_year2_month_filename(match: re.Match) -> dict:
     }
 
 
-def parse_year_filename(match: re.Match) -> dict:
-    year = int(match.group(1))
+def parse_year_filename(m: re.Match) -> dict:
+    year = int(m.group(1))
     return {
         "year": year,
     }
 
 
-def parse_year2_filename(match: re.Match) -> dict:
-    year_ = match.group(1)
+def parse_year2_filename(m: re.Match) -> dict:
+    year_ = m.group(1)
     year = get_year2(year_)
     return {
         "year": year,
     }
 
 
-def parse_uf_year_filename(match: re.Match) -> dict:
-    uf = match.group(1)
-    year = int(match.group(2))
+def parse_uf_year_filename(m: re.Match) -> dict:
+    uf = m.group(1)
+    year = int(m.group(2))
     return {
         "uf": uf,
         "year": year,
     }
 
 
-def parse_uf_year2_filename(match: re.Match) -> dict:
-    uf = match.group(1)
-    year_ = match.group(2)
+def parse_uf_year2_filename(m: re.Match) -> dict:
+    uf = m.group(1)
+    year_ = m.group(2)
     year = get_year2(year_)
     return {
         "uf": uf,
@@ -134,29 +134,29 @@ def parse_uf_year2_filename(match: re.Match) -> dict:
     }
 
 
-def parse_uf_filename(match: re.Match) -> dict:
-    uf = match.group(1)
+def parse_uf_filename(m: re.Match) -> dict:
+    uf = m.group(1)
     return {
         "uf": uf,
     }
 
 
-def parse_filename(match: re.Match, pattern: str) -> dict:
+def parse_filename(m: re.Match, pattern: str) -> dict:
     match pattern:
         case meta.uf_year_pattern:
-            return parse_uf_year_filename(match)
+            return parse_uf_year_filename(m)
         case meta.uf_year2_pattern:
-            return parse_uf_year2_filename(match)
+            return parse_uf_year2_filename(m)
         case meta.uf_year2_month_pattern:
-            return parse_uf_year2_month_filename(match)
+            return parse_uf_year2_month_filename(m)
         case meta.year_pattern:
-            return parse_year_filename(match)
+            return parse_year_filename(m)
         case meta.year2_pattern:
-            return parse_year2_filename(match)
+            return parse_year2_filename(m)
         case meta.uf_mapas_year_pattern:
-            return parse_uf_year_filename(match)
+            return parse_uf_year_filename(m)
         case meta.uf_cnv_pattern:
-            return parse_uf_filename(match)
+            return parse_uf_filename(m)
         case "base_territorial":
             return {}
         case _:
