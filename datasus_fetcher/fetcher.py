@@ -141,6 +141,20 @@ def parse_uf_filename(m: re.Match) -> dict:
     }
 
 
+def parse_uf_year2_month_filename_sia_pa(m: re.Match) -> dict:
+    uf = m.group(1)
+    year_ = m.group(2)
+    year = get_year2(year_)
+    month = int(m.group(3))
+    version = m.group(4)
+    return {
+        "uf": uf,
+        "year": year,
+        "month": month,
+        "version": version,
+    }
+
+
 def parse_filename(m: re.Match, pattern: str) -> dict:
     match pattern:
         case meta.uf_year_pattern:
@@ -149,6 +163,8 @@ def parse_filename(m: re.Match, pattern: str) -> dict:
             return parse_uf_year2_filename(m)
         case meta.uf_year2_month_pattern:
             return parse_uf_year2_month_filename(m)
+        case meta.uf_year2_month_pattern_sia_pa:
+            return parse_uf_year2_month_filename_sia_pa(m)
         case meta.year_pattern:
             return parse_year_filename(m)
         case meta.year2_pattern:

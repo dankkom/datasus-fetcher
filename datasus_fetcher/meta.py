@@ -55,6 +55,7 @@ uf_year2_month_pattern = r"({uf})({year})({month})".format(
     year=year_2digit_pattern,
     month=month_pattern,
 )
+uf_year2_month_pattern_sia_pa = uf_year2_month_pattern + r"([a-z])"
 uf_mapas_year_pattern = r"({uf})_mapas_({year})".format(
     uf=uf_pattern,
     year=year_4digit_pattern,
@@ -517,7 +518,7 @@ datasets = {
             {
                 "dir": BASE_PATH + "/SIASUS/200801_/Dados",
                 "filename_prefix": "PA",
-                "filename_pattern": uf_year2_month_pattern,
+                "filename_pattern": uf_year2_month_pattern_sia_pa,
                 "extension": "dbc",
             },
         ],

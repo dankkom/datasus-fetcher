@@ -48,6 +48,8 @@ def get_filename(file_info: dict, partition: str, extension: str) -> str:
             partition = f"{year}{month:02}-{uf}"
         case _:
             partition = ""
+    if version := file_info.get("version"):
+        partition = partition + f"-{version}"
     filename = "_".join([s for s in (dataset, partition, file_datetime) if s])
     return f"{filename}.{extension}"
 
