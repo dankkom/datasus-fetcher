@@ -1,23 +1,36 @@
 import datetime as dt
 import hashlib
-import pathlib
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+from pathlib import Path
 from typing import Iterable
+
+from .meta import datasets
 
 
 @dataclass
 class File:
-    filepath: pathlib.Path
-    # size: int = 0
+    filepath: Path
     dataset: str
     partition: str
     date: dt.date
     extension: str
+    size: int
     # checksum: str = None
     is_most_recent: bool = False
 
 
-def get_sha1_hash(filepath: pathlib.Path | str) -> str:
+@dataclass
+class RemoteFile:
+    filename: str
+    full_path: str
+    datetime: dt.datetime
+    extension: str
+    size: int
+    dataset: str = None
+    partition: dict = field(default_factory=dict)
+
+
+def get_sha1_hash(filepath: Path | str) -> str:
     """Returns the SHA1 hash of a file."""
     sha1 = hashlib.sha1()
     with open(filepath, "rb") as f:
@@ -29,39 +42,45 @@ def get_sha1_hash(filepath: pathlib.Path | str) -> str:
     return sha1.hexdigest()
 
 
-def get_filename(file_info: dict, partition: str, extension: str) -> str:
+def get_filename(remote_file: RemoteFile) -> str:
     """Returns the filename for the given file info and partition."""
-    dataset = file_info["dataset"]
-    file_datetime = file_info["datetime"].strftime("%Y%m%d")
-    match partition:
+    dataset = remote_file.dataset
+    extension = remote_file.extension
+    file_datetime = remote_file.datetime.strftime("%Y%m%d")
+    metadata_partition = datasets[dataset]["partition"]
+    match metadata_partition:
+        case ["uf"]:
+            uf = remote_file.partition["uf"].lower()
+            partition = f"{uf}"
         case ["year"]:
-            year = file_info["year"]
+            year = remote_file.partition["year"]
             partition = f"{year}"
         case ["uf", "year"]:
-            uf = file_info["uf"].lower()
-            year = file_info["year"]
+            uf = remote_file.partition["uf"].lower()
+            year = remote_file.partition["year"]
             partition = f"{year}-{uf}"
         case ["uf", "yearmonth"]:
-            uf = file_info["uf"].lower()
-            year = file_info["year"]
-            month = file_info["month"]
+            uf = remote_file.partition["uf"].lower()
+            year = remote_file.partition["year"]
+            month = remote_file.partition["month"]
             partition = f"{year}{month:02}-{uf}"
         case _:
             partition = ""
-    if version := file_info.get("version"):
-        partition = partition + f"-{version}"
+    if version := remote_file.partition.get("version"):
+        partition += f"-{version}"
     filename = "_".join([s for s in (dataset, partition, file_datetime) if s])
     return f"{filename}.{extension}"
 
 
-def get_file_metadata(file: pathlib.Path) -> File:
+def get_file_metadata(file: Path) -> File:
     """Returns a dict with the parsed filename."""
     dataset, partition, file_date = file.stem.split("_")
     extension = file.suffix
     file_date = dt.datetime.strptime(file_date, "%Y%m%d").date()
+    size = file.stat().st_size
     return File(
         filepath=file,
-        # size=file.stat().st_size,
+        size=size,
         dataset=dataset,
         partition=partition,
         date=file_date,
@@ -70,9 +89,9 @@ def get_file_metadata(file: pathlib.Path) -> File:
     )
 
 
-def get_files_metadata(dirpath: pathlib.Path) -> File:
+def get_files_metadata(dirpath: Path, extension: str) -> File:
     files = {}
-    for f in dirpath.glob("*.dbc"):
+    for f in dirpath.glob(f"*.{extension}"):
         file = get_file_metadata(f)
         if file.partition not in files:
             files[file.partition] = []

@@ -10,9 +10,9 @@ def main():
         dataset_size = 0
         dataset_files = 0
         for file in fetcher.list_dataset_files(ftp, dataset):
-            total_size += file["size"]
+            total_size += file.size
             total_files += 1
-            dataset_size += file["size"]
+            dataset_size += file.size
             dataset_files += 1
         print(f"{dataset: <27} {dataset_files: >6} files totaling {dataset_size / 2**20: >9.1f} MB")
 
