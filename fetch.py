@@ -51,6 +51,7 @@ def get_parser():
         "--threads",
         dest="threads",
         type=int,
+        default=2,
         help="Number of concurrent fetchers",
     )
     return parser
