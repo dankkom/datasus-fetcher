@@ -11,6 +11,7 @@ def get_parser():
     )
     parser.add_argument("--datadir", type=Path, required=True)
     parser.add_argument("--archivedatadir", type=Path, required=True)
+    parser.add_argument("--extension", required=True)
     parser.add_argument("--dry-run", action="store_true")
     return parser
 
@@ -20,24 +21,23 @@ def main():
     args = parser.parse_args()
     datadir = args.datadir
     archivedatadir = args.archivedatadir
+    extension = args.extension
     dry_run = args.dry_run
     for datasetdir in datadir.iterdir():
         print(datasetdir)
         datasetname = datasetdir.name
         for datepartitiondir in datasetdir.iterdir():
-            datepartition = datepartitiondir.name
-            files = get_files_metadata(datepartitiondir, extension="parquet")
+            files = get_files_metadata(datepartitiondir, extension=extension)
             for file in files:
                 file: File
                 if not file.is_most_recent:
                     print(file)
                     if dry_run:
                         continue
-                    archivedatasetdir = archivedatadir / datasetname
-                    if not archivedatasetdir.exists():
-                        archivedatasetdir.mkdir(parents=True)
-                    destarchivefilepath = archivedatasetdir / file.filepath.name
-                    shutil.move(file.filepath, destarchivefilepath)
+                    archivedatasetdir: Path = archivedatadir / datasetname
+                    archivedatasetdir.mkdir(parents=True, exist_ok=True)
+                    archivefilepath = archivedatasetdir / file.filepath.name
+                    shutil.move(file.filepath, archivefilepath)
 
 
 if __name__ == "__main__":
