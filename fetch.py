@@ -7,7 +7,7 @@ from datasus_fetcher import fetcher, meta
 
 
 def download(datasets, destdir, threads=2):
-    print("Starting download with {threads} threads")
+    print(f"Starting download with {threads} threads")
     if datasets:
         datasets_ = set(datasets) & set(meta.datasets.keys())
     else:
@@ -29,7 +29,7 @@ def download(datasets, destdir, threads=2):
             th.ftp.close()
 
 
-def get_parser():
+def get_args():
     parser = argparse.ArgumentParser(
         description="Download all raw files from datasus",
     )
@@ -44,6 +44,7 @@ def get_parser():
         "--destdir",
         dest="destdir",
         type=pathlib.Path,
+        required=True,
         help="Directory to download to",
     )
     parser.add_argument(
@@ -54,12 +55,12 @@ def get_parser():
         default=2,
         help="Number of concurrent fetchers",
     )
-    return parser
+    args = parser.parse_args()
+    return args
 
 
 def main():
-    parser = get_parser()
-    args = parser.parse_args()
+    args = get_args()
     datasets = args.datasets
     destdir = args.destdir
     threads = args.threads
