@@ -8,8 +8,8 @@ readme = "README.md"
 requires-python = ">=3.10"
 keywords = [
     "data",
-    "data collection",
     "open data",
+    "data fetcher",
     "health",
     "datasus",
     "microdata",
