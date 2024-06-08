@@ -1566,17 +1566,17 @@ datasets = {
         ],
         "partition": ["uf", "year"],
     },
-    "base-territorial": {
-        "periods": [
-            {
-                "dir": "/territorio/tabelas",
-                "filename_prefix": "",
-                "filename_pattern": "base_territorial",
-                "extension": "zip",
-            },
-        ],
-        "partition": [],
-    },
+    # "base-territorial": {
+    #     "periods": [
+    #         {
+    #             "dir": "/territorio/tabelas",
+    #             "filename_prefix": "",
+    #             "filename_pattern": "base_territorial",
+    #             "extension": "zip",
+    #         },
+    #     ],
+    #     "partition": [],
+    # },
     "base-territorial-conversao": {
         "periods": [
             {
