@@ -129,8 +129,8 @@ def list_files(
             time.sleep(5)
 
     # parse files' date, size and name
-    def parse_line(line):
-        date, time, size, name = line.split()
+    def parse_line(line: str) -> dict[str, str | int | dt.datetime | None]:
+        date, time, size, name = line.split(maxsplit=3)
         extension = name.rsplit(".", maxsplit=1)[1].lower()
         datetime = dt.datetime.strptime(date + " " + time, "%m-%d-%y %I:%M%p")
         try:
