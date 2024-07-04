@@ -2,7 +2,7 @@ import datetime as dt
 import logging
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Iterable
+from typing import Generator, Iterable
 
 logger = logging.getLogger(__name__)
 
@@ -91,7 +91,7 @@ def get_file_metadata(file: Path) -> File:
     )
 
 
-def get_files_metadata(dirpath: Path) -> File:
+def get_files_metadata(dirpath: Path) -> Generator[File, None, None]:
     files = {}
     for f in dirpath.glob("*.*"):
         try:
