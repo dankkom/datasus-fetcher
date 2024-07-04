@@ -251,8 +251,11 @@ def download_documentation(
         filename, extension = file["filename"].rsplit(".", 1)
         filename = f"{filename}@{file['datetime']:%Y%m%d}.{extension}"
         filepath = destdir / filename
+
+        # Check if file already exists and has the same size
         if filepath.exists() and filepath.stat().st_size == file["size"]:
             continue
+
         logger.debug(f"{i: >5} {file['full_path']} -> {filepath}")
         t0 = time.time()
         fetch_file(ftp, file["full_path"], filepath)
