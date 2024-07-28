@@ -328,7 +328,7 @@ Microdata: https://datasus.saude.gov.br/transferencia-de-arquivos/
 Install development version from Github running this command:
 
 ```sh
-pip install -e git+https://github.com/viridisdata/datasus-fetcher.git
+pip install -e git+https://github.com/dankkom/datasus-fetcher.git
 ```
 
 Run unit tests with:
