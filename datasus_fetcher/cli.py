@@ -1,7 +1,6 @@
 """Command Line Interface for datasus-fetcher package."""
 
 import argparse
-import logging
 import logging.config
 import shutil
 import threading

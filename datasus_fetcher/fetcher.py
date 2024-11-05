@@ -1,6 +1,5 @@
 import datetime as dt
 import ftplib
-import logging
 import queue
 import threading
 import time
@@ -10,13 +9,12 @@ from typing import Callable, Iterable, Self
 
 from datasus_fetcher.slicer import Slicer
 
-from . import meta
+from . import logger, meta
 from .remote_names import get_pattern, parse_filename
 from .storage import DataPartition, RemoteFile, get_filename, get_partition_dir
 
 FTP_HOST = "ftp.datasus.gov.br"
 MEGA = 1_000_000
-logger = logging.getLogger(__name__)
 
 
 class Fetcher(threading.Thread):

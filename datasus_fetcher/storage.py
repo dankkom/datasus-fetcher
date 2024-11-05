@@ -1,10 +1,9 @@
 import datetime as dt
-import logging
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Generator, Iterable
 
-logger = logging.getLogger(__name__)
+from . import logger
 
 
 @dataclass
