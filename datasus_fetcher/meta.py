@@ -1049,28 +1049,6 @@ datasets = {
         ],
         "partition": ["uf", "year"],
     },
-    "sinan-iexo": {
-        "periods": [
-            {
-                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
-                "filename_prefix": "IEXO",
-                "filename_pattern": uf_year2_pattern,
-                "extension": "dbc",
-            },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-iexo-preliminar": {
-        "periods": [
-            {
-                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
-                "filename_prefix": "IEXO",
-                "filename_pattern": uf_year2_pattern,
-                "extension": "dbc",
-            },
-        ],
-        "partition": ["uf", "year"],
-    },
     "sinan-infl": {
         "periods": [
             {
