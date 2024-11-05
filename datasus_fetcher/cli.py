@@ -8,11 +8,9 @@ import threading
 from pathlib import Path
 from typing import Any
 
-from . import fetcher, meta
+from . import fetcher, logger, meta
 from .slicer import Slicer
 from .storage import File, get_files_metadata
-
-logger = logging.getLogger(__name__)
 
 if Path("logging.ini").exists():
     logging.config.fileConfig("logging.ini")
@@ -165,18 +163,19 @@ def fetch_aux(args: argparse.Namespace):
 
 
 def archive(args: argparse.Namespace):
-    data_dir = args.data_dir
-    archivedatadir = args.archive_data_dir
+    data_dir: Path = args.data_dir
+    archivedatadir: Path = args.archive_data_dir
     for datasetdir in data_dir.iterdir():
-        datasetname = datasetdir.name
         for datepartitiondir in datasetdir.iterdir():
             files = get_files_metadata(datepartitiondir)
             for file in files:
                 file: File
                 if not file.is_most_recent:
-                    archivedatasetdir: Path = archivedatadir / datasetname
-                    archivedatasetdir.mkdir(parents=True, exist_ok=True)
-                    archivefilepath = archivedatasetdir / file.filepath.name
+                    archivefilepath = archivedatadir / file.filepath.relative_to(
+                        data_dir
+                    )
+                    logger.info(f"Moving {file.filepath} to {archivefilepath}")
+                    archivefilepath.parent.mkdir(parents=True, exist_ok=True)
                     shutil.move(file.filepath, archivefilepath)
 
 
