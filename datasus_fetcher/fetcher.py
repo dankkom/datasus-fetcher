@@ -12,12 +12,7 @@ from datasus_fetcher.slicer import Slicer
 
 from . import meta
 from .remote_names import get_pattern, parse_filename
-from .storage import (
-    DataPartition,
-    RemoteFile,
-    get_filename,
-    get_partition_dir,
-)
+from .storage import DataPartition, RemoteFile, get_filename, get_partition_dir
 
 FTP_HOST = "ftp.datasus.gov.br"
 MEGA = 1_000_000

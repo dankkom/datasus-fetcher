@@ -18,7 +18,7 @@ class TestStorage(unittest.TestCase):
             extension="extension",
             size=1,
             dataset="dataset",
-            partition=DataPartition(uf="uf", year=2000, month=1, version="a")
+            partition=DataPartition(uf="uf", year=2000, month=1, version="a"),
         )
 
     def test_get_partition_dir(self):

@@ -1,6 +1,5 @@
 """Metadata of DATASUS' datasets."""
 
-
 # Brazil UFs
 states = [
     "AC",
