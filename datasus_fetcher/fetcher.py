@@ -49,7 +49,7 @@ class Fetcher(threading.Thread):
             filepath.parent.mkdir(parents=True, exist_ok=True)
 
             try:
-                logger.debug(f"%s -> %s", file.full_path, filepath)
+                logger.debug("%s -> %s", file.full_path, filepath)
                 t0 = time.time()
                 fetch_file(self.ftp, file.full_path, filepath)
                 tt = time.time() - t0
@@ -117,7 +117,7 @@ def list_files(
             break
         # Timeout exception
         except (ftplib.error_temp, TimeoutError):
-            logger.exception(f"Timeout exception while listing files.")
+            logger.exception("Timeout exception while listing files.")
             retries -= 1
             time.sleep(5)
 
