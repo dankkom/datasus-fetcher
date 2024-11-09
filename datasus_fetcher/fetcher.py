@@ -228,6 +228,13 @@ def download_data(
             th.ftp.close()
 
 
+def list_documentation_files(ftp: ftplib.FTP, dataset: str) -> list[dict]:
+    ftp_dir = meta.docs[dataset]["dir"]
+    ftp.cwd(ftp_dir)
+    files = list_files(ftp, directory=ftp_dir)
+    return files
+
+
 def download_documentation(
     ftp: ftplib.FTP,
     dataset: str,
@@ -235,10 +242,7 @@ def download_documentation(
 ):
     destdir = destdir / f"{dataset}[doc]"
 
-    ftp_dir = meta.docs[dataset]["dir"]
-    ftp.cwd(ftp_dir)
-
-    files = list_files(ftp, directory=ftp_dir)
+    files = list_documentation_files(ftp, dataset)
 
     for i, file in enumerate(files):
         filename, extension = file["filename"].rsplit(".", 1)
@@ -270,6 +274,13 @@ def download_documentation(
         yield file_metadata
 
 
+def list_auxiliary_tables_files(ftp: ftplib.FTP, dataset: str) -> list[dict]:
+    ftp_dir = meta.auxiliary_tables[dataset]["dir"]
+    ftp.cwd(ftp_dir)
+    files = list_files(ftp, directory=ftp_dir)
+    return files
+
+
 def download_auxiliary_tables(
     ftp: ftplib.FTP,
     dataset: str,
@@ -277,10 +288,7 @@ def download_auxiliary_tables(
 ):
     destdir = destdir / f"{dataset}[aux]"
 
-    ftp_dir = meta.auxiliary_tables[dataset]["dir"]
-    ftp.cwd(ftp_dir)
-
-    files = list_files(ftp, directory=ftp_dir)
+    files = list_auxiliary_tables_files(ftp, dataset)
 
     for i, file in enumerate(files):
         filename, extension = file["filename"].rsplit(".", 1)
