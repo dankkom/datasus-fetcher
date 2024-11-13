@@ -1785,6 +1785,182 @@ datasets = {
         ],
         "partition": ["uf", "year"],
     },
+    "sinan-aida": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
+                "filename_prefix": "AIDA",
+                "filename_pattern": uf_year2_pattern,
+                "extension": "dbc",
+            },
+        ],
+        "partition": ["uf", "year"],
+    },
+    "sinan-aida-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
+                "filename_prefix": "AIDA",
+                "filename_pattern": uf_year2_pattern,
+                "extension": "dbc",
+            },
+        ],
+        "partition": ["uf", "year"],
+    },
+    "sinan-aidc": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
+                "filename_prefix": "AIDC",
+                "filename_pattern": uf_year2_pattern,
+                "extension": "dbc",
+            },
+        ],
+        "partition": ["uf", "year"],
+    },
+    "sinan-aidc-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
+                "filename_prefix": "AIDC",
+                "filename_pattern": uf_year2_pattern,
+                "extension": "dbc",
+            },
+        ],
+        "partition": ["uf", "year"],
+    },
+    "sinan-espo": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
+                "filename_prefix": "ESPO",
+                "filename_pattern": uf_year2_pattern,
+                "extension": "dbc",
+            },
+        ],
+        "partition": ["uf", "year"],
+    },
+    "sinan-espo-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
+                "filename_prefix": "ESPO",
+                "filename_pattern": uf_year2_pattern,
+                "extension": "dbc",
+            },
+        ],
+        "partition": ["uf", "year"],
+    },
+    "sinan-hiva": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
+                "filename_prefix": "HIVA",
+                "filename_pattern": uf_year2_pattern,
+                "extension": "dbc",
+            },
+        ],
+        "partition": ["uf", "year"],
+    },
+    "sinan-hiva-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
+                "filename_prefix": "HIVA",
+                "filename_pattern": uf_year2_pattern,
+                "extension": "dbc",
+            },
+        ],
+        "partition": ["uf", "year"],
+    },
+    "sinan-hivc": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
+                "filename_prefix": "HIVC",
+                "filename_pattern": uf_year2_pattern,
+                "extension": "dbc",
+            },
+        ],
+        "partition": ["uf", "year"],
+    },
+    "sinan-hivc-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
+                "filename_prefix": "HIVC",
+                "filename_pattern": uf_year2_pattern,
+                "extension": "dbc",
+            },
+        ],
+        "partition": ["uf", "year"],
+    },
+    "sinan-hive": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
+                "filename_prefix": "HIVE",
+                "filename_pattern": uf_year2_pattern,
+                "extension": "dbc",
+            },
+        ],
+        "partition": ["uf", "year"],
+    },
+    "sinan-hive-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
+                "filename_prefix": "HIVE",
+                "filename_pattern": uf_year2_pattern,
+                "extension": "dbc",
+            },
+        ],
+        "partition": ["uf", "year"],
+    },
+    "sinan-hivg": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
+                "filename_prefix": "HIVG",
+                "filename_pattern": uf_year2_pattern,
+                "extension": "dbc",
+            },
+        ],
+        "partition": ["uf", "year"],
+    },
+    "sinan-hivg-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
+                "filename_prefix": "HIVG",
+                "filename_pattern": uf_year2_pattern,
+                "extension": "dbc",
+            },
+        ],
+        "partition": ["uf", "year"],
+    },
+    "sinan-rota": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
+                "filename_prefix": "ROTA",
+                "filename_pattern": uf_year2_pattern,
+                "extension": "dbc",
+            },
+        ],
+        "partition": ["uf", "year"],
+    },
+    "sinan-rota-preliminar": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
+                "filename_prefix": "ROTA",
+                "filename_pattern": uf_year2_pattern,
+                "extension": "dbc",
+            },
+        ],
+        "partition": ["uf", "year"],
+    },
 }
 
 
