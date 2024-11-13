@@ -261,9 +261,11 @@ Microdata: https://datasus.saude.gov.br/transferencia-de-arquivos/
   - SIM-DOINF: Declarações de Óbitos infantis
   - SIM-DOMAT: Declarações de Óbitos maternos
   - SIM-DOREXT: Mortalidade de residentes no exterior
-- SINAN: Sistma de agravos de notificação compulsória
+- SINAN: Sistema de agravos de notificação compulsória
   - SINAN-ACBI: Acidente de trabalho com material biológico
   - SINAN-ACGR: Acidente de trabalho
+  - SINAN-AIDA: AIDS em adultos
+  - SINAN-AIDC: AIDS em crianças
   - SINAN-ANIM: Acidente por Animais Peçonhentos
   - SINAN-ANTR: Atendimento Antirrabico
   - SINAN-BOTU: Botulismo
@@ -275,6 +277,7 @@ Microdata: https://datasus.saude.gov.br/transferencia-de-arquivos/
   - SINAN-DENG: Dengue
   - SINAN-DERM: Dermatoses ocupacionais
   - SINAN-DIFT: Difteria
+  - SINAN-ESPO: Esporotricose (Epizootia)
   - SINAN-ESQU: Esquistossomose
   - SINAN-EXAN: Doenças exantemáticas
   - SINAN-FMAC: Febre Maculosa
@@ -282,8 +285,11 @@ Microdata: https://datasus.saude.gov.br/transferencia-de-arquivos/
   - SINAN-HANS: Hanseníase
   - SINAN-HANT: Hantavirose
   - SINAN-HEPA: Hepatites Virais
+  - SINAN-HIVA: HIV em adultos
+  - SINAN-HIVC: HIV em crianças
+  - SINAN-HIVE: HIV em crianças expostas
+  - SINAN-HIVG: HIV em gestante
   - SINAN-IEXO: Intoxicação Exógena
-  - SINAN-INFL: Influenza Pandêmica
   - SINAN-LEIV: Leishmaniose Visceral
   - SINAN-LEPT: Leptospirose
   - SINAN-LERD: LER/Dort
@@ -297,6 +303,7 @@ Microdata: https://datasus.saude.gov.br/transferencia-de-arquivos/
   - SINAN-PFAN: Paralisia Flácida Aguda
   - SINAN-PNEU: Pneumoconioses relacionadas ao trabalho
   - SINAN-RAIV: Raiva
+  - SINAN-ROTA: Rotavírus
   - SINAN-SDTA: Surto Doenças Transmitidas por Alimentos
   - SINAN-SIFA: Sífilis Adquirida
   - SINAN-SIFC: Sífilis Congênita
