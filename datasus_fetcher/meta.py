@@ -1048,28 +1048,6 @@ datasets = {
         ],
         "partition": ["uf", "year"],
     },
-    "sinan-infl": {
-        "periods": [
-            {
-                "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
-                "filename_prefix": "INFL",
-                "filename_pattern": uf_year2_pattern,
-                "extension": "dbc",
-            },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-infl-preliminar": {
-        "periods": [
-            {
-                "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
-                "filename_prefix": "INFL",
-                "filename_pattern": uf_year2_pattern,
-                "extension": "dbc",
-            },
-        ],
-        "partition": ["uf", "year"],
-    },
     "sinan-leiv": {
         "periods": [
             {
