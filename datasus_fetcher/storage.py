@@ -49,7 +49,7 @@ class RemoteFile:
     datetime: dt.datetime
     extension: str
     size: int
-    dataset: Optional[str] = None
+    dataset: str
     partition: DataPartition = field(default_factory=DataPartition)
 
 

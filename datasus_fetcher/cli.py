@@ -50,11 +50,18 @@ def list_datasets(args: argparse.Namespace):
         dataset_n_files = len(dataset_files_list)
         total_size += dataset_size
         total_n_files += dataset_n_files
+        first = last = "----"
         if dataset_files_list:
             if "year" in meta.datasets[dataset]["partition"]:
-                first = min(dataset_files_list, key=lambda x: x.partition.year)
+                first = min(
+                    dataset_files_list,
+                    key=lambda x: x.partition.year or 0,
+                )
                 first = f"{first.partition.year}"
-                last = max(dataset_files_list, key=lambda x: x.partition.year)
+                last = max(
+                    dataset_files_list,
+                    key=lambda x: x.partition.year or 0,
+                )
                 last = f"{last.partition.year}"
             elif "yearmonth" in meta.datasets[dataset]["partition"]:
                 first = min(
@@ -67,8 +74,6 @@ def list_datasets(args: argparse.Namespace):
                     key=lambda x: f"{x.partition.year}{x.partition.month:02}",
                 )
                 last = f"{last.partition.year}-{last.partition.month:02}"
-        else:
-            first = last = "----"
         date_range = f"{first: <7} to {last: <7}"
         msg = " | ".join(
             [
@@ -119,7 +124,7 @@ def fetch_data(args: argparse.Namespace):
         )
     except KeyboardInterrupt:
         for th in threading.enumerate():
-            if th.daemon:
+            if isinstance(th, fetcher.Fetcher):
                 th.ftp.close()
                 th.kill()
         logger.warning("KeyboardInterrupt: closing FTP connections")

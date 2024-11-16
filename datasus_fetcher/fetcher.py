@@ -22,7 +22,7 @@ class Fetcher(threading.Thread):
         self,
         q: queue.Queue,
         dest_dir: Path,
-        callback: Callable = None,
+        callback: Callable | None = None,
     ):
         super().__init__()
         self.daemon = True
@@ -38,9 +38,9 @@ class Fetcher(threading.Thread):
     def run(self):
         while not self.dead():
             file: RemoteFile = self.q.get()
-            dataset = file.dataset
-            partition_dir = get_partition_dir(file)
-            filename = get_filename(file)
+            dataset: str = file.dataset
+            partition_dir: str = get_partition_dir(file)
+            filename: str = get_filename(file)
 
             filepath: Path = self.dest_dir / dataset / partition_dir / filename
             if filepath.exists() and filepath.stat().st_size == file.size:
@@ -110,8 +110,9 @@ def list_files(
     except ftplib.error_perm:
         logger.exception(f"Directory not found. {directory}")
 
+    files: list[str] = []
     while retries > 0:
-        files = []
+        files.clear()
         try:
             ftp.retrlines("LIST", files.append)
             break
@@ -138,9 +139,9 @@ def list_files(
             "full_path": f"{directory}/{name}",
         }
 
-    files = [parse_line(line) for line in files]
+    parsed_files = [parse_line(line) for line in files]
 
-    return files
+    return parsed_files
 
 
 def fetch_file(
@@ -200,8 +201,8 @@ def download_data(
     datasets: Iterable[str],
     destdir: Path,
     threads: int = 2,
-    callback: Callable = None,
-    slicer: Slicer = None,
+    callback: Callable | None = None,
+    slicer: Slicer | None = None,
 ):
     """Multithreaded download data files"""
     logger.info("Starting download with %s threads", threads)
@@ -224,7 +225,7 @@ def download_data(
     logger.info("Joining queue")
     q.join()
     for th in threading.enumerate():
-        if th.daemon:
+        if isinstance(th, Fetcher):
             th.ftp.close()
 
 
