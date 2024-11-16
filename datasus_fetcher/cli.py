@@ -208,10 +208,12 @@ def get_args():
     )
     subparser_fetch_group.add_argument(
         "--start",
+        default="",
         help="Start period to download (eg.: 2001 OR 2001-01)",
     )
     subparser_fetch_group.add_argument(
         "--end",
+        default="",
         help="End period to download (eg.: 2020 OR 2020-12)",
     )
     subparser_fetch_group.add_argument(
