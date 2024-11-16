@@ -32,8 +32,6 @@ class Slicer:
             t += f"{remote_file.partition.year}"
         if remote_file.partition.month is not None:
             t += f"{remote_file.partition.month:02d}"
-        else:
-            t += "00"
 
         if self.start_time and not self.end_time:
             return t >= self.start_time
