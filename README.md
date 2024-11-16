@@ -343,3 +343,19 @@ Run unit tests with:
 ```sh
 python -m unittest discover
 ```
+
+### Build and publish package
+
+Build package with:
+
+```sh
+python -m build
+```
+
+Publish package to PyPI with:
+
+```sh
+python -m twine upload dist/*
+```
+
+See [Python Packaging User Guide: The Packaging Workflow](https://packaging.python.org/en/latest/flow/) for more information.
