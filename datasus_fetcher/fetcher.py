@@ -184,14 +184,21 @@ def list_dataset_files(ftp: ftplib.FTP, dataset: str) -> list[RemoteFile]:
     dataset_files = []
     for period in meta.datasets[dataset]["periods"]:
         files = [
-            RemoteFile(**f) for f in list_files(ftp, directory=period["dir"], retries=3)
+            RemoteFile(
+                filename=f["filename"],
+                datetime=f["datetime"],
+                size=f["size"],
+                extension=f["extension"],
+                full_path=f["full_path"],
+                dataset=dataset,
+            )
+            for f in list_files(ftp, directory=period["dir"], retries=3)
         ]
         fn_pattern = period["filename_pattern"]
         pattern = get_pattern(period=period)
         for file in files:
             m = pattern.match(file.filename.lower())
             if m:
-                file.dataset = dataset
                 file.partition = DataPartition(**parse_filename(m, fn_pattern))
                 dataset_files.append(file)
     return dataset_files
