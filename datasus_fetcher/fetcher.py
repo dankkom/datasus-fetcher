@@ -5,7 +5,7 @@ import threading
 import time
 from functools import lru_cache
 from pathlib import Path
-from typing import Callable, Iterable, Self
+from typing import Callable, Iterable
 
 from datasus_fetcher.slicer import Slicer
 
@@ -19,7 +19,7 @@ MEGA = 1_000_000
 
 class Fetcher(threading.Thread):
     def __init__(
-        self: Self,
+        self,
         q: queue.Queue,
         dest_dir: Path,
         callback: Callable = None,

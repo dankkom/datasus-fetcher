@@ -1,5 +1,3 @@
-from typing import Self
-
 from .storage import RemoteFile
 
 
@@ -9,7 +7,7 @@ class Slicer:
     """
 
     def __init__(
-        self: Self,
+        self,
         start_time: str = "",
         end_time: str = "",
         regions: list[str] | None = None,
