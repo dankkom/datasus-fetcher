@@ -1,7 +1,7 @@
 import datetime as dt
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Generator, Iterable
+from typing import Generator, Iterable, Optional
 
 from . import logger
 
@@ -14,16 +14,15 @@ class File:
     date: dt.date
     extension: str
     size: int
-    # checksum: str = None
     is_most_recent: bool = False
 
 
 @dataclass
 class DataPartition:
-    uf: str = None
-    year: int = None
-    month: int = None
-    version: str = None
+    uf: Optional[str] = None
+    year: Optional[int] = None
+    month: Optional[int] = None
+    version: Optional[str] = None
 
     def __str__(self) -> str:
         uf, year, month = self.uf, self.year, self.month
@@ -50,7 +49,7 @@ class RemoteFile:
     datetime: dt.datetime
     extension: str
     size: int
-    dataset: str = None
+    dataset: Optional[str] = None
     partition: DataPartition = field(default_factory=DataPartition)
 
 
@@ -85,7 +84,6 @@ def get_file_metadata(file: Path) -> File:
         dataset=dataset,
         partition=partition,
         date=file_date,
-        # checksum=get_sha1_hash(file),
         extension=extension,
     )
 
