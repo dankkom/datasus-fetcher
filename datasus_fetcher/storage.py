@@ -1,7 +1,7 @@
 import datetime as dt
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Generator, Iterable, Optional
+from typing import Generator, Optional
 
 from . import logger
 
@@ -108,8 +108,3 @@ def get_files_metadata(dirpath: Path) -> Generator[File, None, None]:
         for i, file in enumerate(partition_files_sorted, 1):
             file.is_most_recent = i == n_files_partition_sorted
             yield file
-
-
-def get_most_recent(files: Iterable[File]) -> dict[str, File]:
-    most_recent_files = [file for file in files if file.is_most_recent]
-    return most_recent_files
