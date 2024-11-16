@@ -1,8 +1,6 @@
 [project]
 name = "datasus-fetcher"
-authors = [
-    {name = "Daniel Komesu", email = "danielkomesu@gmail.com"},
-]
+authors = [{ name = "Daniel Komesu", email = "danielkomesu@gmail.com" }]
 description = "Downloader of DATASUS raw data files"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -14,11 +12,11 @@ keywords = [
     "datasus",
     "microdata",
 ]
-license = {text = "MIT"}
+license = { text = "MIT" }
 dynamic = ["version"]
 
 [tool.setuptools.dynamic]
-version = {attr = "datasus_fetcher.__version__"}
+version = { attr = "datasus_fetcher.__version__" }
 
 [project.scripts]
 datasus-fetcher = "datasus_fetcher.cli:main"
