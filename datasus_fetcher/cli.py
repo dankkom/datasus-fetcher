@@ -46,6 +46,8 @@ def list_datasets(args: argparse.Namespace):
             print("Dataset", dataset, "not recognized.")
             continue
         dataset_files_list = fetcher.list_dataset_files(ftp, dataset)
+        if len(dataset_files_list) == 0:
+            continue
         dataset_size = sum(f.size for f in dataset_files_list)
         dataset_n_files = len(dataset_files_list)
         total_size += dataset_size
