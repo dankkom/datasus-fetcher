@@ -11,7 +11,11 @@ from datasus_fetcher.slicer import Slicer
 
 from . import logger, meta
 from .remote_names import get_pattern, parse_filename
-from .storage import DataPartition, RemoteFile, get_filename, get_partition_dir
+from .storage import (
+    DataPartition,
+    RemoteFile,
+    get_data_filepath,
+)
 
 FTP_HOST = "ftp.datasus.gov.br"
 MEGA = 1_000_000
@@ -38,11 +42,8 @@ class Fetcher(threading.Thread):
     def run(self):
         while not self.dead():
             file: RemoteFile = self.q.get()
-            dataset: str = file.dataset
-            partition_dir: str = get_partition_dir(file)
-            filename: str = get_filename(file)
 
-            filepath: Path = self.dest_dir / dataset / partition_dir / filename
+            filepath: Path = get_data_filepath(data_dir=self.dest_dir, file=file)
             if filepath.exists() and filepath.stat().st_size == file.size:
                 self.q.task_done()
                 continue
@@ -60,7 +61,7 @@ class Fetcher(threading.Thread):
                     "size": file.size,
                     "filepath": filepath,
                     "suffix": file.extension,
-                    "dataset": dataset,
+                    "dataset": file.dataset,
                     "created_at": file.datetime,
                 }
 
