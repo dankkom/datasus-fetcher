@@ -75,6 +75,14 @@ def get_filename(remote_file: RemoteFile) -> str:
     return f"{filename}.{extension}"
 
 
+def get_data_filepath(data_dir: Path, file: RemoteFile) -> Path:
+    dataset: str = file.dataset
+    partition_dir: str = get_partition_dir(file)
+    filename: str = get_filename(file)
+    filepath: Path = data_dir / dataset / partition_dir / filename
+    return filepath
+
+
 def get_file_metadata(file: Path) -> File:
     """Returns a dict with the parsed filename."""
     dataset, partition, file_date = file.stem.split("_")
