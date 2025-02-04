@@ -195,6 +195,9 @@ def list_dataset_files(ftp: ftplib.FTP, dataset: str) -> list[RemoteFile]:
             )
             for f in list_files(ftp, directory=period["dir"], retries=3)
         ]
+        if not period["filename_pattern"]:
+            dataset_files.extend(files)
+            continue
         fn_pattern = period["filename_pattern"]
         pattern = get_pattern(period=period)
         for file in files:
