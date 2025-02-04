@@ -137,6 +137,13 @@ datasets = {
                 "filename_pattern": uf_year_pattern,
                 "extension": "dbc",
             },
+            {
+                "dir": BASE_PATH + "/SINASC/PRELIM/DNRES",
+                "filename_prefix": "DN",
+                "filename_pattern": uf_year_pattern,
+                "extension": "dbc",
+                "preliminar": True,
+            },
         ],
         "partition": ["uf", "year"],
     },
@@ -150,17 +157,6 @@ datasets = {
             },
         ],
         "partition": ["year"],
-    },
-    "sinasc-dn-preliminar": {
-        "periods": [
-            {
-                "dir": BASE_PATH + "/SINASC/PRELIM/DNRES",
-                "filename_prefix": "DN",
-                "filename_pattern": uf_year_pattern,
-                "extension": "dbc",
-            },
-        ],
-        "partition": ["uf", "year"],
     },
     "sim-do-cid09": {
         "periods": [
@@ -181,16 +177,12 @@ datasets = {
                 "filename_pattern": uf_year_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sim-do-cid10-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SIM/PRELIM/DORES",
                 "filename_prefix": "DO",
                 "filename_pattern": uf_year_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -616,16 +608,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-acbi-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "ACBI",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -638,16 +626,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-acgr-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "ACGR",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -660,16 +644,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-anim-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "ANIM",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -682,16 +662,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-antr-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "ANTR",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -704,16 +680,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-botu-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "BOTU",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -726,16 +698,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-canc-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "CANC",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -748,16 +716,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-chag-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "CHAG",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -770,16 +734,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-chik-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "CHIK",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -792,16 +752,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-cole-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "COLE",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -814,16 +770,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-coqu-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "COQU",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -836,16 +788,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-deng-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "DENG",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -858,16 +806,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-derm-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "DERM",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -880,16 +824,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-dift-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "DIFT",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -902,16 +842,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-esqu-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "ESQU",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -924,16 +860,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-fmac-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "FMAC",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -946,16 +878,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-ftif-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "FTIF",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -968,16 +896,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-hans-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "HANS",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -990,16 +914,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-hant-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "HANT",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -1012,16 +932,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-hepa-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "HEPA",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -1034,16 +950,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-iexo-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "IEXO",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -1056,16 +968,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-leiv-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "LEIV",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -1078,16 +986,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-lept-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "LEPT",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -1100,16 +1004,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-lerd-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "LERD",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -1122,16 +1022,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-ltan-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "LTAN",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -1144,16 +1040,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-mala-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "MALA",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -1166,16 +1058,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-meni-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "MENI",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -1188,16 +1076,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-ment-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "MENT",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -1210,16 +1094,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-pair-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "PAIR",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -1232,16 +1112,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-pest-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "PEST",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -1254,16 +1130,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-pfan-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "PFAN",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -1276,16 +1148,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-pneu-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "PNEU",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -1298,16 +1166,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-raiv-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "RAIV",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -1320,16 +1184,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-sifa-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "SIFA",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -1342,16 +1202,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-sifc-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "SIFC",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -1364,16 +1220,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-sifg-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "SIFG",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -1386,16 +1238,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-teta-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "TETA",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -1408,16 +1256,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-tetn-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "TETN",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -1430,16 +1274,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-tube-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "TUBE",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -1452,16 +1292,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-viol-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "VIOL",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -1474,16 +1310,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-zika-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "ZIKA",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -1617,16 +1449,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-exan-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "EXAN",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -1639,16 +1467,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-ntra-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "NTRA",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -1661,16 +1485,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-sdta-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "SDTA",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -1683,16 +1503,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-src-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "SRC",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -1705,16 +1521,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-toxc-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "TOXC",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -1727,16 +1539,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-toxg-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "TOXG",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -1749,16 +1557,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-trac-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "TRAC",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -1771,16 +1575,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-varc-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "VARC",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -1793,16 +1593,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-aida-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "AIDA",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -1815,16 +1611,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-aidc-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "AIDC",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -1837,16 +1629,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-espo-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "ESPO",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -1859,16 +1647,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-hiva-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "HIVA",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -1881,16 +1665,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-hivc-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "HIVC",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -1903,16 +1683,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-hive-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "HIVE",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -1925,16 +1701,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-hivg-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "HIVG",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],
@@ -1947,16 +1719,12 @@ datasets = {
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
             },
-        ],
-        "partition": ["uf", "year"],
-    },
-    "sinan-rota-preliminar": {
-        "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/PRELIM",
                 "filename_prefix": "ROTA",
                 "filename_pattern": uf_year2_pattern,
                 "extension": "dbc",
+                "preliminar": True,
             },
         ],
         "partition": ["uf", "year"],

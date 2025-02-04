@@ -191,6 +191,7 @@ def list_dataset_files(ftp: ftplib.FTP, dataset: str) -> list[RemoteFile]:
                 extension=f["extension"],
                 full_path=f["full_path"],
                 dataset=dataset,
+                preliminar=period.get("preliminar", False),
             )
             for f in list_files(ftp, directory=period["dir"], retries=3)
         ]

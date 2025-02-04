@@ -50,6 +50,7 @@ class RemoteFile:
     extension: str
     size: int
     dataset: str
+    preliminar: bool = False
     partition: DataPartition = field(default_factory=DataPartition)
 
 
