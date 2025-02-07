@@ -50,7 +50,7 @@ class RemoteFile:
     extension: str
     size: int
     dataset: str
-    preliminar: bool = False
+    preliminary: bool = False
     partition: DataPartition = field(default_factory=DataPartition)
 
 
@@ -66,7 +66,7 @@ def get_partition_dir(remote_file: RemoteFile) -> str:
 def get_filename(remote_file: RemoteFile) -> str:
     """Returns the filename for the given file info and partition."""
     dataset = remote_file.dataset
-    if remote_file.preliminar:
+    if remote_file.preliminary:
         dataset += "-preliminar"
     extension = remote_file.extension
     file_datetime = remote_file.datetime.strftime("%Y%m%d")
