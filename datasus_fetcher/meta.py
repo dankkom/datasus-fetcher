@@ -1331,6 +1331,17 @@ datasets = {
         ],
         "partition": ["uf", "year"],
     },
+    "base-populacional-ibge-pops": {
+        "periods": [
+            {
+                "dir": BASE_PATH + "/IBGE/POPSVS",
+                "filename_prefix": "POPS",
+                "filename_pattern": uf_year2_pattern,
+                "extension": "zip",
+            },
+        ],
+        "partition": ["uf", "year"],
+    },
     "base-populacional-ibge-popt": {
         "periods": [
             {
