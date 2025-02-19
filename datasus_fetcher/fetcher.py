@@ -105,6 +105,7 @@ def list_files(
     ftp: ftplib.FTP,
     directory: str,
     retries: int = 3,
+    max_recursive_depth: int = 3,
 ) -> list[dict]:
     try:
         ftp.cwd(directory)
@@ -125,12 +126,12 @@ def list_files(
 
     # parse files' date, size and name
     def parse_line(line: str) -> dict[str, str | int | dt.datetime | None]:
-        date, time, size, name = line.split(maxsplit=3)
+        date, t, size, name = line.split(maxsplit=3)
         if "." in name:
             extension = name.rsplit(".", maxsplit=1)[1].lower()
         else:
             extension = None
-        datetime = dt.datetime.strptime(date + " " + time, "%m-%d-%y %I:%M%p")
+        datetime = dt.datetime.strptime(date + " " + t, "%m-%d-%y %I:%M%p")
         try:
             size = int(size)
         except ValueError:
@@ -143,7 +144,24 @@ def list_files(
             "full_path": f"{directory}/{name}",
         }
 
-    parsed_files = [parse_line(line) for line in files]
+    dirs = []
+    parsed_files = []
+    for line in files:
+        if "<DIR>" not in line:
+            parsed_files.append(parse_line(line))
+        else:
+            *_, name = line.split(maxsplit=3)
+            dirs.append(name)
+    for d in dirs:
+        if max_recursive_depth > 0:
+            parsed_files.extend(
+                list_files(
+                    ftp,
+                    f"{directory}/{d}",
+                    retries=retries,
+                    max_recursive_depth=max_recursive_depth - 1,
+                )
+            )
 
     return parsed_files
 
