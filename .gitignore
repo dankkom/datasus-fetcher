@@ -4,5 +4,8 @@ dist/
 *.egg-info/
 .venv/
 
+# Lock files
+*.lock
+
 # Sublime Text configuration files
 *.sublime-*
