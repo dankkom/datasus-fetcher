@@ -207,7 +207,7 @@ Microdata: https://datasus.saude.gov.br/transferencia-de-arquivos/
   - SIA-PA: Produção Ambulatorial
   - SIA-PS: Psicossocial
   - SIA-SAD: Atenção Domiciliar
-- SIH: Sistema de Informação Hospitalar (Descentralizado)
+- SIH: Sistema de Informação Hospitalar
   - SIH-RD: AIH Reduzida
   - SIH-RJ: AIH Rejeitadas
   - SIH-SP: Serviços Profissionais
@@ -277,8 +277,8 @@ Microdata: https://datasus.saude.gov.br/transferencia-de-arquivos/
   - SINAN-VIOL: Violência doméstica, sexual e/ou outras violências
   - SINAN-ZIKA: Zika Vírus
 - SINASC: Sistema de Informação de Nascidos Vivos
-  - SINASC-DN: Declarações de nascidos vivos 1994 a 2020
-  - SINASC-DNEX: Declarações de nascidos vivos no exterior 2014 a 2020
+  - SINASC-DN: Declarações de nascidos vivos
+  - SINASC-DNEX: Declarações de nascidos vivos no exterior
 - SISCOLO: Sistema de Informações de Cânceres de Colo de Útero
   - SISCOLO-CC: Citopatológico de Colo de Útero
   - SISCOLO-HC: Histopatológico de Colo de Útero
