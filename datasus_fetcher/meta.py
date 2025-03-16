@@ -68,6 +68,8 @@ BASE_PATH = "/dissemin/publicos"
 
 datasets = {
     "sih-rd": {
+        "name": "RD - AIH Reduzida",
+        "group": "sih",
         "periods": [
             {
                 "dir": BASE_PATH + "/SIHSUS/199201_200712/Dados",
@@ -85,6 +87,8 @@ datasets = {
         "partition": ["uf", "yearmonth"],
     },
     "sih-rj": {
+        "name": "RJ - AIH Rejeitadas",
+        "group": "sih",
         "periods": [
             {
                 "dir": BASE_PATH + "/SIHSUS/200801_/Dados",
@@ -96,6 +100,8 @@ datasets = {
         "partition": ["uf", "yearmonth"],
     },
     "sih-sp": {
+        "name": "SP - Serviços Profissionais",
+        "group": "sih",
         "periods": [
             {
                 "dir": BASE_PATH + "/SIHSUS/199201_200712/Dados",
@@ -113,6 +119,8 @@ datasets = {
         "partition": ["uf", "yearmonth"],
     },
     "sih-er": {
+        "name": "ER - AIH Rejeitadas com código de erro",
+        "group": "sih",
         "periods": [
             {
                 "dir": BASE_PATH + "/SIHSUS/200801_/Dados",
@@ -124,6 +132,8 @@ datasets = {
         "partition": ["uf", "yearmonth"],
     },
     "sinasc-dn": {
+        "name": "Declarações de nascidos vivos",
+        "group": "sinasc",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINASC/1994_1995/Dados/DNRES",
@@ -148,6 +158,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinasc-dnex": {
+        "name": "Declarações de nascidos vivos no exterior",
+        "group": "sinasc",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINASC/1996_/Dados/DNRES",
@@ -159,6 +171,8 @@ datasets = {
         "partition": ["year"],
     },
     "sim-do-cid09": {
+        "name": "Declarações de Óbito CID-9",
+        "group": "sim",
         "periods": [
             {
                 "dir": BASE_PATH + "/SIM/CID9/DORES",
@@ -170,6 +184,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sim-do-cid10": {
+        "name": "Declarações de Óbito CID-10",
+        "group": "sim",
         "periods": [
             {
                 "dir": BASE_PATH + "/SIM/CID10/DORES",
@@ -188,6 +204,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sim-doext-cid09": {
+        "name": "Declarações de Óbito Externas CID-9",
+        "group": "sim",
         "periods": [
             {
                 "dir": BASE_PATH + "/SIM/CID9/DOFET",
@@ -199,6 +217,8 @@ datasets = {
         "partition": ["year"],
     },
     "sim-doext-cid10": {
+        "name": "Declarações de Óbito Externas CID-10",
+        "group": "sim",
         "periods": [
             {
                 "dir": BASE_PATH + "/SIM/CID10/DOFET",
@@ -210,6 +230,8 @@ datasets = {
         "partition": ["year"],
     },
     "sim-dofet-cid09": {
+        "name": "Declarações de Óbito Fetais CID-9",
+        "group": "sim",
         "periods": [
             {
                 "dir": BASE_PATH + "/SIM/CID9/DOFET",
@@ -221,6 +243,8 @@ datasets = {
         "partition": ["year"],
     },
     "sim-dofet-cid10": {
+        "name": "Declarações de Óbito Fetais CID-10",
+        "group": "sim",
         "periods": [
             {
                 "dir": BASE_PATH + "/SIM/CID10/DOFET",
@@ -232,6 +256,8 @@ datasets = {
         "partition": ["year"],
     },
     "sim-doinf-cid09": {
+        "name": "Declarações de Óbito Infantis CID-9",
+        "group": "sim",
         "periods": [
             {
                 "dir": BASE_PATH + "/SIM/CID9/DOFET",
@@ -243,6 +269,8 @@ datasets = {
         "partition": ["year"],
     },
     "sim-doinf-cid10": {
+        "name": "Declarações de Óbito Infantis CID-10",
+        "group": "sim",
         "periods": [
             {
                 "dir": BASE_PATH + "/SIM/CID10/DOFET",
@@ -254,6 +282,8 @@ datasets = {
         "partition": ["year"],
     },
     "sim-domat-cid10": {
+        "name": "Declarações de Óbitos Maternos CID-10",
+        "group": "sim",
         "periods": [
             {
                 "dir": BASE_PATH + "/SIM/CID10/DOFET",
@@ -265,6 +295,8 @@ datasets = {
         "partition": ["year"],
     },
     "sim-dorext-cid10": {
+        "name": "Mortalidade de Residentes no Exterior CID-10",
+        "group": "sim",
         "periods": [
             {
                 "dir": BASE_PATH + "/SIM/CID10/DOFET",
@@ -276,6 +308,8 @@ datasets = {
         "partition": ["year"],
     },
     "cnes-dc": {
+        "name": "Dados Complementares",
+        "group": "cnes",
         "periods": [
             {
                 "dir": BASE_PATH + "/CNES/200508_/Dados/DC",
@@ -287,6 +321,8 @@ datasets = {
         "partition": ["uf", "yearmonth"],
     },
     "cnes-ee": {
+        "name": "Estabelecimento de Ensino",
+        "group": "cnes",
         "periods": [
             {
                 "dir": BASE_PATH + "/CNES/200508_/Dados/EE",
@@ -298,6 +334,8 @@ datasets = {
         "partition": ["uf", "yearmonth"],
     },
     "cnes-ef": {
+        "name": "Estabelecimento Filantrópico",
+        "group": "cnes",
         "periods": [
             {
                 "dir": BASE_PATH + "/CNES/200508_/Dados/EF",
@@ -309,6 +347,8 @@ datasets = {
         "partition": ["uf", "yearmonth"],
     },
     "cnes-ep": {
+        "name": "Equipes",
+        "group": "cnes",
         "periods": [
             {
                 "dir": BASE_PATH + "/CNES/200508_/Dados/EP",
@@ -320,6 +360,8 @@ datasets = {
         "partition": ["uf", "yearmonth"],
     },
     "cnes-eq": {
+        "name": "Equipamentos",
+        "group": "cnes",
         "periods": [
             {
                 "dir": BASE_PATH + "/CNES/200508_/Dados/EQ",
@@ -331,6 +373,8 @@ datasets = {
         "partition": ["uf", "yearmonth"],
     },
     "cnes-gm": {
+        "name": "Gestão e Metas",
+        "group": "cnes",
         "periods": [
             {
                 "dir": BASE_PATH + "/CNES/200508_/Dados/GM",
@@ -342,6 +386,8 @@ datasets = {
         "partition": ["uf", "yearmonth"],
     },
     "cnes-hb": {
+        "name": "Habilitação",
+        "group": "cnes",
         "periods": [
             {
                 "dir": BASE_PATH + "/CNES/200508_/Dados/HB",
@@ -353,6 +399,8 @@ datasets = {
         "partition": ["uf", "yearmonth"],
     },
     "cnes-in": {
+        "name": "Incentivos",
+        "group": "cnes",
         "periods": [
             {
                 "dir": BASE_PATH + "/CNES/200508_/Dados/IN",
@@ -364,6 +412,8 @@ datasets = {
         "partition": ["uf", "yearmonth"],
     },
     "cnes-lt": {
+        "name": "Leitos",
+        "group": "cnes",
         "periods": [
             {
                 "dir": BASE_PATH + "/CNES/200508_/Dados/LT",
@@ -375,6 +425,8 @@ datasets = {
         "partition": ["uf", "yearmonth"],
     },
     "cnes-pf": {
+        "name": "Profissional",
+        "group": "cnes",
         "periods": [
             {
                 "dir": BASE_PATH + "/CNES/200508_/Dados/PF",
@@ -386,6 +438,8 @@ datasets = {
         "partition": ["uf", "yearmonth"],
     },
     "cnes-rc": {
+        "name": "Regra Contratual",
+        "group": "cnes",
         "periods": [
             {
                 "dir": BASE_PATH + "/CNES/200508_/Dados/RC",
@@ -397,6 +451,8 @@ datasets = {
         "partition": ["uf", "yearmonth"],
     },
     "cnes-sr": {
+        "name": "Serviço Especializado",
+        "group": "cnes",
         "periods": [
             {
                 "dir": BASE_PATH + "/CNES/200508_/Dados/SR",
@@ -408,6 +464,8 @@ datasets = {
         "partition": ["uf", "yearmonth"],
     },
     "cnes-st": {
+        "name": "Estabelecimentos",
+        "group": "cnes",
         "periods": [
             {
                 "dir": BASE_PATH + "/CNES/200508_/Dados/ST",
@@ -419,6 +477,8 @@ datasets = {
         "partition": ["uf", "yearmonth"],
     },
     "sia-ab": {
+        "name": "APAC de Acompanhamento a Cirurgia Bariátrica",
+        "group": "sia",
         "periods": [
             {
                 "dir": BASE_PATH + "/SIASUS/200801_/Dados",
@@ -430,6 +490,8 @@ datasets = {
         "partition": ["uf", "yearmonth"],
     },
     "sia-abo": {
+        "name": "APAC Acompanhamento Pós Cirurgia Bariátrica",
+        "group": "sia",
         "periods": [
             {
                 "dir": BASE_PATH + "/SIASUS/200801_/Dados",
@@ -441,6 +503,8 @@ datasets = {
         "partition": ["uf", "yearmonth"],
     },
     "sia-acf": {
+        "name": "APAC Confeção de Fístula Arteriovenosa",
+        "group": "sia",
         "periods": [
             {
                 "dir": BASE_PATH + "/SIASUS/200801_/Dados",
@@ -452,6 +516,8 @@ datasets = {
         "partition": ["uf", "yearmonth"],
     },
     "sia-ad": {
+        "name": "APAC de Laudos Diversos",
+        "group": "sia",
         "periods": [
             {
                 "dir": BASE_PATH + "/SIASUS/200801_/Dados",
@@ -463,6 +529,8 @@ datasets = {
         "partition": ["uf", "yearmonth"],
     },
     "sia-am": {
+        "name": "APAC de Medicamentos",
+        "group": "sia",
         "periods": [
             {
                 "dir": BASE_PATH + "/SIASUS/200801_/Dados",
@@ -474,6 +542,8 @@ datasets = {
         "partition": ["uf", "yearmonth"],
     },
     "sia-an": {
+        "name": "APAC de Nefrologia",
+        "group": "sia",
         "periods": [
             {
                 "dir": BASE_PATH + "/SIASUS/200801_/Dados",
@@ -485,6 +555,8 @@ datasets = {
         "partition": ["uf", "yearmonth"],
     },
     "sia-aq": {
+        "name": "APAC de Quimioterapia",
+        "group": "sia",
         "periods": [
             {
                 "dir": BASE_PATH + "/SIASUS/200801_/Dados",
@@ -496,6 +568,8 @@ datasets = {
         "partition": ["uf", "yearmonth"],
     },
     "sia-ar": {
+        "name": "APAC de Radioterapia",
+        "group": "sia",
         "periods": [
             {
                 "dir": BASE_PATH + "/SIASUS/200801_/Dados",
@@ -507,6 +581,8 @@ datasets = {
         "partition": ["uf", "yearmonth"],
     },
     "sia-atd": {
+        "name": "APAC de Tratamento Dialítico",
+        "group": "sia",
         "periods": [
             {
                 "dir": BASE_PATH + "/SIASUS/200801_/Dados",
@@ -518,6 +594,8 @@ datasets = {
         "partition": ["uf", "yearmonth"],
     },
     "sia-pa": {
+        "name": "Produção Ambulatorial",
+        "group": "sia",
         "periods": [
             {
                 "dir": BASE_PATH + "/SIASUS/199407_200712/Dados",
@@ -535,6 +613,8 @@ datasets = {
         "partition": ["uf", "yearmonth"],
     },
     "sia-ps": {
+        "name": "Psicossocial",
+        "group": "sia",
         "periods": [
             {
                 "dir": BASE_PATH + "/SIASUS/200801_/Dados",
@@ -546,6 +626,8 @@ datasets = {
         "partition": ["uf", "yearmonth"],
     },
     "sia-sad": {
+        "name": "Atenção Domiciliar",
+        "group": "sia",
         "periods": [
             {
                 "dir": BASE_PATH + "/SIASUS/200801_/Dados",
@@ -557,6 +639,8 @@ datasets = {
         "partition": ["uf", "yearmonth"],
     },
     "cih-cr": {
+        "name": "Comunicação de Internação Hospitalar",
+        "group": "cih",
         "periods": [
             {
                 "dir": BASE_PATH + "/CIH/200801_201012/Dados",
@@ -568,6 +652,8 @@ datasets = {
         "partition": ["uf", "yearmonth"],
     },
     "ciha": {
+        "name": "Sistema de Comunicação de Informação Hospitalar e Ambulatorial",
+        "group": "ciha",
         "periods": [
             {
                 "dir": BASE_PATH + "/CIHA/201101_/Dados",
@@ -579,6 +665,8 @@ datasets = {
         "partition": ["uf", "yearmonth"],
     },
     "resp": {
+        "name": "Notificações de casos suspeitos de SCZ",
+        "group": "resp",
         "periods": [
             {
                 "dir": BASE_PATH + "/RESP/DADOS",
@@ -590,6 +678,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sisprenatal-pn": {
+        "name": "Pré-Natal",
+        "group": "sisprenatal",
         "periods": [
             {
                 "dir": BASE_PATH + "/SISPRENATAL/201201_/Dados",
@@ -601,6 +691,8 @@ datasets = {
         "partition": ["uf", "yearmonth"],
     },
     "sinan-acbi": {
+        "name": "Acidente de trabalho com material biológico",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -619,6 +711,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-acgr": {
+        "name": "Acidente de trabalho",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -637,6 +731,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-anim": {
+        "name": "Acidente por Animais Peçonhentos",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -655,6 +751,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-antr": {
+        "name": "Atendimento Antirrábico",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -673,6 +771,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-botu": {
+        "name": "Botulismo",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -691,6 +791,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-canc": {
+        "name": "Câncer relacionado ao trabalho",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -709,6 +811,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-chag": {
+        "name": "Doença de Chagas Aguda",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -727,6 +831,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-chik": {
+        "name": "Febre de Chikungunya",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -745,6 +851,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-cole": {
+        "name": "Cólera",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -763,6 +871,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-coqu": {
+        "name": "Coqueluche",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -781,6 +891,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-deng": {
+        "name": "Dengue",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -799,6 +911,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-derm": {
+        "name": "Dermatoses ocupacionais",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -817,6 +931,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-dift": {
+        "name": "Difteria",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -835,6 +951,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-esqu": {
+        "name": "Esquistossomose",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -853,6 +971,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-fmac": {
+        "name": "Febre Maculosa",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -871,6 +991,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-ftif": {
+        "name": "Febre Tifoide",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -889,6 +1011,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-hans": {
+        "name": "Hanseníase",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -907,6 +1031,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-hant": {
+        "name": "Hantavirose",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -925,6 +1051,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-hepa": {
+        "name": "Hepatites Virais",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -943,6 +1071,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-iexo": {
+        "name": "Intoxicação Exógena",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -961,6 +1091,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-leiv": {
+        "name": "Leishmaniose Visceral",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -979,6 +1111,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-lept": {
+        "name": "Leptospirose",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -997,6 +1131,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-lerd": {
+        "name": "LER/Dort",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -1015,6 +1151,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-ltan": {
+        "name": "Leishmaniose Tegumentar Americana",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -1033,6 +1171,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-mala": {
+        "name": "Malária",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -1051,6 +1191,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-meni": {
+        "name": "Meningite",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -1069,6 +1211,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-ment": {
+        "name": "Transtornos mentais relacionados ao trabalho",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -1087,6 +1231,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-pair": {
+        "name": "Perda auditiva por ruído relacionado ao trabalho",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -1105,6 +1251,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-pest": {
+        "name": "Peste",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -1123,6 +1271,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-pfan": {
+        "name": "Paralisia Flácida Aguda",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -1141,6 +1291,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-pneu": {
+        "name": "Pneumoconioses relacionadas ao trabalho",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -1159,6 +1311,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-raiv": {
+        "name": "Raiva",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -1177,6 +1331,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-sifa": {
+        "name": "Sífilis Adquirida",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -1195,6 +1351,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-sifc": {
+        "name": "Sífilis Congênita",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -1213,6 +1371,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-sifg": {
+        "name": "Sífilis em Gestante",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -1231,6 +1391,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-teta": {
+        "name": "Tétano Acidental",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -1249,6 +1411,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-tetn": {
+        "name": "Tétano Neonatal",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -1267,6 +1431,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-tube": {
+        "name": "Tuberculose",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -1285,6 +1451,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-viol": {
+        "name": "Violência doméstica, sexual e/ou outras violências",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -1303,6 +1471,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-zika": {
+        "name": "Zika Vírus",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -1321,6 +1491,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "base-populacional-ibge-pop": {
+        "name": "POP - Censo e Estimativas",
+        "group": "base-populacional-ibge",
         "periods": [
             {
                 "dir": BASE_PATH + "/IBGE/POP",
@@ -1332,6 +1504,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "base-populacional-ibge-pops": {
+        "name": "POPS - Estimativas por Sexo e Idade",
+        "group": "base-populacional-ibge",
         "periods": [
             {
                 "dir": BASE_PATH + "/IBGE/POPSVS",
@@ -1343,6 +1517,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "base-populacional-ibge-popt": {
+        "name": "POPT - Estimativas TCU",
+        "group": "base-populacional-ibge",
         "periods": [
             {
                 "dir": BASE_PATH + "/IBGE/POPTCU",
@@ -1354,6 +1530,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "base-territorial-mapas": {
+        "name": "Base Territorial - Mapas",
+        "group": "base-territorial",
         "periods": [
             {
                 "dir": "/territorio/mapas",
@@ -1365,6 +1543,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "base-territorial": {
+        "name": "Base Territorial",
+        "group": "base-territorial",
         "periods": [
             {
                 "dir": "/territorio/tabelas",
@@ -1376,6 +1556,8 @@ datasets = {
         "partition": [],
     },
     "base-territorial-conversao": {
+        "name": "Base Territorial - Conversão",
+        "group": "base-territorial",
         "periods": [
             {
                 "dir": "/territorio/conversoes",
@@ -1387,6 +1569,8 @@ datasets = {
         "partition": ["uf"],
     },
     "pce": {
+        "name": "Programa de Controle da Esquistossomose",
+        "group": "pce",
         "periods": [
             {
                 "dir": BASE_PATH + "/PCE/DADOS",
@@ -1398,6 +1582,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "po": {
+        "name": "Painel de Oncologia",
+        "group": "po",
         "periods": [
             {
                 "dir": BASE_PATH + "/PAINEL_ONCOLOGIA/DADOS",
@@ -1409,6 +1595,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "siscolo-cc": {
+        "name": "Citopatológico de Colo de Útero",
+        "group": "siscolo",
         "periods": [
             {
                 "dir": BASE_PATH + "/SISCAN/SISCOLO4/Dados",
@@ -1420,6 +1608,8 @@ datasets = {
         "partition": ["uf", "yearmonth"],
     },
     "siscolo-hc": {
+        "name": "Histopatológico de Colo de Útero",
+        "group": "siscolo",
         "periods": [
             {
                 "dir": BASE_PATH + "/SISCAN/SISCOLO4/Dados",
@@ -1431,6 +1621,8 @@ datasets = {
         "partition": ["uf", "yearmonth"],
     },
     "sismama-cm": {
+        "name": "Citopatológico de Mama",
+        "group": "sismama",
         "periods": [
             {
                 "dir": BASE_PATH + "/SISCAN/SISMAMA/Dados",
@@ -1442,6 +1634,8 @@ datasets = {
         "partition": ["uf", "yearmonth"],
     },
     "sismama-hm": {
+        "name": "Histopatológico de Mama",
+        "group": "sismama",
         "periods": [
             {
                 "dir": BASE_PATH + "/SISCAN/SISMAMA/Dados",
@@ -1453,6 +1647,8 @@ datasets = {
         "partition": ["uf", "yearmonth"],
     },
     "sinan-exan": {
+        "name": "Doenças exantemáticas",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -1471,6 +1667,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-ntra": {
+        "name": "Notificação de Tracoma",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -1489,6 +1687,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-sdta": {
+        "name": "Surto Doenças Transmitidas por Alimentos",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -1507,6 +1707,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-src": {
+        "name": "Síndrome da Rubéola Congênita",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -1525,6 +1727,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-toxc": {
+        "name": "Toxoplasmose Congênita",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -1543,6 +1747,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-toxg": {
+        "name": "Toxoplasmose Gestacional",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -1561,6 +1767,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-trac": {
+        "name": "Inquérito de Tracoma",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -1579,6 +1787,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-varc": {
+        "name": "Varicela",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -1597,6 +1807,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-aida": {
+        "name": "AIDS em adultos",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -1615,6 +1827,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-aidc": {
+        "name": "AIDS em crianças",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -1633,6 +1847,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-espo": {
+        "name": "Esporotricose (Epizootia)",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -1651,6 +1867,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-hiva": {
+        "name": "HIV em adultos",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -1669,6 +1887,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-hivc": {
+        "name": "HIV em crianças",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -1687,6 +1907,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-hive": {
+        "name": "HIV em crianças expostas",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -1705,6 +1927,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-hivg": {
+        "name": "HIV em gestante",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -1723,6 +1947,8 @@ datasets = {
         "partition": ["uf", "year"],
     },
     "sinan-rota": {
+        "name": "Rotavírus",
+        "group": "sinan",
         "periods": [
             {
                 "dir": BASE_PATH + "/SINAN/DADOS/FINAIS",
@@ -1846,5 +2072,57 @@ auxiliary_tables = {
     },
     "sisprenatal": {
         "dir": BASE_PATH + "/SISPRENATAL/201201_/Auxiliar",
+    },
+}
+
+
+datasets_groups = {
+    "base-populacional-ibge": {
+        "name": "Base Populacional - IBGE",
+    },
+    "base-territorial": {
+        "name": "Base Territorial",
+    },
+    "cih": {
+        "name": "CIH: Sistema de Comunicação de Informação Hospitalar",
+    },
+    "ciha": {
+        "name": "CIHA: Sistema de Comunicação de Informação Hospitalar e Ambulatorial",
+    },
+    "cnes": {
+        "name": "CNES: Cadastro Nacional de Estabelecimentos de Saúde",
+    },
+    "pce": {
+        "name": "PCE: Programa de Controle da Esquistossomose",
+    },
+    "po": {
+        "name": "PO: Painel de Oncologia",
+    },
+    "resp": {
+        "name": "RESP: Notificações de casos suspeitos de SCZ",
+    },
+    "sia": {
+        "name": "SIA: Sistema de Informações Ambulatoriais",
+    },
+    "sih": {
+        "name": "SIH: Sistema de Informação Hospitalar",
+    },
+    "sim": {
+        "name": "SIM: Sistema de Informação de Mortalidade",
+    },
+    "sinan": {
+        "name": "SINAN: Sistema de Informação de Agravos de Notificação",
+    },
+    "sinasc": {
+        "name": "SINASC: Sistema de Informação de Nascidos Vivos",
+    },
+    "siscolo": {
+        "name": "SISCOLO: Sistema de Informações de Cânceres de Colo de Útero",
+    },
+    "sismama": {
+        "name": "SISMAMA: Sistema de Informações de Cânceres de Mama",
+    },
+    "sisprenatal": {
+        "name": "SISPRENATAL: Sistema de Monitoramento e Avaliação do Pré-Natal, Parto, Puepério e Criança",
     },
 }
