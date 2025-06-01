@@ -177,9 +177,8 @@ def archive(args: argparse.Namespace):
             for file in files:
                 file: File
                 if not file.is_most_recent:
-                    archivefilepath = archivedatadir / file.filepath.relative_to(
-                        data_dir
-                    )
+                    rel_filepath = file.filepath.relative_to(data_dir)
+                    archivefilepath = archivedatadir / rel_filepath
                     logger.info(f"Moving {file.filepath} to {archivefilepath}")
                     archivefilepath.parent.mkdir(parents=True, exist_ok=True)
                     shutil.move(file.filepath, archivefilepath)
