@@ -263,9 +263,10 @@ def download_data(
 
 
 def list_documentation_files(ftp: ftplib.FTP, dataset: str) -> list[dict]:
-    ftp_dir = meta.docs[dataset]["dir"]
-    ftp.cwd(ftp_dir)
-    files = list_files(ftp, directory=ftp_dir)
+    files = []
+    for ftp_dir in meta.docs[dataset]["dir"]:
+        ftp.cwd(ftp_dir)
+        files.extend(list_files(ftp, directory=ftp_dir))
     return files
 
 
@@ -309,9 +310,10 @@ def download_documentation(
 
 
 def list_auxiliary_tables_files(ftp: ftplib.FTP, dataset: str) -> list[dict]:
-    ftp_dir = meta.auxiliary_tables[dataset]["dir"]
-    ftp.cwd(ftp_dir)
-    files = list_files(ftp, directory=ftp_dir)
+    files = []
+    for ftp_dir in meta.auxiliary_tables[dataset]["dir"]:
+        ftp.cwd(ftp_dir)
+        files.extend(list_files(ftp, directory=ftp_dir))
     return files
 
 

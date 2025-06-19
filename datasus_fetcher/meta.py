@@ -1971,107 +1971,107 @@ datasets = {
 
 docs = {
     "base-populacional-ibge": {
-        "dir": BASE_PATH + "/IBGE/DOC",
+        "dir": [BASE_PATH + "/IBGE/DOC"],
     },
     "base-territorial": {
-        "dir": "/territorio/doc",
+        "dir": ["/territorio/doc"],
     },
     "cmd": {
-        "dir": BASE_PATH + "/CMD/201701_/doc",
+        "dir": [BASE_PATH + "/CMD/201701_/doc"],
     },
     "ciha": {
-        "dir": BASE_PATH + "/CIHA/201101_/Doc",
+        "dir": [BASE_PATH + "/CIHA/201101_/Doc"],
     },
     "cnes": {
-        "dir": BASE_PATH + "/CNES/200508_/doc",
+        "dir": [BASE_PATH + "/CNES/200508_/doc"],
     },
     "pce": {
-        "dir": BASE_PATH + "/PCE/DOCS/",
+        "dir": [BASE_PATH + "/PCE/DOCS/"],
     },
     "po": {
-        "dir": BASE_PATH + "/PAINEL_ONCOLOGIA/DOC",
+        "dir": [BASE_PATH + "/PAINEL_ONCOLOGIA/DOC"],
     },
     "resp": {
-        "dir": BASE_PATH + "/RESP/DOCS",
+        "dir": [BASE_PATH + "/RESP/DOCS"],
     },
     "sia": {
-        "dir": BASE_PATH + "/SIASUS/200801_/Doc",
+        "dir": [BASE_PATH + "/SIASUS/200801_/Doc"],
     },
     "sih": {
-        "dir": BASE_PATH + "/SIHSUS/200801_/Doc",
+        "dir": [BASE_PATH + "/SIHSUS/200801_/Doc"],
     },
-    "sim-cid09": {
-        "dir": BASE_PATH + "/SIM/CID9/DOCS",
-    },
-    "sim-cid10": {
-        "dir": BASE_PATH + "/SIM/CID10/DOCS",
+    "sim": {
+        "dir": [
+            BASE_PATH + "/SIM/CID9/DOCS",
+            BASE_PATH + "/SIM/CID10/DOCS",
+        ],
     },
     "sinan": {
-        "dir": BASE_PATH + "/SINAN/DOCS",
+        "dir": [BASE_PATH + "/SINAN/DOCS"],
     },
-    "sinasc-anterior": {
-        "dir": BASE_PATH + "/SINASC/ANT/DOCS",
-    },
-    "sinasc-nova": {
-        "dir": BASE_PATH + "/SINASC/NOV/DOCS",
+    "sinasc": {
+        "dir": [
+            BASE_PATH + "/SINASC/ANT/DOCS",
+            BASE_PATH + "/SINASC/NOV/DOCS",
+        ],
     },
 }
 
 
 auxiliary_tables = {
     "base-populacional-ibge": {
-        "dir": BASE_PATH + "/IBGE/Auxiliar",
+        "dir": [BASE_PATH + "/IBGE/Auxiliar"],
     },
     "cih": {
-        "dir": BASE_PATH + "/CIH/200801_201012/Auxiliar",
+        "dir": [BASE_PATH + "/CIH/200801_201012/Auxiliar"],
     },
     "ciha": {
-        "dir": BASE_PATH + "/CIHA/201101_/Auxiliar",
+        "dir": [BASE_PATH + "/CIHA/201101_/Auxiliar"],
     },
     "cmd": {
-        "dir": BASE_PATH + "/CMD/201701_/Auxiliar",
+        "dir": [BASE_PATH + "/CMD/201701_/Auxiliar"],
     },
     "cnes": {
-        "dir": BASE_PATH + "/CNES/200508_/Auxiliar",
+        "dir": [BASE_PATH + "/CNES/200508_/Auxiliar"],
     },
     "pce": {
-        "dir": BASE_PATH + "/PCE/AUXILIAR",
+        "dir": [BASE_PATH + "/PCE/AUXILIAR"],
     },
     "po": {
-        "dir": BASE_PATH + "/PAINEL_ONCOLOGIA/AUXILIAR",
+        "dir": [BASE_PATH + "/PAINEL_ONCOLOGIA/AUXILIAR"],
     },
     "resp": {
-        "dir": BASE_PATH + "/RESP/AUXILIAR",
+        "dir": [BASE_PATH + "/RESP/AUXILIAR"],
     },
     "sia": {
-        "dir": BASE_PATH + "/SIASUS/200801_/Auxiliar",
+        "dir": [BASE_PATH + "/SIASUS/200801_/Auxiliar"],
     },
     "sih": {
-        "dir": BASE_PATH + "/SIHSUS/200801_/Auxiliar",
+        "dir": [BASE_PATH + "/SIHSUS/200801_/Auxiliar"],
     },
-    "sim-cid09": {
-        "dir": BASE_PATH + "/SIM/CID9/TAB",
-    },
-    "sim-cid10": {
-        "dir": BASE_PATH + "/SIM/CID10/TAB",
+    "sim": {
+        "dir": [
+            BASE_PATH + "/SIM/CID9/TAB",
+            BASE_PATH + "/SIM/CID10/TAB",
+        ],
     },
     "sinan": {
-        "dir": BASE_PATH + "/SINAN/AUXILIAR",
+        "dir": [BASE_PATH + "/SINAN/AUXILIAR"],
     },
-    "sinasc-anterior": {
-        "dir": BASE_PATH + "/SINASC/1994_1995/Auxiliar",
-    },
-    "sinasc-nova": {
-        "dir": BASE_PATH + "/SINASC/1996_/Auxiliar",
+    "sinasc": {
+        "dir": [
+            BASE_PATH + "/SINASC/1994_1995/Auxiliar",
+            BASE_PATH + "/SINASC/1996_/Auxiliar",
+        ],
     },
     "siscolo": {
-        "dir": BASE_PATH + "/SISCAN/SISCOLO4/Auxiliar",
+        "dir": [BASE_PATH + "/SISCAN/SISCOLO4/Auxiliar"],
     },
     "sismama": {
-        "dir": BASE_PATH + "/SISCAN/SISMAMA/Auxiliar",
+        "dir": [BASE_PATH + "/SISCAN/SISMAMA/Auxiliar"],
     },
     "sisprenatal": {
-        "dir": BASE_PATH + "/SISPRENATAL/201201_/Auxiliar",
+        "dir": [BASE_PATH + "/SISPRENATAL/201201_/Auxiliar"],
     },
 }
 
