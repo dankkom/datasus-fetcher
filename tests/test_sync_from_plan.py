@@ -73,6 +73,174 @@ def sem_download(monkeypatch):
     return chamadas
 
 
+@pytest.fixture
+def sem_download_com_force(monkeypatch):
+    """Captura entradas e o flag `force` passado ao download (sem rede)."""
+    chamadas: list = []
+
+    def _fake(entries, output, workers=2, *, force=False):
+        chamadas.append((list(entries), Path(output), workers, force))
+        return (len(entries), len(entries), [])
+
+    monkeypatch.setattr(plugin.fetcher_app, "download_datasets", _fake)
+    return chamadas
+
+
+def _check_plan_com_itens(tmp_path, ftp_falso):
+    """Gera o plano do check para ftp_falso e o salva em JSON."""
+    saida_check = tmp_path / "check-out"
+    entradas = plugin.datasus_list_datasets(DATASET)
+    itens = [plugin._datasus_check_entry(e, saida_check) for e in entradas]
+    plano = CheckPlan(
+        fetcher="datasus-fetcher",
+        output_dir=str(saida_check),
+        generated_at="2026-01-01T00:00:00+00:00",
+        items=itens,
+    )
+    dd = json.loads(plano.to_json())
+    plano_json = tmp_path / "plano.json"
+    plano_json.write_text(plano.to_json(), encoding="utf-8")
+    return dd, plano_json, itens
+
+
+def test_check_preenche_remote_last_modified_dados(tmp_path, ftp_falso):
+    ftp_falso[0].datetime = dt.datetime(2020, 2, 1, 3, 4, 5)
+    ftp_falso[1].datetime = dt.datetime(2021, 7, 8, 9, 10, 11)
+    entradas = plugin.datasus_list_datasets(DATASET)
+    itens = [plugin._datasus_check_entry(e, tmp_path) for e in entradas]
+    obtido = {item.id: item.remote_last_modified for item in itens}
+    assert obtido == {
+        ftp_falso[0].filename: dt.datetime(2020, 2, 1, 3, 4, 5).isoformat(),
+        ftp_falso[1].filename: dt.datetime(2021, 7, 8, 9, 10, 11).isoformat(),
+    }
+
+
+def test_check_preenche_remote_last_modified_documentacao(tmp_path, monkeypatch):
+    monkeypatch.setattr(plugin, "_FTP_CONN", _FakeFtp())
+    monkeypatch.setattr(plugin, "_get_ftp", lambda: plugin._FTP_CONN)
+    doc_dataset = "cnes"
+
+    def _doc(nome, dt_):
+        return {
+            "filename": nome,
+            "full_path": f"/docs/{nome}",
+            "datetime": dt_,
+            "size": 7,
+        }
+
+    monkeypatch.setattr(
+        fetcher_module,
+        "list_documentation_files",
+        lambda ftp, dataset: [_doc("doc.pdf", dt.datetime(2024, 3, 4, 5, 6, 7))],
+    )
+    monkeypatch.setattr(fetcher_module, "list_dataset_files", lambda ftp, dataset: [])
+    monkeypatch.setattr(
+        fetcher_module, "list_auxiliary_tables_files", lambda ftp, dataset: []
+    )
+    entradas = plugin.datasus_list_datasets(doc_dataset)
+    itens = [plugin._datasus_check_entry(e, tmp_path) for e in entradas]
+    assert itens[0].remote_last_modified == dt.datetime(2024, 3, 4, 5, 6, 7).isoformat()
+    assert itens[0].remote_size == 7
+    assert itens[0].local_path.endswith("_documentacao/cnes/doc@20240304.pdf")
+
+
+def test_entry_last_modified_none_sem_data():
+    assert plugin._entry_last_modified({"type": "data", "id": "x"}) is None
+    assert plugin._entry_last_modified({"type": "doc", "id": "x"}) is None
+    assert (
+        plugin._entry_last_modified(
+            {"type": "data", "id": "x", "remote_file": {"filename": "x.dbc"}}
+        )
+        is None
+    )
+    assert (
+        plugin._entry_last_modified({"type": "aux", "id": "x", "datetime": None})
+        is None
+    )
+    assert plugin._entry_last_modified(
+        {
+            "type": "data",
+            "remote_file": {"__datetime__": True, "value": "2020-02-01T00:00:00"},
+        }
+    ) == dt.datetime(2020, 2, 1)
+
+
+def test_entry_last_modified_aceita_date():
+    esperado = dt.datetime(2024, 3, 4)
+    assert (
+        plugin._entry_last_modified({"type": "doc", "datetime": dt.date(2024, 3, 4)})
+        == esperado
+    )
+    assert (
+        plugin._entry_last_modified(
+            {"type": "aux", "datetime": {"__date__": True, "value": "2024-03-04"}}
+        )
+        == esperado
+    )
+    entrada = {"type": "doc", "id": "d", "datetime": dt.date(2024, 3, 4)}
+    assert plugin._entry_last_modified(entrada).isoformat() == "2024-03-04T00:00:00"
+
+
+def test_check_plano_roundtrip_remote_last_modified(tmp_path, ftp_falso):
+    dd, _plano_json, _itens = _check_plan_com_itens(tmp_path, ftp_falso)
+    esperado = dt.datetime(2020, 2, 1).isoformat()
+    assert all(i["remote_last_modified"] == esperado for i in dd["items"])
+    restaurado = CheckPlan.from_dict(dd)
+    assert all(i.remote_last_modified == esperado for i in restaurado.items)
+    for item in restaurado.items:
+        data = plugin._entry_from_plan_dict(dict(item.entry))
+        assert data["remote_file"].datetime == dt.datetime(2020, 2, 1)
+
+
+def test_sync_from_plan_force_true(tmp_path, ftp_falso, sem_download_com_force):
+    _dd, plano_json, itens = _check_plan_com_itens(tmp_path, ftp_falso)
+    resultado = runner.invoke(
+        plugin.app,
+        ["sync", "--from-plan", str(plano_json), "-o", str(tmp_path), "--force"],
+    )
+    assert resultado.exit_code == 0, resultado.output
+    baixadas, destino, workers, force = sem_download_com_force[0]
+    assert force is True
+    assert destino == tmp_path
+    assert [e["id"] for e in baixadas] == [
+        item.id for item in itens if item.action == "download"
+    ]
+
+
+def test_sync_sem_force_mantem_chamada_original(tmp_path, ftp_falso, monkeypatch):
+    chamadas: list = []
+
+    def _fake(*args, **kwargs):
+        chamadas.append((args, kwargs))
+        return (0, 0, [])
+
+    monkeypatch.setattr(plugin.fetcher_app, "download_datasets", _fake)
+    _dd, plano_json, itens = _check_plan_com_itens(tmp_path, ftp_falso)
+    resultado = runner.invoke(
+        plugin.app,
+        ["sync", "--from-plan", str(plano_json), "-o", str(tmp_path), "-t", "3"],
+    )
+    assert resultado.exit_code == 0, resultado.output
+    assert len(chamadas) == 1
+    args, kwargs = chamadas[0]
+    entradas, destino = args[0], args[1]
+    assert [e["id"] for e in entradas] == [item.id for item in itens]
+    assert Path(destino) == tmp_path
+    assert kwargs == {"workers": 3}
+    assert "force" not in kwargs
+
+
+def test_sync_force_sem_from_plan(tmp_path, ftp_falso, sem_download_com_force):
+    resultado = runner.invoke(
+        plugin.app, ["sync", DATASET, "-o", str(tmp_path), "--force"]
+    )
+    assert resultado.exit_code == 0, resultado.output
+    baixadas, destino, _workers, force = sem_download_com_force[0]
+    assert force is True
+    assert destino == tmp_path
+    assert len(baixadas) == 2
+
+
 def test_entry_plan_roundtrip_preserva_remote_file(ftp_falso):
     entradas = plugin.datasus_list_datasets(DATASET)
     assert len(entradas) == 2

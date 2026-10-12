@@ -244,13 +244,51 @@ def _from_jsonable(obj):
     return obj
 
 
+def _entry_last_modified(entry: dict):
+    """Extract the remote last-modified datetime of an entry, when available.
+
+    Args:
+        entry (dict): The dataset entry produced by ``datasus_list_datasets``.
+
+    Returns:
+        datetime.datetime | None: The listing timestamp (a ``date`` becomes
+        midnight), or None when absent.
+    """
+    if entry.get("type") == "data":
+        remote_file = entry.get("remote_file")
+        if isinstance(remote_file, RemoteFile):
+            raw = remote_file.datetime
+        elif isinstance(remote_file, dict):
+            if remote_file.get("__datetime__"):
+                raw = remote_file
+            else:
+                raw = remote_file.get("datetime")
+        else:
+            raw = None
+    else:
+        raw = entry.get("datetime")
+    if isinstance(raw, dt.datetime):
+        return raw
+    if isinstance(raw, dt.date):
+        return dt.datetime.combine(raw, dt.time())
+    if isinstance(raw, dict) and (raw.get("__datetime__") or raw.get("__date__")):
+        try:
+            parsed = dt.datetime.fromisoformat(str(raw["value"]))
+        except ValueError:
+            return None
+        return parsed
+    return None
+
+
 def _datasus_check_entry(entry: dict, output_dir: Path) -> CheckPlanItem:
     """Build a freshness verdict for one DATASUS entry without downloading.
 
     The generic SDK probe uses HTTP ``HEAD``, which ``FtpClient`` does not
     implement, so freshness here is the honest local heuristic: an entry
     whose stamped local file already exists is ``skip-up-to-date``, otherwise
-    ``download``. The stored entry is serialized via
+    ``download``. ``remote_last_modified`` carries the FTP listing timestamp
+    in ISO 8601 (None when the listing omits it); ``remote_size`` carries the
+    remote size. The stored entry is serialized via
     :func:`_entry_to_plan_dict` so ``check --json`` round-trips through
     ``sync --from-plan``.
 
@@ -269,6 +307,7 @@ def _datasus_check_entry(entry: dict, output_dir: Path) -> CheckPlanItem:
     local = datasus_path_builder(output_dir, entry, None)
     exists = local.exists()
     size = entry.get("size")
+    last_modified = _entry_last_modified(entry)
     return CheckPlanItem(
         dataset=dataset,
         id=eid,
@@ -276,7 +315,9 @@ def _datasus_check_entry(entry: dict, output_dir: Path) -> CheckPlanItem:
         partition=partition if isinstance(partition, str) else None,
         local_path=str(local),
         remote_etag=None,
-        remote_last_modified=None,
+        remote_last_modified=(
+            last_modified.isoformat() if last_modified is not None else None
+        ),
         remote_size=size if isinstance(size, int) else None,
         local_exists=exists,
         action="skip-up-to-date" if exists else "download",
@@ -402,6 +443,14 @@ def cmd_sync(
             "de grupos).",
         ),
     ] = None,
+    force: Annotated[
+        bool,
+        typer.Option(
+            "--force",
+            help="Ignora a checagem de frescor local (arquivo/sidecar) "
+            "e baixa todas as entradas selecionadas (útil com --from-plan)",
+        ),
+    ] = False,
     docs: Annotated[
         bool,
         typer.Option("--docs", help="Também baixar a documentação"),
@@ -500,7 +549,10 @@ def cmd_sync(
             )
             return
 
-        fetcher_app.download_datasets(entries, output, workers=threads)
+        if force:
+            fetcher_app.download_datasets(entries, output, workers=threads, force=True)
+        else:
+            fetcher_app.download_datasets(entries, output, workers=threads)
 
         if convert:
             try:
