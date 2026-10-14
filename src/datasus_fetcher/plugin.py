@@ -577,8 +577,7 @@ def cmd_sync(
             except ImportError:
                 console.print(
                     "[red]Erro:[/red] --convert requer extras de análise: "
-                    r"uv add 'datasus-fetcher\[analysis]' "
-                    "--index https://index.quantilica.com/simple/"
+                    "quantilica install datasus --extra analysis"
                 )
                 raise typer.Exit(1) from None
 
@@ -688,8 +687,7 @@ def cmd_convert(
         except ImportError:
             console.print(
                 "[red]Erro:[/red] conversão para Parquet requer extras de análise: "
-                r"uv add 'datasus-fetcher\[analysis]' "
-                "--index https://index.quantilica.com/simple/"
+                "quantilica install datasus --extra analysis"
             )
             raise typer.Exit(1) from None
 
@@ -785,8 +783,7 @@ def cmd_pipeline(
     except ImportError:
         console.print(
             "[red]Erro:[/red] pipeline requer extras de análise: "
-            r"uv add 'datasus-fetcher\[analysis]' "
-            "--index https://index.quantilica.com/simple/"
+            "quantilica install datasus --extra analysis"
         )
         raise typer.Exit(1) from None
 
