@@ -52,6 +52,25 @@ def _systems_to_datasets(systems: list[str] | None) -> list[str] | None:
         raise typer.BadParameter(str(exc)) from exc
 
 
+def _require_known_datasets(targets: list[str]) -> None:
+    """Fail before touching the network when a dataset ID is not in the catalog.
+
+    Args:
+        targets (list[str]): Dataset IDs selected via arguments and ``--system``.
+
+    Raises:
+        typer.BadParameter: If any ID is unknown (usage error, exit code 2).
+    """
+    unknown = sorted(t for t in targets if t not in meta.datasets)
+    if unknown:
+        raise typer.BadParameter(
+            f"dataset(s) não reconhecido(s): {', '.join(unknown)}. "
+            "Os IDs válidos aparecem em 'quantilica datasus list' "
+            "(ex.: sim-do-cid10, sinasc-dn, sih-rd); "
+            "para um sistema inteiro use --system (ex.: --system sim)."
+        )
+
+
 def _get_ftp():
     global _FTP_CONN
     if _FTP_CONN is None:
@@ -369,6 +388,7 @@ def cmd_list(
     setup_rich_logging(verbose, console=console)
     systems = _systems_to_datasets(systems)
     targets = resolve_dataset_targets(datasets, systems) or list(meta.datasets.keys())
+    _require_known_datasets(targets)
     with console.status("[cyan]Conectando ao FTP do DATASUS...[/cyan]"):
         _get_ftp()
 
@@ -379,9 +399,6 @@ def cmd_list(
     t.add_column("Tamanho (Data)", justify="right")
 
     for dataset in sorted(targets):
-        if dataset not in meta.datasets:
-            console.print(f"[red]Dataset '{dataset}' não reconhecido.[/red]")
-            continue
         files = [e for e in fetcher_app.list_datasets(dataset) if e["type"] == "data"]
         if not files:
             continue
@@ -495,6 +512,7 @@ def cmd_sync(
         targets = resolve_dataset_targets(datasets, systems) or list(
             meta.datasets.keys()
         )
+        _require_known_datasets(targets)
         slicer = Slicer(start_time=start, end_time=end, regions=regions)
 
         try:
@@ -505,10 +523,6 @@ def cmd_sync(
 
             entries = []
             for dataset in sorted(targets):
-                if dataset not in meta.datasets:
-                    console.print(f"[red]Dataset '{dataset}' não reconhecido.[/red]")
-                    continue
-
                 for e in fetcher_app.list_datasets(dataset):
                     if e["type"] == "data":
                         if slicer is not None and not slicer(e["remote_file"]):

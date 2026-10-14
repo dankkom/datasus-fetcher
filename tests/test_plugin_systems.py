@@ -66,6 +66,18 @@ class TestPluginCliWiring(unittest.TestCase):
         self.assertNotEqual(result.exit_code, 0)
         self.assertIn("Unknown system or dataset", result.output)
 
+    def test_sync_rejects_unknown_dataset_with_exit_code(self):
+        """Dataset inexistente deve falhar com código != 0, antes de conectar."""
+        result = runner.invoke(app, ["sync", "sim", "--dry-run"])
+        self.assertNotEqual(result.exit_code, 0)
+        self.assertIn("não reconhecido", result.output)
+        self.assertIn("--system", result.output)
+
+    def test_list_rejects_unknown_dataset_with_exit_code(self):
+        result = runner.invoke(app, ["list", "sinasc"])
+        self.assertNotEqual(result.exit_code, 0)
+        self.assertIn("não reconhecido", result.output)
+
     def test_mapping_consistency_with_meta(self):
         result = _systems_to_datasets(["sim"])
         self.assertEqual(result, sorted(meta.SYSTEM_DATASETS["sim"]))
