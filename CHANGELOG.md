@@ -5,7 +5,7 @@ Todas as mudanças notáveis deste projeto serão documentadas neste arquivo.
 O formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/),
 e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
-## [Não lançado]
+## [0.12.1] - 2026-10-14
 
 ### Alterado
 - A extensão Rust (`_datasus_dbc`) passa a ser compilada como `abi3-py312`: um único wheel por plataforma serve do Python 3.12 em diante, em vez de um wheel por versão do Python. Saída conferida byte a byte contra a extensão anterior (`DOAC1996.dbc`, 662.109 bytes, mesmo `sha256`) em Python 3.12 e 3.13.
