@@ -1,0 +1,150 @@
+name: Build wheels
+
+# Compila a extensão Rust (`_datasus_dbc`) como wheel abi3 (cp312-abi3): um
+# arquivo por plataforma serve do Python 3.12 em diante. Chamado pelo
+# publish.yml (que anexa os artefatos ao GitHub Release) e executável à parte,
+# sem publicar nada, para exercitar a matriz antes de uma tag.
+
+on:
+  workflow_call:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - "Cargo.toml"
+      - "Cargo.lock"
+      - "src/lib.rs"
+      - "pyproject.toml"
+      - ".github/workflows/wheels.yml"
+      - ".github/workflows/publish.yml"
+
+jobs:
+  linux:
+    name: Wheel (linux-${{ matrix.target }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        target: [x86_64, aarch64]
+    steps:
+      - uses: actions/checkout@v4
+
+      # manylinux2014 (glibc >= 2.17): o container do maturin-action compila
+      # (e, para aarch64, faz a compilação cruzada), então o wheel não herda a
+      # glibc do runner.
+      - name: Build wheel
+        uses: PyO3/maturin-action@v1
+        with:
+          target: ${{ matrix.target }}
+          manylinux: "2014"
+          args: --release --out dist
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wheels-linux-${{ matrix.target }}
+          path: dist
+
+  macos:
+    name: Wheel (macos-${{ matrix.target }})
+    # Os dois alvos saem do runner arm64: o abi3 dispensa um Python x86_64 e a
+    # extensão não depende de runner Intel, cujo rótulo muda com o tempo.
+    runs-on: macos-14
+    strategy:
+      fail-fast: false
+      matrix:
+        target: [x86_64, aarch64]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build wheel
+        uses: PyO3/maturin-action@v1
+        with:
+          target: ${{ matrix.target }}
+          args: --release --out dist
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wheels-macos-${{ matrix.target }}
+          path: dist
+
+  windows:
+    name: Wheel (windows-x64)
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          architecture: x64
+
+      - name: Build wheel
+        uses: PyO3/maturin-action@v1
+        with:
+          target: x64
+          args: --release --out dist
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wheels-windows-x64
+          path: dist
+
+  sdist:
+    name: Source distribution
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build sdist
+        uses: PyO3/maturin-action@v1
+        with:
+          command: sdist
+          args: --out dist
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wheels-sdist
+          path: dist
+
+  # Instala o wheel recém-compilado num ambiente limpo e descomprime o .dbc das
+  # fixtures. Cobre só as plataformas que o runner executa nativamente; o
+  # aarch64 e o macOS x86_64 (compilação cruzada) não são executados aqui.
+  smoke:
+    name: Smoke (${{ matrix.os }}, Python ${{ matrix.python }})
+    needs: [linux, macos, windows]
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-14, windows-latest]
+        python: ["3.12", "3.13"]
+        include:
+          - { os: ubuntu-latest, artifact: wheels-linux-x86_64 }
+          - { os: macos-14, artifact: wheels-macos-aarch64 }
+          - { os: windows-latest, artifact: wheels-windows-x64 }
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v5
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: ${{ matrix.artifact }}
+          path: dist
+
+      - name: Instala o wheel e descomprime a fixture
+        shell: bash
+        run: |
+          set -euo pipefail
+          wheel="$(echo dist/*.whl)"
+          echo "wheel: $wheel"
+          case "$wheel" in
+            *-cp312-abi3-*) ;;
+            *) echo "::error::esperado wheel cp312-abi3, veio $wheel"; exit 1 ;;
+          esac
+          uv run --no-project --python "${{ matrix.python }}" --with "$wheel" \
+            python -I tests/smoke_extension.py tests/fixtures/DOAC1996.dbc

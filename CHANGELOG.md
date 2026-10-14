@@ -5,6 +5,21 @@ Todas as mudanças notáveis deste projeto serão documentadas neste arquivo.
 O formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/),
 e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
+## [Não lançado]
+
+### Alterado
+- A extensão Rust (`_datasus_dbc`) passa a ser compilada como `abi3-py312`: um único wheel por plataforma serve do Python 3.12 em diante, em vez de um wheel por versão do Python. Saída conferida byte a byte contra a extensão anterior (`DOAC1996.dbc`, 662.109 bytes, mesmo `sha256`) em Python 3.12 e 3.13.
+- `publish.yml` deixa de rodar `uv build` num só runner e passa a chamar o workflow reutilizável `wheels.yml`: wheels `manylinux2014` para Linux x86_64 e aarch64, macOS x86_64 e arm64 e Windows x64, mais o sdist. O Release só é criado, e o `quantilica-index` só é avisado, depois de todos os jobs passarem. Antes, o único wheel era `cp312-cp312-linux_x86_64` (sem tag `manylinux`), e qualquer outra combinação compilava o sdist.
+- `pyproject.toml`: o classificador `Operating System :: OS Independent` dá lugar a Linux, macOS e Windows; acrescentado `Implementation :: CPython` (o `abi3` é só CPython).
+- `Cargo.toml`: versão alinhada à do `pyproject.toml` (estava em 0.11.0).
+
+### Adicionado
+- `.github/workflows/wheels.yml`: constrói os wheels e o sdist, e instala o wheel recém-compilado num ambiente limpo (Python 3.12 e 3.13, Linux x86_64, macOS arm64 e Windows x64) para descomprimir uma fixture e conferir o `sha256`. Também roda por `workflow_dispatch` e em PRs que tocam a extensão, sem publicar.
+- `tests/smoke_extension.py`: a verificação acima, fora da coleta do pytest.
+
+### Corrigido
+- `README.md` ainda citava o extra `analytics`, removido na 0.12.0; o nome correto é `analysis`.
+
 ## [0.12.0] - 2026-10-14
 
 ### Alterado

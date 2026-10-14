@@ -37,6 +37,8 @@ uv add datasus-fetcher --index https://index.quantilica.com/simple/
 uv add 'datasus-fetcher[analysis]' --index https://index.quantilica.com/simple/
 ```
 
+A extensão Rust vem pronta nos wheels do índice, sem compilar: Linux (x86_64 e aarch64, `manylinux2014`), macOS (Intel e Apple Silicon) e Windows x64, para Python 3.12 ou superior (wheel `cp312-abi3`). Em outra combinação (Alpine/musl, Python com free-threading) o instalador usa o código-fonte, que exige a toolchain Rust e o `maturin`.
+
 O download e a descompactação nativa DBC → DBF não exigem dependências analíticas. O extra `analysis` traz Polars, `fastdbf` e `dbfread` para a leitura direta, a limpeza e a conversão para Parquet.
 
 ## Uso Rápido
@@ -231,7 +233,7 @@ datasus-fetcher decompress entrada.dbc saida.dbf
 
 ### `convert` — Converter para Parquet tratado
 
-Converte arquivos `.dbc` ou `.dbf` diretamente em Parquet colunar de alta compressão (ZSTD), higienizando sentinelas nulos, preservando zeros à esquerda em identificadores e tipando datas. Requer a instalação com o extra `analytics`:
+Converte arquivos `.dbc` ou `.dbf` diretamente em Parquet colunar de alta compressão (ZSTD), higienizando sentinelas nulos, preservando zeros à esquerda em identificadores e tipando datas. Requer a instalação com o extra `analysis`:
 
 ```sh
 # Converter um único arquivo DBC para Parquet
@@ -676,7 +678,7 @@ convert_directory(
 
 ### Regras de Tratamento e Saneamento dos Dados
 
-Ao utilizar o extra `analytics`, o pipeline aplica regras canônicas de qualidade:
+Ao utilizar o extra `analysis`, o pipeline aplica regras canônicas de qualidade:
 - **Sentinelas Nulos:** Converte sequências como `"\N"`, `""`, `"999999"`, `"000000"`, `"NA"` em valores nulos reais (`null`).
 - **Preservação de Códigos:** Colunas de códigos estruturados (ex: `CODMUNRES`, `CODMUNNAT`, `CAUSABAS`, `CID10`, `CBO`, `CNES`, procedimentos SUS) são preservadas estritamente como string com preenchimento correto de zeros à esquerda (`zfill`), impedindo truncamento numérico acidental.
 - **Tipagem de Datas:** Colunas temporais (`DTOBITO`, `DTNASC`, `DTNOTIF`, etc.) são convertidas para o tipo `Date` nativo do Polars (`pl.Date`), tratando formatos brasileiros `DDMMAAAA`.

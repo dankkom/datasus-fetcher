@@ -6,20 +6,29 @@ on:
       - "v*"
 
 jobs:
+  # Compila os wheels abi3 (Linux x86_64/aarch64, macOS x86_64/arm64, Windows
+  # x64) e o sdist, e testa os que o runner executa. Se qualquer job falhar, o
+  # release abaixo não roda.
+  wheels:
+    name: Build wheels
+    uses: ./.github/workflows/wheels.yml
+
   release:
     name: Create Release & Dispatch
+    needs: wheels
     runs-on: ubuntu-latest
     permissions:
       contents: write
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: wheels-*
+          merge-multiple: true
+          path: dist
 
-      - name: Install uv
-        uses: astral-sh/setup-uv@v5
-
-      - name: Build sdist and wheel
-        run: uv build
+      - name: List distributions
+        run: ls -l dist
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
@@ -28,6 +37,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      # O índice é gerado a partir dos assets do Release: só dispara depois de
+      # todos os wheels estarem anexados.
       - name: Dispatch Event to quantilica-index
         uses: peter-evans/repository-dispatch@v3
         with:
