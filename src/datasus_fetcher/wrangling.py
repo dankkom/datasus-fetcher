@@ -175,14 +175,16 @@ def convert_file(
             extra_columns=extra_cols,
         )
     elif src.suffix.lower() == ".dbf":
-        df = reader.read_dbf(src)
-        if clean:
-            df = reader.wrangle_datasus(
-                df,
+
+        def _wrangle(frame):
+            return reader.wrangle_datasus(
+                frame,
                 dataset=effective_dataset,
                 lowercase=lowercase,
                 extra_columns=extra_cols,
             )
+
+        df = reader.read_dbf(src, transform=_wrangle if clean else None)
     else:
         raise ValueError(
             f"Extensão não suportada para conversão: '{src.suffix}'. "

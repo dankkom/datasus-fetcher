@@ -3,7 +3,9 @@
 from __future__ import annotations
 
 import logging
+import struct
 import tempfile
+from collections.abc import Callable, Iterator
 from pathlib import Path
 from typing import TYPE_CHECKING, Any
 
@@ -19,6 +21,126 @@ if TYPE_CHECKING:
     import polars as pl
 
 logger = logging.getLogger(__name__)
+
+# fastdbf materializa o arquivo inteiro em ``to_arrow()`` e o pico de memória fica em
+# cerca de 12x o tamanho do .dbf (medido em 2026-10-13: 529 MiB de .dbf -> 6,4 GB).
+# Acima de ``2 * DBF_CHUNK_BYTES`` o arquivo é lido em pedaços desse tamanho.
+DBF_CHUNK_BYTES = 32 * 2**20
+
+
+def _iter_dbf_chunks(dbf_path: Path, chunk_bytes: int, tmp_dir: Path) -> Iterator[Path]:
+    """Divide um .dbf em .dbf menores (mesmo cabeçalho, menos registros).
+
+    O formato dBASE tem cabeçalho de tamanho fixo (bytes 8-9), registros de tamanho fixo
+    (bytes 10-11) e a contagem de registros nos bytes 4-7. Cada pedaço copia o cabeçalho
+    com a contagem ajustada, uma fatia contígua de registros e o terminador ``0x1A``.
+    Os arquivos são gravados em ``tmp_dir`` e removidos assim que o chamador avança.
+
+    Args:
+        dbf_path: Arquivo .dbf de origem.
+        chunk_bytes: Tamanho alvo, em bytes de registros, de cada pedaço.
+        tmp_dir: Pasta temporária para os pedaços.
+
+    Yields:
+        Caminho de cada pedaço, em ordem.
+    """
+    with open(dbf_path, "rb") as src:
+        header = src.read(32)
+        n_records = struct.unpack("<I", header[4:8])[0]
+        header_len, record_len = struct.unpack("<HH", header[8:12])
+        src.seek(0)
+        full_header = src.read(header_len)
+        per_chunk = max(1, chunk_bytes // max(record_len, 1))
+        done = 0
+        index = 0
+        while done < n_records:
+            count = min(per_chunk, n_records - done)
+            piece = tmp_dir / f"{dbf_path.stem}.{index:05d}.dbf"
+            with open(piece, "wb") as out:
+                out.write(full_header[:4] + struct.pack("<I", count) + full_header[8:])
+                src.seek(header_len + done * record_len)
+                remaining = count * record_len
+                while remaining:
+                    block = src.read(min(remaining, 8 * 2**20))
+                    if not block:
+                        raise ValueError(
+                            f"{dbf_path} termina antes dos {n_records} registros"
+                        )
+                    out.write(block)
+                    remaining -= len(block)
+                out.write(b"\x1a")
+            yield piece
+            piece.unlink(missing_ok=True)
+            done += count
+            index += 1
+
+
+def _read_dbf_fastdbf(dbf_path: Path) -> pl.DataFrame:
+    import fastdbf
+    import polars as pl
+
+    with fastdbf.Table(str(dbf_path)).open("r") as table:
+        return _normalize_frame(pl.from_arrow(table.to_arrow()))
+
+
+def _read_dbf_dbfread(dbf_path: Path, encoding: str) -> pl.DataFrame:
+    """Lê um .dbf com dbfread (Python puro): lento e pesado, mas tolerante."""
+    import polars as pl
+
+    try:
+        import dbfread
+    except ImportError as err:
+        raise ImportError(
+            "Leitura de arquivos DBF requer extras de análise: "
+            "uv add 'datasus-fetcher[analysis]' "
+            "--index https://index.quantilica.com/simple/"
+        ) from err
+
+    table = dbfread.DBF(
+        str(dbf_path),
+        encoding=encoding,
+        ignore_missing_memofile=True,
+        char_decode_errors="replace",
+    )
+    # Mesmo formato do fastdbf: nomes em maiúsculas e coluna ``_deleted``. O dbfread já
+    # descarta os registros deletados, então a coluna é sempre falsa.
+    cols: dict[str, list] = {field.name: [] for field in table.fields}
+    for rec in table:
+        for k, v in rec.items():
+            cols[k].append(v)
+    if not cols or all(len(v) == 0 for v in cols.values()):
+        return pl.DataFrame()
+    frame = pl.DataFrame(
+        {name.upper(): values for name, values in cols.items()},
+        infer_schema_length=None,
+    )
+    return frame.with_columns(pl.lit(False).alias("_deleted"))
+
+
+def _read_dbf_piece(piece: Path, encoding: str) -> pl.DataFrame:
+    """Lê um .dbf (ou um pedaço dele) com fastdbf e, se falhar, com dbfread.
+
+    Um campo numérico com lixo (por exemplo ``"2165198310000EP3170"`` num SIA-PA)
+    faz o fastdbf levantar ``DbfFormatError``. Como o fallback vale só para o
+    pedaço que falhou, o custo do dbfread fica limitado a ele.
+    """
+    try:
+        return _read_dbf_fastdbf(piece)
+    except Exception as exc:
+        logger.debug("fastdbf falhou em %s (%s), usando dbfread", piece.name, exc)
+        return _read_dbf_dbfread(piece, encoding)
+
+
+def _dbf_frames(
+    src: Path, encoding: str, chunk_bytes: int | None
+) -> Iterator[pl.DataFrame]:
+    """Gera os DataFrames brutos de um .dbf (um só, ou um por pedaço)."""
+    if chunk_bytes is None or src.stat().st_size <= 2 * chunk_bytes:
+        yield _read_dbf_piece(src, encoding)
+        return
+    with tempfile.TemporaryDirectory(prefix="dbf-chunks-") as tmp:
+        for piece in _iter_dbf_chunks(src, chunk_bytes, Path(tmp)):
+            yield _read_dbf_piece(piece, encoding)
 
 
 def _normalize_frame(result: pl.DataFrame | pl.Series) -> pl.DataFrame:
@@ -78,15 +200,29 @@ def decompress_dbc(dbc_path: Path | str, dbf_path: Path | str | None = None) -> 
     return dest
 
 
-def read_dbf(dbf_path: Path | str, encoding: str = "latin1") -> pl.DataFrame:
+def read_dbf(
+    dbf_path: Path | str,
+    encoding: str = "latin1",
+    chunk_bytes: int | None = DBF_CHUNK_BYTES,
+    transform: Callable[[pl.DataFrame], pl.DataFrame] | None = None,
+) -> pl.DataFrame:
     """Read a .dbf file into a Polars DataFrame.
 
-    Tries fastdbf (Rust + Apache Arrow zero-copy) first, falling back to
-    dbfread (pure Python) for maximum portability.
+    Tries fastdbf (Rust + Apache Arrow) first, falling back to dbfread (pure
+    Python) for maximum portability. fastdbf builds the whole Arrow table at once and
+    peaks at roughly 12x the .dbf size in memory, so files larger than
+    ``2 * chunk_bytes`` are read in pieces of about ``chunk_bytes`` and concatenated;
+    the peak then follows the chunk plus the final DataFrame. The fallback is per
+    piece: one malformed record only sends its own piece to dbfread.
 
     Args:
         dbf_path: Path to the .dbf file.
         encoding: Character encoding for text fields (defaults to 'latin1').
+        chunk_bytes: Piece size, in bytes of records, for the fastdbf path.
+            ``None`` reads the whole file at once.
+        transform: Optional function applied to each raw piece before the pieces
+            are concatenated (for example ``wrangle_datasus``). Typing each piece
+            early keeps the peak well below an all-string frame of the whole file.
 
     Returns:
         polars.DataFrame containing the raw records.
@@ -101,39 +237,14 @@ def read_dbf(dbf_path: Path | str, encoding: str = "latin1") -> pl.DataFrame:
     if not src.exists():
         raise FileNotFoundError(f"Arquivo .dbf não encontrado: {src}")
 
-    # 1. Tentar leitura rápida via fastdbf
-    try:
-        import fastdbf
-
-        with fastdbf.Table(str(src)).open("r") as table:
-            arrow_table = table.to_arrow()
-            return _normalize_frame(pl.from_arrow(arrow_table))
-    except Exception as exc:
-        logger.debug("fastdbf falhou (%s), tentando fallback com dbfread", exc)
-
-    # 2. Fallback via dbfread
-    try:
-        import dbfread
-
-        table = dbfread.DBF(
-            str(src),
-            encoding=encoding,
-            ignore_missing_memofile=True,
-            char_decode_errors="replace",
-        )
-        cols: dict[str, list] = {field.name: [] for field in table.fields}
-        for rec in table:
-            for k, v in rec.items():
-                cols[k].append(v)
-        if not cols or all(len(v) == 0 for v in cols.values()):
-            return pl.DataFrame()
-        return pl.DataFrame(cols, infer_schema_length=None)
-    except ImportError as err:
-        raise ImportError(
-            "Leitura de arquivos DBF requer extras de análise: "
-            "uv add 'datasus-fetcher[analysis]' "
-            "--index https://index.quantilica.com/simple/"
-        ) from err
+    frames = []
+    for raw in _dbf_frames(src, encoding, chunk_bytes):
+        frame = transform(raw) if transform is not None else raw
+        if frame.width:
+            frames.append(frame)
+    if not frames:
+        return pl.DataFrame()
+    return pl.concat(frames, how="diagonal_relaxed") if len(frames) > 1 else frames[0]
 
 
 def wrangle_datasus(
@@ -256,28 +367,28 @@ def read_dbc(
         Loaded (and wrangled) Polars DataFrame.
     """
     src = Path(dbc_path)
-    if keep_dbf:
-        dbf_path = decompress_dbc(src)
-        df = read_dbf(dbf_path, encoding=encoding)
-    else:
-        with tempfile.NamedTemporaryFile(suffix=".dbf", delete=False) as tmp:
-            tmp_path = Path(tmp.name)
-        try:
-            decompress_dbc(src, tmp_path)
-            df = read_dbf(tmp_path, encoding=encoding)
-        finally:
-            if tmp_path.exists():
-                tmp_path.unlink()
 
-    if clean:
-        df = wrangle_datasus(
-            df,
+    def wrangle(frame: pl.DataFrame) -> pl.DataFrame:
+        return wrangle_datasus(
+            frame,
             dataset=dataset,
             lowercase=lowercase,
             extra_columns=extra_columns,
         )
 
-    return df
+    transform = wrangle if clean else None
+    if keep_dbf:
+        dbf_path = decompress_dbc(src)
+        return read_dbf(dbf_path, encoding=encoding, transform=transform)
+
+    with tempfile.NamedTemporaryFile(suffix=".dbf", delete=False) as tmp:
+        tmp_path = Path(tmp.name)
+    try:
+        decompress_dbc(src, tmp_path)
+        return read_dbf(tmp_path, encoding=encoding, transform=transform)
+    finally:
+        if tmp_path.exists():
+            tmp_path.unlink()
 
 
 def write_parquet(
