@@ -5,7 +5,7 @@ Todas as mudanças notáveis deste projeto serão documentadas neste arquivo.
 O formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/),
 e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 
-## [Não lançado]
+## [0.12.0] - 2026-10-14
 
 ### Alterado
 - `README.md`: a seção de instalação deixa de mandar `pip install` (fetchers do Fluxo B não estão no PyPI) e passa a mostrar `quantilica install datasus` (com `--extra analysis`) e `uv add --index` para uso como biblioteca.
