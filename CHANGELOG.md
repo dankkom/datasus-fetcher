@@ -8,6 +8,7 @@ e este projeto adere ao [Semantic Versioning](https://semver.org/lang/pt-BR/).
 ## [Não lançado]
 
 ### Alterado
+- `README.md`: a seção de instalação deixa de mandar `pip install` (fetchers do Fluxo B não estão no PyPI) e passa a mostrar `quantilica install datasus` (com `--extra analysis`) e `uv add --index` para uso como biblioteca.
 - Helpers de resolução de sistemas/datasets (`_systems_to_datasets`, `resolve_dataset_targets`, `parse_systems`, `resolve_targets`) movidos de `cli.py` para o módulo novo `datasus_fetcher.targets`; `plugin.py` e `cli.py` importam de lá (`cli.py` mantém re-exports para compatibilidade; `plugin.py` não importa mais `cli.py`).
 - `cli.py` padronizado no bloco top-level dos demais fetchers (importe de `app` com guarda de host, `--version`, delegação via `app(argv)`, `KeyboardInterrupt` → exit 130 e `SystemExit` preservados).
 - `.gitignore`: removida a entrada `logging.ini` (arquivo versionado e documentado no README como template de customização de logging).

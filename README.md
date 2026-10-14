@@ -21,23 +21,23 @@ Para a documentação completa, consulte **[https://docs.quantilica.com](https:/
 
 ## Instalação
 
-Apenas download e descompactação nativa DBC -> DBF (sem dependências analíticas pesadas):
+Pela CLI unificada (recomendado):
 
 ```bash
-pip install datasus-fetcher
+quantilica install datasus
+# com o extra de análise (comandos convert e pipeline):
+quantilica install datasus --extra analysis
 ```
 
-Para incluir o suporte analítico completo (leitura direta em Polars, limpeza e conversão para Parquet):
+Como biblioteca num projeto, a partir do índice próprio (este pacote não é publicado no PyPI):
 
 ```bash
-pip install 'datasus-fetcher[analysis]'
+uv add datasus-fetcher --index https://index.quantilica.com/simple/
+# com o extra de análise:
+uv add 'datasus-fetcher[analysis]' --index https://index.quantilica.com/simple/
 ```
 
-Para instalação global isolada (CLI):
-
-```bash
-pipx install 'datasus-fetcher[analysis]'
-```
+O download e a descompactação nativa DBC → DBF não exigem dependências analíticas. O extra `analysis` traz Polars, `fastdbf` e `dbfread` para a leitura direta, a limpeza e a conversão para Parquet.
 
 ## Uso Rápido
 
@@ -646,7 +646,7 @@ df.decompress_dbc("DOSP2023.dbc", "DOSP2023.dbf")
 
 ### 2. Leitura e conversão analítica para Parquet
 
-Requer a instalação com o extra opcional: `pip install 'datasus-fetcher[analysis]'`.
+Requer o extra opcional: `quantilica install datasus --extra analysis` (CLI) ou `uv add 'datasus-fetcher[analysis]' --index https://index.quantilica.com/simple/` (biblioteca).
 
 ```python
 import datasus_fetcher as df
